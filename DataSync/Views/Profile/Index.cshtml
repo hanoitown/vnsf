@@ -1,0 +1,75 @@
+﻿@model DataSync.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<fieldset>
+    <legend>ProfileViewModel</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Office)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Office)
+    </div>
+        <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+    </div>
+        <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Educations</legend>
+    @if (Model.Educations != null)
+    {
+        foreach (var education in Model.Educations)
+        {
+        <div class="display-field">
+            @education.E_TO | @education.E_MAJOR | @education.E_NAME
+        </div>
+        }
+    }
+</fieldset>
+
+<fieldset>
+    <legend>Works</legend>
+    @if (Model.Works != null)
+    {
+        foreach (var work in Model.Works)
+        {
+        <div class="display-field">
+            @work.W_TO | @work.W_TITLE | @work.W_NAME
+        </div>
+        }
+    }
+</fieldset>
+
+<fieldset>
+    <legend>Publications</legend>
+    @if (Model.Publications != null)
+    {
+        foreach (var pub in Model.Publications)
+        {
+        <div class="display-field">
+            @pub.P_YEAR | @pub.P_TYPE | @pub.P_DETAIL
+        </div>
+        }
+    }
+</fieldset>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

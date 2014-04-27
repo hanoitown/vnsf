@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Program";
+    Layout = "~/Views/Shared/_LayoutSysAdmin.cshtml";
+
+}
+
+<h2>Program</h2>
+<a class="btn btn-default">Add program</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BASIC</td>
+            <td>Basic science programs</td>
+            <td>Basic science</td>
+            <td>1/1/2009</td>
+            <td></td>
+            <td>
+                <a class="btn btn-default" href="#">Manage</a>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-sm  dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class=" glyphicon glyphicon-cog"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Detail
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-confirm="Are you sure?" data-method="put" rel="nofollow">
+                                <span class="glyphicon glyphicon-briefcase"></span>
+                                Edit
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#" data-confirm="WARNING: This will also delete This cannot be undone. Are you sure you want to delete" data-disable-with="Deleting..." data-method="delete" rel="nofollow">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Delete
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>119</td>
+            <td>Decree 199</td>
+            <td>Decree 199</td>
+            <td>1/9/2013</td>
+            <td>1/9/2015</td>
+            <td>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class=" glyphicon glyphicon-cog"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Manage
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#" data-confirm="WARNING: This will also delete This cannot be undone. Are you sure you want to delete" data-disable-with="Deleting..." data-method="delete" rel="nofollow">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Delete
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>VIIP</td>
+            <td>WorldBank program</td>
+            <td>Vietnam includsive innovation</td>
+            <td>1/9/2013</td>
+            <td>1/9/2018</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+

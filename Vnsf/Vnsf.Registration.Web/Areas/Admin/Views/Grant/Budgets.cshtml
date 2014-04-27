@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Vnsf.WebHost.Models.BudgetViewModel>
+
+@{
+    ViewBag.Title = "Budgets";
+}
+
+<h2>Budgets</h2>
+<ul class="nav nav-pills">
+    <li>
+        @{ var url = @Url.Action("Manage"); }
+        <a data-bind="attr: { href: '@url#' + $data.parentID() }">
+            <i class="icon-arrow-left"></i> Back to Grant
+        </a>
+    </li>
+    <li>
+        @{ var url2 = @Url.Action("Budget"); }
+        <a data-bind="attr: { href: '@url2#v' + $data.parentID() }">New Budget</a>
+    </li>
+</ul>
+
+<table class="table table-striped hide table-condensed" data-bind="css: { hide: !items().length }">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Supplier</th>
+            <th>Year</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: items">
+        <tr>
+            <td data-bind="text:name"></td>
+            <td data-bind="text:description"></td>
+            <td data-bind="text:supplier"></td>
+            <td data-bind="text:year"></td>
+            <td data-bind="text:amount"></td>
+            <td>
+                <div class="btn-group ">
+                    <a class="btn btn-sm btn-default  dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class=" glyphicon glyphicon-cog"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="#" data-bind="attr: { href: '@url2#' + $data.id() + 'v' + $parent.parentID() }" rel="nofollow">
+                                <span class="glyphicon glyphicon-briefcase"></span>
+                                Edit
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#" data-confirm="WARNING: This will also delete This cannot be undone. Are you sure you want to delete" data-disable-with="Deleting..." data-bind="click: function (data, evt) { $parent.deleteItem(data) }" rel="nofollow">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Delete
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p data-bind="css: { hide: items().length }" class="alert alert-warning hide">
+    No Budgets Found
+</p>
+
+
+@section scripts
+{
+    <script src="~/Areas/Admin/Scripts/Budgets.js"></script>
+}

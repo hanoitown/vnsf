@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "SA";
+}
+
+<div class="col-lg-3">
+    <ul class="list-group">
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">General</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item ">
+            <strong class="list-group-item-heading">Programs</strong>
+            <p class="list-group-item-text">All file in personal storage</p>
+        </a>
+                <a href="#" class="list-group-item ">
+            <strong class="list-group-item-heading">Projects</strong>
+            <p class="list-group-item-text">All file in personal storage</p>
+        </a>
+
+        <a href="#" class="list-group-item active">
+            <strong class="list-group-item-heading">Fields</strong>
+            <p class="list-group-item-text">Temporary deleted files</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Templates</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Notification and requests</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+
+        <a href="#" class="list-group-item ">
+            <strong class="list-group-item-heading">Organizations</strong>
+            <p class="list-group-item-text">Temporary deleted files</p>
+        </a>
+        <a href="#" class="list-group-item ">
+            <strong class="list-group-item-heading"><i class="fa fa-user"></i>&nbsp; Users and groups</strong>
+            <p class="list-group-item-text">Temporary deleted files</p>
+        </a>
+        <a href="#" class="list-group-item ">
+            <strong class="list-group-item-heading"><i class="fa fa-group"></i>&nbsp;Authorization</strong>
+            <p class="list-group-item-text">Temporary deleted files</p>
+        </a>
+
+    </ul>
+</div>
+<div class="col-lg-9">
+    <table class="table table-striped table-condensed" data-bind="css:{hide:!applications().length}">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Enabled</th>
+                <th>Name</th>
+                <th>Description</th>
+
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:applications">
+            <tr>
+                <td>
+                    @{ var url = @Url.Action("Manage"); }
+                    <a class="btn btn-primary" data-bind="attr: { href: '@url#' + $data.id() }">Manage</a>
+
+                    <div class="input-group pull-left">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            Delete
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" data-bind="click: function (data, evt) { $parent.deleteApp(data) }">
+                                    <span class="icon-ok"></span>
+                                    Confirm
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="icon-remove"></span>
+                                    Cancel
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td data-bind="text: email"></td>
+                <td data-bind="text: created"></td>
+                <td data-bind="text: lastUpdated"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

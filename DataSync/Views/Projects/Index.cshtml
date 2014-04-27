@@ -1,0 +1,837 @@
+﻿@model IEnumerable<DataSync.Models.basic_main>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Model.Count().ToString()
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.B_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NAME_V)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NAME_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PROPOSAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAJOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FIELD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FIELD_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_GROUP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_START_MONTH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FINAL_MONTH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FROM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_TO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MONTH_NUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PEOPLE_NUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_TOTAL_EXPENSE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_REQUESTED_EXPENSE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PASS_EXPENSE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FINAL_EXPENSE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SPONSORS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_ORG_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_ADD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_CITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_REP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_REP_POS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_REP_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_ACC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_BANK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_UPLOAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MAIN_ORG_UPLOAD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_ADD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_CITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_REP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_REP_POS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_REP_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_ACC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_BANK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_FACILITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_FACILITY_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_TEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_UPLOAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_ORG_UPLOAD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_GENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_BIRTHDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_SCIENTIFICE_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_NUMBER_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_OFFICE_DEPT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_ADMINISTRATIVE_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_OFFICE_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_OFFICE_ADD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_OFFICE_CITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_OFFICE_PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_CELL_PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SECOND_PRO_OFFICE_FAX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PROPOSAL_UPLOAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PROPOSAL_UPLOAD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_S_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_UPDATE_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_UPDATE_PERSON)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_CREATED_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_CREATED_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SUBMITTED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_HARD_SUBMITTED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SUBMITTED_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SUBMITTED_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BS_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BS_PROPOSAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BS_CMT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BF_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BF_PROPOSAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BF_CMT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_ID_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_ID_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_ID_3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_ID_4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_TK_UPDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_KEY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FACILITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_FACILITY_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP1_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP1_FIELD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP1_ORG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP1_CONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP2_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP2_FIELD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP2_ORG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP2_CONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP3_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP3_FIELD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP3_ORG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP3_CONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP1_FIELD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP2_FIELD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP3_FIELD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXP4_FIELD_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SUBMITTED_DATE_N)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_DATE_HARD_COPY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_VALLID_REASONS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_VALLID_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_EXPENSE_LABOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_PUBISI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_PUBISI_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_PUBINTER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_PUBINTER_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_BOOK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_BOOK_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_PATENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_CEMINA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_CEMINA_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_NATION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_NUM_NATION_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_OTHER_PRODUCTS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_OTHER_PRODUCTS_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MASTER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MASTER_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_PHD_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_MATERIAL_COST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_TOOLS_COST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_TRAVEL_COST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_SERVICES_COST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_DIRECT_COST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_INDIRECT_COST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_REVIEW_NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_ABSTRACT_V)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B_ABSTRACT_E)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NAME_V)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NAME_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PROPOSAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAJOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FIELD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FIELD_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_GROUP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_TYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_START_MONTH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FINAL_MONTH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FROM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_TO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MONTH_NUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PEOPLE_NUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_TOTAL_EXPENSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_REQUESTED_EXPENSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PASS_EXPENSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FINAL_EXPENSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SPONSORS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_ORG_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_ADD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_REP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_REP_POS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_REP_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_ACC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_BANK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_UPLOAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MAIN_ORG_UPLOAD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_ADD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_REP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_REP_POS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_REP_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_ACC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_BANK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_FACILITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_FACILITY_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_TEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_UPLOAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_ORG_UPLOAD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_GENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_BIRTHDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_SCIENTIFICE_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_NUMBER_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_OFFICE_DEPT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_ADMINISTRATIVE_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_OFFICE_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_OFFICE_ADD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_OFFICE_CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_OFFICE_PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_CELL_PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SECOND_PRO_OFFICE_FAX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PROPOSAL_UPLOAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PROPOSAL_UPLOAD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_S_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_UPDATE_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_UPDATE_PERSON)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_CREATED_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_CREATED_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SUBMITTED)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_HARD_SUBMITTED)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SUBMITTED_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SUBMITTED_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BS_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BS_PROPOSAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BS_CMT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BF_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BF_PROPOSAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BF_CMT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_ID_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_ID_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_ID_3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_ID_4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_TK_UPDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_KEY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FACILITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_FACILITY_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP1_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP1_FIELD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP1_ORG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP1_CONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP2_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP2_FIELD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP2_ORG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP2_CONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP3_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP3_FIELD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP3_ORG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP3_CONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP1_FIELD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP2_FIELD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP3_FIELD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXP4_FIELD_E)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SUBMITTED_DATE_N)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_DATE_HARD_COPY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_VALLID_REASONS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_VALLID_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_EXPENSE_LABOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_PUBISI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_PUBISI_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_PUBINTER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_PUBINTER_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_BOOK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_BOOK_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_PATENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_CEMINA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_CEMINA_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_NATION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_NUM_NATION_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_OTHER_PRODUCTS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_OTHER_PRODUCTS_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MASTER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MASTER_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_PHD_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_MATERIAL_COST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_TOOLS_COST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_TRAVEL_COST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_SERVICES_COST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_DIRECT_COST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_INDIRECT_COST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_REVIEW_NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_ABSTRACT_V)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_ABSTRACT_E)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,8 @@
+﻿My template
+<span data-bind="text: nafosted.vm.name()"></span>
+
+<a href="#" data-bind="click: function(data,event) { nafosted.vm.add(9, 9, data, event) }">ClickMe</a>
+<ul data-bind="foreach: nafosted.vm.list">
+    <li><span data-bind="text: date"></span></li>
+</ul>
+

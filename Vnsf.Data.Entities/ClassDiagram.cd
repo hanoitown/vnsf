@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vnsf.Data.Entities.Organization">
+    <Position X="17.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAAAACAAAAAQAAAAAAIAAEAABAAAAAAA=</HashCode>
+      <FileName>Organization.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Units" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Grant">
+    <Position X="14.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAAAQAAAAAAABAQAAAgEAAAAAAAYAIAEACGAAAIAAA=</HashCode>
+      <FileName>Grant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Opportunities" />
+      <Property Name="SciencePanels" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Budget">
+    <Position X="12.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABADAAAAAAAgAIAAAAAAAASAAAAEAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Budget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.OrganizationUnit">
+    <Position X="20" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQAAAAAAAAAAgAgAAAAAAAAA=</HashCode>
+      <FileName>OrganizationUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Announcement">
+    <Position X="12.25" Y="8" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gBABAAAAAgAAABAIACAAAAAAAgAIAAEAAAEAAEAAAAA=</HashCode>
+      <FileName>Announcement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Versions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Opportunity">
+    <Position X="15.25" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAABgAEABgAAAAIAAQAAAAAggAQAAEAAAEIAEAAAAA=</HashCode>
+      <FileName>Opportunity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Announcements" />
+      <Property Name="Applications" />
+      <Property Name="Awards" />
+      <Property Name="Contracts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Person">
+    <Position X="25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAICACAAAAAAAAAAIAAAAAAAAAAAAgEA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Researcher">
+    <Position X="25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAABAAAAAAEAAAAAAAAAAAAAAAAAAAAEAAIAA=</HashCode>
+      <FileName>Researcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Award">
+    <Position X="12.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAJAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Award.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Application">
+    <Position X="17.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABADIAAEAAAAAAAAgAAAAAAAAAAAAAACCAACAAAAAAA=</HashCode>
+      <FileName>Application.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ResearchMember">
+    <Position X="22.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIA=</HashCode>
+      <FileName>ResearchMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.DocumentStorage">
+    <Position X="27.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAEAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Document\DocStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.DocFile">
+    <Position X="25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAgAAAAAgAAAAAAAAAAAAAAAAAAACAABAAQBAAAA=</HashCode>
+      <FileName>Document\DocFile.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Stores" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.DocShare">
+    <Position X="27.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAACCACAAAAAAAA=</HashCode>
+      <FileName>Document\DocShare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ProposeEducation">
+    <Position X="22.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>ProposeEducation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ProposePublication">
+    <Position X="22.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>ProposePublication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Panel">
+    <Position X="12" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAABAAA=</HashCode>
+      <FileName>Panel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Review">
+    <Position X="20" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEABAAAAAAAAAAAAAAAAAAAAEBAAEAAAAAAAA=</HashCode>
+      <FileName>Review.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Versions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.PanelMeeting">
+    <Position X="17.5" Y="9.5" Width="1.5" />
+    <AssociationLine Name="Evaluations" Type="Vnsf.Data.Entities.PanelEvaluation" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19" Y="10.438" />
+        <Point X="19.75" Y="10.438" />
+        <Point X="19.75" Y="9.688" />
+        <Point X="20" Y="9.688" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEBAACAAAAAAAAAAAAAAAAAAgBBAAAAEAAAAA=</HashCode>
+      <FileName>PanelMeeting.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ReviewAssignments" />
+      <Property Name="Evaluations" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ReviewDetail">
+    <Position X="22.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAACAAAEAAAA=</HashCode>
+      <FileName>ReviewDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.PanelEvaluation">
+    <Position X="20" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PanelEvaluation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Contract">
+    <Position X="12.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAABAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Contract.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Versions" />
+      <Property Name="Reports" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ApplicationVersion">
+    <Position X="20" Y="13.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABABAEAEABACAAAAhAAAAAAAAAAAGAEACAAEAEAAABA=</HashCode>
+      <FileName>ApplicationVersion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Members" />
+      <Property Name="Publications" />
+      <Property Name="Educations" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.AnnouncementVersion">
+    <Position X="8.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAACAAAAAgAAABAIAAAAAAAAAgIAAAEAAAFAAEAAAAA=</HashCode>
+      <FileName>AnnouncementVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ContractVersion">
+    <Position X="9" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAAAA=</HashCode>
+      <FileName>ContractVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Report">
+    <Position X="9" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAFAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAACAA=</HashCode>
+      <FileName>Report.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Versions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ReportVersion">
+    <Position X="6" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAACAAAAAAACQAAAAAAAAAAQAAAEAABBA=</HashCode>
+      <FileName>ReportVersion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Publications" />
+      <Property Name="Educations" />
+      <Property Name="Expenses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ReviewVersion">
+    <Position X="22.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>ReviewVersion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Reviews" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Publication">
+    <Position X="3" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAEAAgAAAAAAAAAAAAAADAAAAAAAAKAA=</HashCode>
+      <FileName>Publication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Education">
+    <Position X="3" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAQAAAAAAAAAAAAQgAAAAAACBAAAAAEAAoAA=</HashCode>
+      <FileName>Education.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Expense">
+    <Position X="3" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAAAAggAAACAA=</HashCode>
+      <FileName>Expense.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.ApplicationDocument">
+    <Position X="17.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAACAAAAAAAACAA=</HashCode>
+      <FileName>ApplicationDocument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

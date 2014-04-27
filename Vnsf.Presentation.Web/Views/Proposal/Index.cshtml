@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "Proposals";
+}
+
+<div class="col-lg-3">
+    <ul class="list-group">
+        <a href="#" class="list-group-item active">
+            <strong class="list-group-item-heading">Opportunities</strong>
+            <p class="list-group-item-text">Temporary deleted files</p>
+        </a>
+        <a href="#" class="list-group-item ">
+            <strong class="list-group-item-heading">Proposals</strong>
+            <p class="list-group-item-text">All file in personal storage</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Proposal status</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Notifications & Requests</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Awards</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Reporting</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+    </ul>
+</div>
+<div class="col-lg-9">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs text-center">
+        <li><a href="#home" data-toggle="tab">Interim/Annual report</a></li>
+        <li><a href="#messages" data-toggle="tab">Final report</a></li>
+        <li><a href="#settings" data-toggle="tab">Outcome report</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            Temp ID	Type	Access Level	PI Name	Proposal Title	Check	Edit	Submit	Return to PI
+        </div>
+        <div class="tab-pane" id="messages">
+            Temp ID	Proposal ID	Type	PI Name	Proposal Title	Last Modified Date	Edit
+        </div>
+        <div class="tab-pane" id="settings">
+            Temp ID	Proposal ID	Type	PI Name	Proposal Title	Last Submmitted Date	Edit
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Share directory {Name}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="btn-group col-sm-4">
+                            <button type="button" class="btn btn-sm btn-default">Truy cập Cá nhân</button>
+                            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>Không ai trừ những thành viên được mời có thể truy cập thư mục này. Cần phải đăng nhập</p>
+                        </div>
+
+                    </div>
+                    <div id="sharelink" class="form-group">
+                        <label class="control-label">Liên kết để chia sẻ (chỉ những thành viên cộng tác mới có thể truy cập được) : <a href="#">Other share options</a></label>
+                        <input type="password" class="form-control input-sm" data-bind="value: passconfirm" placeholder="http://www.4shared.com/folder/PRdTIVVZ/_online.html">
+                    </div>
+                    <div id="permissions">
+                        <div>
+                            <p>Ai có thể truy cập:</p>
+                        </div>
+                        <table class="table table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="col-lg-8">Name</td>
+                                    <td>Size</td>
+                                    <td>Last updated</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span>Danh ba dien thoai co dinh.doc</span>
+                                        <span class="glyphicon glyphicon-paperclip pull-right"></span>
+                                    </td>
+                                    <td>23 Mb</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Danh ba dien thoai co dinh.doc</td>
+                                    <td>16Mb</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="manage">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="form-group">
+                                    <label class="control-label">Liên kết để chia sẻ (chỉ những thành viên cộng tác mới có thể truy cập được) :</label>
+                                    <input type="password" class="form-control input-sm" data-bind="value: passconfirm" placeholder="http://www.4shared.com/folder/PRdTIVVZ/_online.html">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 ">
+                                        <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/100%x180" alt="100%x180" style="height: 39px; width: 39px; display: block;" src="">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/100%x180" alt="100%x180" style="height: 39px; width: 39px; display: block;" src="">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 ">
+                                        <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/100%x180" alt="100%x180" style="height: 39px; width: 39px; display: block;" src="">
+                                        </a>
+                                    </div>
+                                </div>
+                                @*                                <div class="form-group">
+                                    <label class="control-label">Private messages :</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>*@
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="shareTab" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Thanks!</h4>
+            </div>
+            <div class="modal-body ">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs text-center">
+                    <li><a href="#home" data-toggle="tab">Link</a></li>
+                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                    <li><a href="#settings" data-toggle="tab">Options</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <div class="form-group">
+                            <label class="control-label">Liên kết tải xuống </label>
+                            <input class="form-control input-sm" data-bind="value: passconfirm" placeholder="http://www.4shared.com/folder/PRdTIVVZ/_online.html">
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="form-group">
+                                    <label class="control-label">Liên kết để chia sẻ </label>
+                                    <input type="password" class="form-control input-sm" data-bind="value: passconfirm" placeholder="http://www.4shared.com/folder/PRdTIVVZ/_online.html">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 ">
+                                        <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/100%x180" alt="100%x180" style="height: 39px; width: 39px; display: block;" src="">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/100%x180" alt="100%x180" style="height: 39px; width: 39px; display: block;" src="">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 ">
+                                        <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/100%x180" alt="100%x180" style="height: 39px; width: 39px; display: block;" src="">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Private messages :</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="settings">Other share options</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

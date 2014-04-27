@@ -1,0 +1,23 @@
+﻿<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/typeahead.min.js"></script>
+<h2>Index</h2>
+<input id="type-ahead" type="text" class="form-control" />
+@section scripts{
+    <script>
+        $(function () {
+            $('#type-ahead').typeahead({
+                name: 'football',
+                local: ['AD', 'BC', 'ZD']
+            })
+
+        });
+    </script>
+}

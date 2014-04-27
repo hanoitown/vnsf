@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Regalo.Core</id>
+    <version>5.1.1.0</version>
+    <title>Regalo.Core</title>
+    <authors>Neil Barnwell</authors>
+    <owners>Neil Barnwell</owners>
+    <projectUrl>https://github.com/nbarnwell/Regalo</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple DDD event sourcing library based entirely on my learnings from Greg Young's DDD, CQRS and Event Sourcing course.</description>
+    <releaseNotes />
+    <copyright>Copyright 2012</copyright>
+    <language />
+    <tags>CQRS EventSourcing</tags>
+  </metadata>
+</package>

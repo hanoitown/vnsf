@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "review";
+}
+<div class="col-lg-3">
+    <ul class="list-group">
+        <a href="#" class="list-group-item active">
+            <strong class="list-group-item-heading">Prepare review</strong>
+            <p class="list-group-item-text">Letters of Intent</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">View proposal</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Download proposal</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Print proposal at Nafosted and Mail</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+        <a href="#" class="list-group-item " data-toggle="modal" data-target="#shareTab">
+            <strong class="list-group-item-heading">Create CD and Mail</strong>
+            <p class="list-group-item-text">Share with me by other users</p>
+        </a>
+    </ul>
+</div>
+<div class="col-lg-9">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs text-center">
+        <li><a href="#home" data-toggle="tab">In progress</a></li>
+        <li><a href="#messages" data-toggle="tab">Withdrawals</a></li>
+        <li><a href="#settings" data-toggle="tab">Submitted</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            Temp ID	Type	Access Level	PI Name	Proposal Title	Check	Edit	Submit	Return to PI
+        </div>
+        <div class="tab-pane" id="messages">
+            Temp ID	Proposal ID	Type	PI Name	Proposal Title	Last Modified Date	Edit
+        </div>
+        <div class="tab-pane" id="settings">
+            Temp ID	Proposal ID	Type	PI Name	Proposal Title	Last Submmitted Date	Edit
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<style>    .btn-file {
+         position: relative;
+         overflow: hidden;
+     }
+
+     .btn-file input[type=file] {
+         position: absolute;
+         top: 0;
+         right: 0;
+         min-width: 100%;
+         min-height: 100%;
+         font-size: 999px;
+         text-align: right;
+         filter: alpha(opacity=0);
+         opacity: 0;
+         background: red;
+         cursor: inherit;
+         display: block;
+     }
+
+     input[readonly] {
+         background-color: white !important;
+         cursor: text !important;
+     }
+</style>
+
+
+<form class="form-horizontal">
+    <label class="checkbox">
+        <input type="checkbox" />
+        Checkbox</label>
+    <span class="help-block">Description for check box</span>
+
+    <div class="form-group">
+        <input type="text" value="" />
+        <input type="text" value="" />
+    </div>
+    <div class="form-group has-success">
+        <label class="control-label col-sm-2">Sampe lable</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control input-sm" value="" />
+        </div>
+
+    </div>
+    <label>Images</label>
+    <div class="input-group">
+        <span class="input-group-btn">
+            <span class="btn btn-primary btn-file">Browse…
+                    <input type="file" multiple="">
+            </span>
+        </span>
+        <input type="text" class="form-control" readonly="">
+    </div>
+    <span class="help-block">Try selecting one or more files and watch the feedback
+    </span>
+    <div class="form-group">
+        <label>Select gender</label>
+        <div>
+            <label class="radio-inline">
+                <input name="gender" type="radio" />Male
+            </label>
+            <label class="radio-inline">
+                <input name="gender" type="radio" />FeMale
+            </label>
+        </div>
+    </div>
+
+</form>

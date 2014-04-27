@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script src="Scripts/lib/jquery-2.0.3.js"></script>
+<script src="Scripts/lib/knockout-2.3.0.js"></script>
+<script src="Scripts/lib/require.js"></script>
+<link href="Content/bootstrap/bootstrap.css" rel="stylesheet" />
+<!--<script src="Scripts/infuser.js"></script>
+<script src="Scripts/TrafficCop.js"></script>
+<script src="Scripts/koExternalTemplateEngine.js"></script>-->
+<script src="Scripts/app/base.js"></script>
+<!-- ReSharper disable InconsistentNaming -->
+<script type="text/javascript">
+    window.nafosted = {};
+
+    $(function () {
+        nafosted.vm = (function () {
+            var name = ko.observable("John"),
+                list = ko.observableArray([
+                    { date: '12/1/2011', reading: 3, id: 20055 },
+                    { date: '13/1/2011', reading: 5, id: 20053 },
+                    { date: '14/1/2011', reading: 6, id: 45652 }
+                ]),
+            data = data || {
+                client: "",
+                flow: 'code'
+            },
+            contain = document.getElementById("result"),
+            add = function (x, y) {
+                contain.innerHTML = x + y;
+            },
+            loadData = function () {
+
+            };
+
+            return {
+                add: add,
+                loadData: loadData,
+                name: name,
+                list: list
+
+            };
+        })();
+
+        function Client() {
+            this.data = [
+                { date: '12/1/2011', reading: 3, id: 20055 },
+                { date: '13/1/2011', reading: 5, id: 20053 },
+                { date: '14/1/2011', reading: 6, id: 45652 }
+            ];
+
+        };
+
+        (function (vn) {
+
+            var Peer = function () {
+                this.items = [
+                    { date: '12/1/2011', reading: 3, id: 20055 },
+                    { date: '13/1/2011', reading: 5, id: 20053 },
+                    { date: '14/1/2011', reading: 6, id: 45652 }
+                ];
+            };
+
+            Peer.prototype = function () {
+                var results = [
+                    { date: '12/1/2011', reading: 3, id: 20055 },
+                    { date: '13/1/2011', reading: 5, id: 20053 },
+                    { date: '14/1/2011', reading: 6, id: 45652 }
+                ],
+                    add = function () {
+                        alert(results);
+                    };
+
+                return {
+                    add: add
+                };
+            }();
+            vn.Peer = Peer;
+        })(window.nafosted);
+
+
+
+        (function (vn) {
+            var server = function () {
+                var self = this;
+                self.save = function () {
+                    alert("I'm in");
+                };
+            };
+            // define the namespace so that the internal could be published
+            vn.server = server;
+
+
+            var wizardViewModel = function () {
+                var viewName = ko.observable(),
+                    nextStep = function () {
+                        var currentView = viewName();
+                        switch (currentView) {
+                            case 'step1':
+                                viewName('step2');
+                                break;
+                            case 'step2':
+                                viewName('step3');
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                    prevStep = function () {
+                        var currentView = viewName();
+                        switch (currentView) {
+                            case 'step2':
+                                viewName('step1');
+                                break;
+                            case 'step3':
+                                viewName('step2');
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                    initialize = function () {
+                        viewName('step1');
+                    };
+                return {
+                    viewName: viewName,
+                    nextStep: nextStep,
+                    prevStep: prevStep,
+                    initialize: initialize
+                };
+            }();
+
+            vn.wizardViewModel = wizardViewModel;
+        })(window.nafosted);
+
+        //infuser.defaults.templateSuffix = ".tmpl.html";
+        //infuser.defaults.templateUrl = "Templates";
+
+        var modelHelper = new vnsf.viewModelHelper('/', 'api/users');
+
+
+        modelHelper.apiGet('api/users', null, function (data) {
+            $.when(data).then(function () {
+                alert(data.toString());
+                nafosted.wizardViewModel.initialize();
+                //ko.applyBindings(nafosted.vm.list);
+
+            });
+        });
+
+
+
+        var temp = new nafosted.server();
+        temp.save();
+        var mics = new nafosted.Peer();
+        mics.add();
+
+        nafosted.vm.loadData();
+        //nafosted.vm.add(3, 4);
+
+        //ko.applyBindings(this);
+    });
+
+
+</script>
+<!-- ReSharper restore InconsistentNaming -->
+<body>
+    <div id="result"></div>
+    <div id="2"></div>
+    <div data-bind="template: { name: 'total' }"></div>
+
+    <script type="text/html" id="total">
+        My template
+        <span data-bind="text: nafosted.vm.name()"></span>
+
+        <a href="#" data-bind="click: function (data, event) { nafosted.vm.add(9, 9, data, event) }">ClickMe</a>
+        <ul data-bind="foreach: nafosted.vm.list">
+            <li><span data-bind="text: date"></span></li>
+        </ul>
+    </script>
+
+    <div id="wizard" data-bind="template: { name: nafosted.wizardViewModel.viewName }">
+    </div>
+
+    <script type="text/html" id="step1">
+        step1
+            <button type="button" data-bind="click: nafosted.wizardViewModel.nextStep">Next</button>
+    </script>
+    <script type="text/html" id="step2">
+        step2
+            <div>data2</div>
+        <button type="button" data-bind="click: nafosted.wizardViewModel.prevStep">Prev</button>
+        <button type="button" data-bind="click: nafosted.wizardViewModel.nextStep">Next</button>
+
+    </script>
+    <script type="text/html" id="step3">
+        step3
+            <button type="button" data-bind="click: nafosted.wizardViewModel.prevStep">prev</button>
+    </script>
+
+</body>
+</html>

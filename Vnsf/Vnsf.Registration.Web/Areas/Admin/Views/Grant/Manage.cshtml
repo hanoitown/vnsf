@@ -1,0 +1,90 @@
+﻿@model Vnsf.WebHost.Models.GrantBindingModel
+
+
+
+<h4>Grant</h4>
+<ul class="nav nav-pills">
+    <li>
+        <a href="@Url.Action("Index")">
+            <i class="icon-arrow-left"></i> Back to Grant
+        </a>
+    </li>
+    @{ var url = @Url.Action("Budgets"); }
+    <li class="hide" data-bind="css: { hide: !menusEnabled() }">
+        <a data-bind="attr: { href: '@url#' + $data.id() }">Budgets</a>
+    </li>
+</ul>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" data-bind="value: code" placeholder="Grant code" />
+                @Html.ValidationMessageFor(model => model.Code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" data-bind="value: name" placeholder="Grant name" />
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea class="form-control" data-bind="value: description" placeholder="Description"></textarea>
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxDuration, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" class="form-control" data-bind="value: maxDuration" />
+                @Html.ValidationMessageFor(model => model.MaxDuration)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxAward, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" class="form-control" data-bind="value: maxAward" />
+                @Html.ValidationMessageFor(model => model.MaxAward)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" class="form-control" data-bind="value: total" />
+                @Html.ValidationMessageFor(model => model.Total)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" class="form-control" data-bind="value: filePath" />
+                @Html.ValidationMessageFor(model => model.Total)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" data-bind="click: save" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script src="~/Areas/Admin/Scripts/grant.js"></script>
+}

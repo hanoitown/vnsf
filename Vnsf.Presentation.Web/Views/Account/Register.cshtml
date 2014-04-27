@@ -1,0 +1,192 @@
+﻿@using Microsoft.Web.Helpers
+@{
+    ViewBag.Title = "Register";
+}
+
+<style type="text/css">
+    table th, table td {
+        overflow: hidden;
+    }
+</style>
+<div class="container" id="regform">
+    <div class="col-lg-8 text-center">
+        <img src="https://sc.imp.live.com/content/dam/imp/surfaces/mail_signin/v3/images/Security.jpg" alt="Your account">
+    </div>
+    <div class="col-lg-4" id="Wizard" data-bind="template: { name: viewName() }">
+    </div>
+</div>
+
+<script type="text/html" id="register-step1">
+    <div class="well" data-bind="with: wzStep1">
+        <form>
+            <div class="form-group">
+                <label class="control-label">Tên đăng nhập</label>
+                <input type="text" class="form-control input-sm" data-bind="value: email" placeholder="Địa chỉ email nafosted@most.gov.vn">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mật khẩu</label>
+                <input type="password" class="form-control input-sm" data-bind="value: password" placeholder="Ít nhất 8 ký tự và có chữ, số">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Xác nhận mật khẩu</label>
+                <input type="password" class="form-control input-sm" data-bind="value: passconfirm" placeholder="Nhập lại mật khẩu ở trên">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Mobile number</label>
+                <input type="text" class="form-control input-sm" data-bind="value: mobile" placeholder="+84 927 202 888">
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="" checked="checked" />Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của Nafosted
+                    </label>
+                </div>
+            </div>
+            <div class="form-group ">
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default pull-right" data-bind="click: $parent.nextStep">Continue</button>
+                <div class="clearfix"></div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/html" id="register-step2">
+    <div class="well" data-bind="with: wzStep2">
+        @*        <div class="text-center">
+            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/c54.40.496.496/s160x160/6212_1098026812501_4570541_n.jpg" width="120" alt="..." class="img-circle">
+        </div>*@
+        <div class="form-group">
+            <label class="control-label">First name</label>
+            <input type="text" class="form-control input-sm" placeholder="enter first name">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Last name</label>
+            <input type="text" class="form-control input-sm" placeholder="enter last name">
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">
+                <label>Birthday</label>
+                <div class="input-group-sm">
+                    <input type="text" class="form-control input-lg" placeholder="Date" />
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <label>&nbsp;</label>
+                <div class="input-group-sm">
+                    <select class="form-control">
+                        <option>January</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>&nbsp;</label>
+                <div class="input-group-sm">
+                    <input type="text" class="form-control input-lg" placeholder="Year" />
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="form-group">
+            <label class="control-label">Select gender</label>
+            <select class="form-control">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Location</label>
+            <select class="form-control">
+                <option>Vietnam</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <button type="button" class="btn btn-default pull-right" data-bind="click: $parent.nextStep">Continue</button>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</script>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Thanks!</h4>
+            </div>
+            <div class="modal-body text-center">
+                <h4>We have sent a confirmation email to:
+                        <br />
+                    <p><strong>nmha@most.gov.vn</strong></p>
+                    <br />
+                    Check email for the verification link to get start</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<script type="text/html" id="register-step3">
+    <div class="well">
+        <div class="form-group">
+            <div class="list-group">
+                <a href="#" class="list-group-item">Forgot password<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+                <a href="#" class="list-group-item">Forgot username<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+                <a href="#" class="list-group-item">Other issues<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-sm btn-default pull-right">Bước tiếp theo</button>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+
+@section scripts{
+    <script src="~/Scripts/models/UserRegisterSteps.js"></script>
+    <script src="~/Scripts/app/userAccount.js"></script>
+
+    <script>
+        var viewModel = new vnsf.Wizard();
+        ko.applyBindings(viewModel, $('#regform')[0]);
+
+        $(document)
+            .on('change', '.btn-file :file', function () {
+                var input = $(this),
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [numFiles, label]);
+            });
+
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+        });
+    </script>
+}

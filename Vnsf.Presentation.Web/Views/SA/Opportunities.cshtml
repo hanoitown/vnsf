@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Opportunities";
+    Layout = "~/Views/Shared/_LayoutSysAdmin.cshtml";
+}
+
+<div class="bs-sidebar col-lg-3 pull-right  ">
+    <h3>Basic science</h3>
+    <ul class="nav bs-sidenav">
+        <li><a href="#"><span>Opportunities</span></a></li>
+        <li><a href="#"><span>Fields</span></a></li>
+        <li><a href="#"><span>Eligible Applicants</span></a></li>
+        <li><a href="#"><span>Related documents</span></a></li>
+    </ul>
+</div>
+<div class=" col-lg-9">
+    <div>
+        <h3>Opportunities</h3>
+    </div>
+    <div class="well well-lg">
+        <span>This section manage registration documents</span>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Opport No.</th>
+                <th>Title</th>
+                <th>Openning date</th>
+                <th>Closeing date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>BSC2013</td>
+                <td>Basic science 2013 </td>
+                <td>1/4/2013</td>
+                <td>1/6/2014</td>
+                <td>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class=" glyphicon glyphicon-cog"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Edit
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" data-confirm="Are you sure?" data-method="put" rel="nofollow">
+                                    <span class="glyphicon glyphicon-briefcase"></span>
+                                    Archive
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-confirm="WARNING: This will also delete This cannot be undone. Are you sure you want to delete" data-disable-with="Deleting..." data-method="delete" rel="nofollow">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                    Delete
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>BSC2012</td>
+                <td>Basic science 2012 </td>
+                <td>1/4/2012</td>
+                <td>1/6/2013</td>
+                <td>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class=" glyphicon glyphicon-cog"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Edit
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" data-confirm="Are you sure?" data-method="put" rel="nofollow">
+                                    <span class="glyphicon glyphicon-briefcase"></span>
+                                    Archive
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-confirm="WARNING: This will also delete This cannot be undone. Are you sure you want to delete" data-disable-with="Deleting..." data-method="delete" rel="nofollow">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                    Delete
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

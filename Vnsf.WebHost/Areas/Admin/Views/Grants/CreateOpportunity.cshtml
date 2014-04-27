@@ -1,0 +1,93 @@
+﻿@model Vnsf.WebHost.Models.OpportunityBindingModel
+
+    @{
+        ViewBag.Title = "CreateOpportunity";
+    }
+
+    <h2>CreateOpportunity</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Opportunity</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.Name)
+                    @Html.ValidationMessageFor(model => model.Opportunity.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.Description, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.Description)
+                    @Html.ValidationMessageFor(model => model.Opportunity.Description)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.StartDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.StartDate)
+                    @Html.ValidationMessageFor(model => model.Opportunity.StartDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.Deadline, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.Deadline)
+                    @Html.ValidationMessageFor(model => model.Opportunity.Deadline)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.MaxDuration, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.MaxDuration)
+                    @Html.ValidationMessageFor(model => model.Opportunity.MaxDuration)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.EstimateTotal, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.EstimateTotal)
+                    @Html.ValidationMessageFor(model => model.Opportunity.EstimateTotal)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.AwardCeiling, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.AwardCeiling)
+                    @Html.ValidationMessageFor(model => model.Opportunity.AwardCeiling)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opportunity.AwardFloor, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Opportunity.AwardFloor)
+                    @Html.ValidationMessageFor(model => model.Opportunity.AwardFloor)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

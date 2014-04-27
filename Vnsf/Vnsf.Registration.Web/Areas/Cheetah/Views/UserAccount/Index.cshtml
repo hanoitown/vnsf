@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNet.Identity
+@model System.Security.Claims.ClaimsPrincipal
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+User: @User.Identity.GetUserId()
+
+@foreach (var claim in Model.Claims)
+{
+    @claim.Type
+    <br />
+    @claim.Value
+}

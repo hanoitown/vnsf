@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+<div class="container" id="authform">
+    <div class="col-lg-8 text-center">
+        <img src="https://sc.imp.live.com/content/dam/imp/surfaces/mail_signin/v3/images/Security.jpg" alt="Your account">
+    </div>
+    <div class=" col-lg-4">
+        <form class="well">
+            <div class="text-center">
+                <h3>Single Sign On</h3>
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tên người dùng</label>
+                <div class="input-group-sm">
+                    <input type="text" class="form-control input-lg">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mật khẩu</label>
+                <div class="input-group-sm">
+                    <input type="password" class="form-control input-lg">
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-primary">Signin </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="checkbox input-group-sm">
+            <input type="checkbox" value="" />Remember me!
+            <a href="#" class="pull-right">Need assistant?</a>
+        </span>
+            <hr />
+            <div class="text-center" style="padding-top: 40px">
+                <a href="/account/register">Register new account!</a>
+            </div>
+        </form>
+        <div class="text-center" style="padding-top: 40px">
+            <span>Use alternate authentication to signin</span>
+            <ul class="list-inline">
+                <li>
+                    <img src="https://ssl.gstatic.com/accounts/ui/logo_strip_2x.png" width="210" height="17" /></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/app/account.js"></script>
+}
+
+<div class="container"></div>

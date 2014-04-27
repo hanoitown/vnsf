@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FA473D8-7A91-484B-9F4F-B9E7D9205BB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vnsf.Data.Entities</RootNamespace>
+    <AssemblyName>Vnsf.Data.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Regalo.Core">
+      <HintPath>..\packages\Regalo.Core.5.1.1.0\lib\net40-Client\Regalo.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="Announcement.cs" />
+    <Compile Include="AnnouncementVersion.cs" />
+    <Compile Include="Applicant.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="ApplicationDocument.cs" />
+    <Compile Include="ApplicationStatus.cs" />
+    <Compile Include="ApplicationVersion.cs" />
+    <Compile Include="AssignmentType.cs" />
+    <Compile Include="ChangeRequest.cs" />
+    <Compile Include="Contract.cs" />
+    <Compile Include="BusinessProcess.cs" />
+    <Compile Include="BusinessDocument.cs" />
+    <Compile Include="BusinessDocumentType.cs" />
+    <Compile Include="Discussion.cs" />
+    <Compile Include="Document\DocProtection.cs" />
+    <Compile Include="Expense.cs" />
+    <Compile Include="Extensions\ClaimsExtensions.cs" />
+    <Compile Include="FundingAgency.cs" />
+    <Compile Include="MeasurementUnit.cs" />
+    <Compile Include="OpportunityStatus.cs" />
+    <Compile Include="ReportVersion.cs" />
+    <Compile Include="ReviewVersion.cs" />
+    <Compile Include="Security\Permission.cs" />
+    <Compile Include="TaskOperation.cs" />
+    <Compile Include="DiscussionParticipant.cs" />
+    <Compile Include="DiscussionComment.cs" />
+    <Compile Include="DiscussionRole.cs" />
+    <Compile Include="PanelEvaluation.cs" />
+    <Compile Include="Process.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="ReviewDetail.cs" />
+    <Compile Include="EvaluationScale.cs" />
+    <Compile Include="Award.cs" />
+    <Compile Include="BankAccount.cs" />
+    <Compile Include="Shared\BaseAudit.cs" />
+    <Compile Include="Budget.cs" />
+    <Compile Include="CategorgyHierchy.cs" />
+    <Compile Include="CategoryChild.cs" />
+    <Compile Include="Classification.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="Document\Doc.cs" />
+    <Compile Include="Education.cs" />
+    <Compile Include="JobDescription.cs" />
+    <Compile Include="JobTitle.cs" />
+    <Compile Include="EvaluationValue.cs" />
+    <Compile Include="PanelMeeting.cs" />
+    <Compile Include="PanelMember.cs" />
+    <Compile Include="PanelMemberRole.cs" />
+    <Compile Include="Review.cs" />
+    <Compile Include="ProposeEducation.cs" />
+    <Compile Include="EducationDetail.cs" />
+    <Compile Include="EducationLevel.cs" />
+    <Compile Include="Operation.cs" />
+    <Compile Include="Document\DocShare.cs" />
+    <Compile Include="Document\DocStore.cs" />
+    <Compile Include="Extensions\DisposableExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\X509CertificateExtensions.cs" />
+    <Compile Include="Account\LinkedAccount.cs" />
+    <Compile Include="Account\LinkedAccountClaim.cs" />
+    <Compile Include="Shared\BaseBusiness.cs" />
+    <Compile Include="Grant.cs" />
+    <Compile Include="GrantCategory.cs" />
+    <Compile Include="Opportunity.cs" />
+    <Compile Include="Organization.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="OrganizationType.cs" />
+    <Compile Include="OrganizationUnit.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="ProposePublication.cs" />
+    <Compile Include="Publication.cs" />
+    <Compile Include="ResearchMember.cs" />
+    <Compile Include="ResearchRole.cs" />
+    <Compile Include="Researcher.cs" />
+    <Compile Include="Panel.cs" />
+    <Compile Include="ReviewTemplate.cs" />
+    <Compile Include="SecurityLevel.cs" />
+    <Compile Include="Shared\ValueObject.cs" />
+    <Compile Include="Globalization\Continent.cs" />
+    <Compile Include="Globalization\Culture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Globalization\Currency.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Account\TwoFactorAuthMode.cs" />
+    <Compile Include="Account\UserAccount.cs" />
+    <Compile Include="Account\UserAccountEvent.cs" />
+    <Compile Include="Account\UserCertificate.cs" />
+    <Compile Include="Account\UserClaim.cs" />
+    <Compile Include="Account\VerificationKeyPurpose.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="Document\Storage.cs" />
+    <Compile Include="TaskItem.cs" />
+    <Compile Include="TaskAssignment.cs" />
+    <Compile Include="TaskApproval.cs" />
+    <Compile Include="TimeUnit.cs" />
+    <Compile Include="University.cs" />
+    <Compile Include="Version.cs" />
+    <Compile Include="Job.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Account\UserAccount.cd" />
+    <None Include="App.config" />
+    <None Include="BusinessProcess.cd" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="Globalization\Globalization.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vnsf.Infrastructure\Vnsf.Infrastructure.csproj">
+      <Project>{2e741f26-7666-4f93-9847-b9dd53bbd385}</Project>
+      <Name>Vnsf.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessProcess\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

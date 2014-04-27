@@ -1,0 +1,7 @@
+﻿@model DateTime?
+
+<div class='input-group date datePicker'>
+    <span class="input-group-sm">
+        @Html.TextBox("", Model.HasValue ? Model.Value.ToString("d") : String.Empty, new { @class = "form-control datepicker" })
+    </span>
+</div>

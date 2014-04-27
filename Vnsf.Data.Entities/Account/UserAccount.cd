@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vnsf.Data.Entities.Account.UserAccount">
+    <Position X="1.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAoSdKYQEDIGoARHCQACTgOgAtAAIKYAFcELgGE0SSg=</HashCode>
+      <FileName>Account\UserAccount.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Claims" />
+      <Property Name="LinkedAccounts" />
+      <Property Name="Certificates" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Account.UserClaim">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAQAgAAAAAAA=</HashCode>
+      <FileName>Account\UserClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Account.LinkedAccount">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABICAAAAACAAQCAAAEAAAAAEAAAAAAAAAAACEwAAA=</HashCode>
+      <FileName>Account\LinkedAccount.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Claims" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Account.LinkedAccountClaim">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAEAAAAAAAAAAAAAQAgAAAwAAA=</HashCode>
+      <FileName>Account\LinkedAccountClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Account.UserCertificate" Collapsed="true">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Account\UserCertificate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,54 @@
+﻿@model DataSync.Models.tbl_fields
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>tbl_fields</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_PARENT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_PARENT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_NAME_E)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_NAME_E)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_DATE_S)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_DATE_S)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

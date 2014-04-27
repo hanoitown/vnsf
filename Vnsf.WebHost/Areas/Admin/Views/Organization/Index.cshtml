@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Vnsf.WebHost.Models.OrganizationViewModel>
+
+<h2>Organizations</h2>
+@Html.ActionLink("New org", "Manage", "Organization", new { }, new { @class = "btn btn-primary" })
+
+
+<table class="table table-striped hide table-condensed" data-bind="css:{hide:!orgs().length}">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ShortName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>LastUpdated</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:orgs">
+        <tr>
+
+            <td data-bind="text: name"></td>
+            <td data-bind="text: shortName"></td>
+            <td data-bind="text: email"></td>
+            <td data-bind="text: phone"></td>
+            <td data-bind="text: website"></td>
+            <td data-bind="text: moment(lastUpdated()).fromNow()"></td>
+            <td>
+                <div class="btn-group ">
+                    <a class="btn btn-sm btn-default  dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class=" glyphicon glyphicon-cog"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            @{ var url = @Url.Action("Manage"); }
+
+
+                            <a href="#" data-bind="attr: { href: '@url#' + $data.id() }" rel="nofollow">
+                                <span class="glyphicon glyphicon-briefcase"></span>
+                                Edit
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#" data-confirm="WARNING: This will also delete This cannot be undone. Are you sure you want to delete" data-disable-with="Deleting..." data-bind="click: function (data, evt) { $parent.deleteOrg(data) }" rel="nofollow">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Delete
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<p data-bind="css:{hide:orgs().length}" class="hide alert alert-warning">
+    No Organizations Found
+</p>
+
+
+@section scripts{
+    <script src="~/Areas/Admin/Scripts/organizations.js"></script>
+}

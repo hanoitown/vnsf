@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@using Vnsf.WebHost.Areas.Cheetah.Controllers
+@using Microsoft.Web.Mvc
+@using Vnsf.WebHost.Infrastructure.Helpers
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "UserAccount", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav ">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 20px">Hello, User! <b class="caret"></b> @Html.RenderGravatarImage(User.Identity.Name, 24)</a>
+                <ul class="dropdown-menu">
+                    <li>@(Html.ActionLink<UserAccountController>(c => c.Manage(null), User.Identity.GetUserName(), new { title = "Manage" }))</li>
+                    <li>@(Html.ActionLink<UserAccountController>(c => c.Setting(), "Settings"))</li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@(Html.ActionLink<UserAccountController>(c => c.Register(), "Register", new { id = "registerLink" }))</li>
+        <li>@(Html.ActionLink<UserAccountController>(c => c.Login(null), "Login", new { id = "loginLink" }))</li>
+    </ul>
+}

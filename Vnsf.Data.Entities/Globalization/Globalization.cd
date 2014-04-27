@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vnsf.Data.Entities.Globalization.Region">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAEAAAAAAIQAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Region.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.RegionLocalized" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAgAAAAAAAAAAAAAQAAQAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Region.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.Language" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAGAAAAAAAAAAEAAAAAAAAAIEAIAAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Language.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.LanguageLocalized" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAQAAwAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Language.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.Currency" Collapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Currency.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.Culture" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAAAAAAAkAAAAAgIQAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Culture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.CultureLocalized" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAAAAAAQAAQAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Culture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.Country">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAGAAAAAAAAAAEAAAAAAAAAIEAIAAAAAAQAAA=</HashCode>
+      <FileName>Globalization\Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Globalization.CountryLocalized" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQIQAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Globalization\Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

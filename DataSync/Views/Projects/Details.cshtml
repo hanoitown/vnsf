@@ -1,0 +1,114 @@
+﻿@model DataSync.Models.ProjectViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ProjectViewModel</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Code)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Code)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Abstract)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Field)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Field)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Group)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Group)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FromDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ToDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Duration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Duration)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Human)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Human)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Expense)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Expense)
+    </div>
+</fieldset>
+@if (Model.Reviews != null)
+{
+    <fieldset>
+        <legend>ProfileViewModel</legend>
+        @foreach (var item in Model.Reviews)
+        {
+            <div class="display-field">
+                @(item.type)
+            </div>
+        }
+    </fieldset>
+}
+@if (Model.Members != null)
+{
+    <fieldset>
+        <legend>Members</legend>
+        @foreach (var item in Model.Members)
+        {
+            <div class="display-field">
+                @(item.Name)
+                | @(item.Role)
+            </div>
+        }
+    </fieldset>
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

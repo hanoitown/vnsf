@@ -1,0 +1,11 @@
+﻿@model DataSync.Models.ProgramModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var program in Model.ProgramTypes)
+{
+    <div>@program.T_NAME   |   @program.T_DATE |  @Html.ActionLink("Fields", "Index", "Fields", new { ProgramId = program.T_ID }, null)</div> 
+}

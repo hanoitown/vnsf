@@ -1,0 +1,25 @@
+﻿@using System.Globalization
+@model Vnsf.Service.Data.Messaging.ConfigurationService.GetCultureDetailResponse
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+current: @CultureInfo.CurrentCulture.Name | @CultureInfo.CurrentUICulture.DisplayName
+<br />
+culture code: @Model.CultureData.Name
+<hr />
+country : @Model.CultureData.Country.Name
+<br />
+language : @Model.CultureData.Language.Name
+<br />
+@if (Model.CultureData.Localized != null)
+{
+    foreach (var item in Model.CultureData.Localized)
+    {
+    @item.CultureName
+    @:|
+    @item.Name
+    <br /> 
+    }
+}

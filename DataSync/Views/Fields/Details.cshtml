@@ -1,0 +1,50 @@
+﻿@model DataSync.Models.tbl_fields
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>tbl_fields</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_PARENT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_PARENT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_NAME_E)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_NAME_E)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.F_DATE_S)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.F_DATE_S)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

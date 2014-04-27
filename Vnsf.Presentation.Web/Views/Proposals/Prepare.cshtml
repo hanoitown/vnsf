@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Prepare";
+}
+@section scripts{
+    <script type="text/javascript">
+    $(function () {
+        $("#title").popover();
+    })
+</script>
+
+}
+<div style="padding-top: 20px;">
+    <div class="well col-sm-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item ">Letter of Intent<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+            <a href="#" class="list-group-item active">Proposal<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+            <a href="#" class="list-group-item">Principle Investigator<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+            <a href="#" class="list-group-item">Single copy documents<span class="glyphicon glyphicon-chevron-right pull-right" /></a>
+        </div>
+
+        <br />
+        <button type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-home"></span>Về trang chủ </button>
+        <button type="button" class="btn btn-sm btn-primary">Bước tiếp theo</button>
+
+    </div>
+    <div class="col-sm-9">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Proposal Title</label>
+                <div class="col-sm-6">
+                    <textarea id="title" class="form-control" data-toggle="tooltip" data-placement="right" data-content="Test tooltip Test tooltip Test tooltip Test tooltip Test tooltip Test tooltip"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Research fields</label>
+                <div class="col-sm-4">
+                    <select class="form-control input-sm">
+                        <option>Contains</option>
+                        <option>Begin with</option>
+                    </select>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

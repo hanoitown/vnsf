@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DataSync.Models.ReviewModel>
+
+@{
+    ViewBag.Title = "Review";
+}
+
+<h2>Review</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Project)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PI)
+        </th>
+        <th>Review</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Project)*@
+                @Html.ActionLink(item.Project, "Details", new { code = item.Code }, null)
+            </td>
+            <td>
+                @*                @Html.DisplayFor(modelItem => item.PI)*@
+                @Html.ActionLink(item.PI, "Index", "Profile", new { name = item.PI }, null)
+            </td>
+            <td>
+                @if (item.Reviews != null)
+                {
+                    foreach (var brief in item.Reviews)
+                    {
+                    @brief.Status.ToString()
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>

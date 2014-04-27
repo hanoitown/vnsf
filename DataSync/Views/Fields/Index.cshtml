@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DataSync.Models.tbl_fields>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.F_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_PARENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_NAME_E)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_DATE_S)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.F_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.F_PARENT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.F_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.F_NAME_E)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.F_DATE_S)
+            </td>
+            <td>
+                @Html.ActionLink("Projects", "Review", "Projects", new { ProgramId = ViewBag.pId, fId = item.F_CODE }, null) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

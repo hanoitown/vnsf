@@ -1,0 +1,54 @@
+﻿@*@model IEnumerable<Vnsf.Data.Entities.Globalization.CultureId>*@
+@model Vnsf.Service.Data.Messaging.ConfigurationService.GetCulturesResponse
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>Language
+        </th>
+        <th>Code
+        </th>
+        <th>Name
+        </th>
+        <th>Parrent 
+        </th>
+        <th>Country
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Cultures)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentCulture.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Detailss", "Detail", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

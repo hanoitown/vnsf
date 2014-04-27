@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    @Styles.Render("~/Content/css", "~/Content/less")
+
+
+    @functions{
+        public string GetAntiForgeryToken()
+        {
+            string cookieToken, formToken;
+            AntiForgery.GetTokens(null, out cookieToken, out formToken);
+            return cookieToken + ":" + formToken;
+        }
+    }
+    @RenderSection("head_script", required: false)
+
+    <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            padding-top: 80px;
+        }
+
+        .bs-sidebar.affix {
+            position: static;
+        }
+
+        /* First level of nav */
+        .bs-sidenav {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            -webkit-text-shadow: 0 1px 0 #fff;
+            text-shadow: 0 1px 0 #fff;
+            background-color: #f7f5fa;
+            border-radius: 5px;
+        }
+
+
+        /* All levels of nav */
+        .bs-sidebar .nav > li > a {
+            display: block;
+            color: #716b7a;
+            padding: 5px 20px;
+        }
+
+            .bs-sidebar .nav > li > a:hover,
+            .bs-sidebar .nav > li > a:focus {
+                text-decoration: none;
+                background-color: #e5e3e9;
+                border-right: 1px solid #dbd8e0;
+            }
+
+        .bs-sidebar .nav > .active > a,
+        .bs-sidebar .nav > .active:hover > a,
+        .bs-sidebar .nav > .active:focus > a {
+            font-weight: bold;
+            color: #563d7c;
+            background-color: transparent;
+            border-right: 1px solid #563d7c;
+        }
+
+        /* Nav: second level (shown on .active) */
+        .bs-sidebar .nav .nav {
+            /*display: none;  Hide by default, but at >768px, show it */
+            margin-bottom: 8px;
+        }
+
+            .bs-sidebar .nav .nav > li > a {
+                padding-top: 3px;
+                padding-bottom: 3px;
+                padding-left: 30px;
+                font-size: 90%;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        @Html.Partial("~/Views/Shared/_topBar.cshtml")
+
+        <div class="container">
+            @*                <div class="col-lg-3">
+                    @Html.Partial("~/Views/Shared/_sideBar.cshtml")
+                </div>*@
+            <div role="main">
+                @RenderBody()
+                <input type="hidden" id="antiForgeryToken" value="@GetAntiForgeryToken()" />
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/_bottomBar.cshtml")
+
+    @Scripts.Render("~/bundles/jquery",
+                        "~/bundles/extlibs",
+                        "~/Scripts/lib/require.js",
+                        "~/bundles/appjs",
+                        "~/Scripts/main.js")
+
+
+
+
+    @*Render optional script for each section*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,1796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="6fa71690-1736-4ccc-9e38-343c7df54419"
+  name="Vnsf.Architect.UserService" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction
+        Id="49127ca5-1214-4b2c-84ee-a7d3149e8065"
+        name="Authentication"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="60170038-e71c-4ccd-bc8d-f1a9b1f119b7"
+            name="BehaviorExecutionSpecification2">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="de17fdb3-77b5-48f7-b959-b23698bc855a"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="45adf11a-1f3e-435b-a88b-20c8d2bf5b53"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="554f74c2-0db5-4496-b236-fc38552bd244"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="be23c0ee-94e2-428a-b36b-4ec2e815c94a"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="ccf3fb11-6a19-493d-bfd9-69751d73a06f"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="0f2aea04-10c0-4cb1-9a3b-b883b57b6af2"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="45adf11a-1f3e-435b-a88b-20c8d2bf5b53"
+            name="ExecutionOccurrenceSpecification3">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="8d938463-d951-4480-8351-16eff55a892b"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="7bb80994-cd9a-429f-90f8-1a64bef824aa"
+            name="MessageOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="31ef36b1-0025-46e7-9360-f5d29451140f"
+                LastKnownName="Client"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="554f74c2-0db5-4496-b236-fc38552bd244"
+            name="MessageOccurrenceSpecification6">
+            <covered>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="6f544ca7-196e-4487-9022-9979a651fffb"
+            name="BehaviorExecutionSpecification3">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="c2259f76-3c77-4775-9d0c-cce4904da515"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="b03ec92a-c43b-4dfa-99b7-49b5ad9b8784"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="accddb9f-aa9f-495a-a616-73c8caaf51e5"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="d5ae7a48-82df-4243-8753-7747f35ff9a0"
+                LastKnownName="MessageOccurrenceSpecification13"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="fb5ddc8f-b470-4426-8524-321e4e1a7d1c"
+                LastKnownName="MessageOccurrenceSpecification16"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="efd6d903-4c2e-4a5e-aa0c-5b5b4fa7bff6"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="b03ec92a-c43b-4dfa-99b7-49b5ad9b8784"
+            name="ExecutionOccurrenceSpecification5">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="48c41f1e-31b7-4d62-815a-ce54a66bf0a9"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="be23c0ee-94e2-428a-b36b-4ec2e815c94a"
+            name="MessageOccurrenceSpecification9">
+            <covered>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="accddb9f-aa9f-495a-a616-73c8caaf51e5"
+            name="MessageOccurrenceSpecification10">
+            <covered>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="d699a6e1-49e8-4a7b-8b11-1af218d96939"
+            name="BehaviorExecutionSpecification4">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="f1e77b20-dc80-477e-915b-ff557c90b401"
+                LastKnownName="AuthenticationService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="0f7f125a-3f3e-47a3-b9a3-23431ee9aed7"
+                LastKnownName="ExecutionOccurrenceSpecification8"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="aad95c6e-52bb-47ef-8680-e6b94de3fafa"
+                LastKnownName="ExecutionOccurrenceSpecification7"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="1855599a-e0c3-4c71-aea5-947a98f7da4d"
+                LastKnownName="MessageOccurrenceSpecification14"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="9a05377c-7dd9-4b05-bec9-76a25965067d"
+                LastKnownName="MessageOccurrenceSpecification15"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="aad95c6e-52bb-47ef-8680-e6b94de3fafa"
+            name="ExecutionOccurrenceSpecification7">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="3b2b39bd-6c47-4ac4-b307-0c232ff2bf59"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="f1e77b20-dc80-477e-915b-ff557c90b401"
+                LastKnownName="AuthenticationService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1855599a-e0c3-4c71-aea5-947a98f7da4d"
+            name="MessageOccurrenceSpecification14">
+            <covered>
+              <lifelineMoniker
+                Id="f1e77b20-dc80-477e-915b-ff557c90b401"
+                LastKnownName="AuthenticationService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="d5ae7a48-82df-4243-8753-7747f35ff9a0"
+            name="MessageOccurrenceSpecification13">
+            <covered>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="fb5ddc8f-b470-4426-8524-321e4e1a7d1c"
+            name="MessageOccurrenceSpecification16">
+            <covered>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="9a05377c-7dd9-4b05-bec9-76a25965067d"
+            name="MessageOccurrenceSpecification15">
+            <covered>
+              <lifelineMoniker
+                Id="f1e77b20-dc80-477e-915b-ff557c90b401"
+                LastKnownName="AuthenticationService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="0f7f125a-3f3e-47a3-b9a3-23431ee9aed7"
+            name="ExecutionOccurrenceSpecification8">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="6e638851-97e3-4d54-9182-a20b09d00983"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="f1e77b20-dc80-477e-915b-ff557c90b401"
+                LastKnownName="AuthenticationService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="ccf3fb11-6a19-493d-bfd9-69751d73a06f"
+            name="MessageOccurrenceSpecification12">
+            <covered>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="efd6d903-4c2e-4a5e-aa0c-5b5b4fa7bff6"
+            name="MessageOccurrenceSpecification11">
+            <covered>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="c2259f76-3c77-4775-9d0c-cce4904da515"
+            name="ExecutionOccurrenceSpecification6">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="67baf6fd-ee1d-492a-8319-72c45059b69b"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+                LastKnownName="UserAccountService"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="0f2aea04-10c0-4cb1-9a3b-b883b57b6af2"
+            name="MessageOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="af23430a-4a8f-4b86-9588-e4a93c4757cc"
+            name="MessageOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="31ef36b1-0025-46e7-9360-f5d29451140f"
+                LastKnownName="Client"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="de17fdb3-77b5-48f7-b959-b23698bc855a"
+            name="ExecutionOccurrenceSpecification4">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="fa583890-b368-4e61-8bb3-a218d0ca483e"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+                LastKnownName="WebApi"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="31ef36b1-0025-46e7-9360-f5d29451140f"
+            name="Client"
+            isActor="false"
+            lifelineDisplayName="Client">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="7bb80994-cd9a-429f-90f8-1a64bef824aa"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="af23430a-4a8f-4b86-9588-e4a93c4757cc"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="1bb591ba-ee24-4f6c-978f-6b4e9f5f06ab"
+            name="WebApi"
+            isActor="false"
+            lifelineDisplayName="WebApi">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="45adf11a-1f3e-435b-a88b-20c8d2bf5b53"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="de17fdb3-77b5-48f7-b959-b23698bc855a"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="3d0ecdc3-8eef-4f36-a179-2dfc392402e2"
+            name="UserAccountService"
+            isActor="false"
+            lifelineDisplayName="UserAccountService">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="b03ec92a-c43b-4dfa-99b7-49b5ad9b8784"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="c2259f76-3c77-4775-9d0c-cce4904da515"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="f1e77b20-dc80-477e-915b-ff557c90b401"
+            name="AuthenticationService"
+            isActor="false"
+            lifelineDisplayName="AuthenticationService">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="aad95c6e-52bb-47ef-8680-e6b94de3fafa"
+                LastKnownName="ExecutionOccurrenceSpecification7"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="0f7f125a-3f3e-47a3-b9a3-23431ee9aed7"
+                LastKnownName="ExecutionOccurrenceSpecification8"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="cf418a89-e04c-4d28-baf9-f4229f544173"
+            name="UserAccountLogin(LoginInputModel model)"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="7bb80994-cd9a-429f-90f8-1a64bef824aa"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="554f74c2-0db5-4496-b236-fc38552bd244"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="cf6608ab-1d22-4795-bba3-21a81c731c4e"
+            name="AuthenticateWithUserNameOrEmail(userName, passwd)"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="be23c0ee-94e2-428a-b36b-4ec2e815c94a"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="accddb9f-aa9f-495a-a616-73c8caaf51e5"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="51fd1a87-570a-47d5-8d83-29cd774066ad"
+            name="SignIn(UserAccount)"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="d5ae7a48-82df-4243-8753-7747f35ff9a0"
+                LastKnownName="MessageOccurrenceSpecification13"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1855599a-e0c3-4c71-aea5-947a98f7da4d"
+                LastKnownName="MessageOccurrenceSpecification14"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="4e2bf1a0-f0b9-475d-b1e8-62c25a9d6bb6"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="9a05377c-7dd9-4b05-bec9-76a25965067d"
+                LastKnownName="MessageOccurrenceSpecification15"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="fb5ddc8f-b470-4426-8524-321e4e1a7d1c"
+                LastKnownName="MessageOccurrenceSpecification16"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="bde66656-f077-4f6a-ad83-2b61d55b782a"
+            name="UserAccount"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="efd6d903-4c2e-4a5e-aa0c-5b5b4fa7bff6"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="ccf3fb11-6a19-493d-bfd9-69751d73a06f"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="0b8ec722-76ff-4747-ae22-2c0b9414c9cc"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="0f2aea04-10c0-4cb1-9a3b-b883b57b6af2"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="af23430a-4a8f-4b86-9588-e4a93c4757cc"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="8d938463-d951-4480-8351-16eff55a892b"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="fa583890-b368-4e61-8bb3-a218d0ca483e"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="48c41f1e-31b7-4d62-815a-ce54a66bf0a9"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="67baf6fd-ee1d-492a-8319-72c45059b69b"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="3b2b39bd-6c47-4ac4-b307-0c232ff2bf59"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="6e638851-97e3-4d54-9182-a20b09d00983"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="bb41fcc1-4772-4b6d-8249-0602e66dd5fa"
+        name="ApplicationProcess"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="a34ee35f-2a5d-495f-938a-79638a0aa419"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="17242db2-ba2c-424c-aa17-6bd85ec04b01"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="6876976e-ece7-4f74-a98d-5cc443ea8116"
+                  LastKnownName="SubmitApplication"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="6876976e-ece7-4f74-a98d-5cc443ea8116"
+            name="SubmitApplication"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b0d62815-ca78-4600-927c-069d37a941dd"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5712be4f-1749-43af-886f-d5ad4b259f8e"
+                  LastKnownName="VerifyAccount"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="cc6f40e1-06f5-45e4-a2b4-544598cfb9b4"
+            name="OpenAccount"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="40d94a2b-45b6-4102-b846-292d317bc2ad"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="6876976e-ece7-4f74-a98d-5cc443ea8116"
+                  LastKnownName="SubmitApplication"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="5712be4f-1749-43af-886f-d5ad4b259f8e"
+            name="VerifyAccount"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3b958087-e76a-4c90-b32a-e4c4c4f9da41"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="256d41b8-1d34-46d0-ba1f-f3e7503afcad"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="256d41b8-1d34-46d0-ba1f-f3e7503afcad"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="20444ba6-6a6b-4435-8a71-ee2a985dc7b0"
+                name="No Account"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cc6f40e1-06f5-45e4-a2b4-544598cfb9b4"
+                  LastKnownName="OpenAccount"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+                <description>No Account</description>
+              </controlFlow>
+              <controlFlow
+                Id="a38b8af3-973f-4a9e-9649-d2d1f160da58"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="82d5aec8-7569-4add-8904-57511a26569e"
+                  LastKnownName="VerifyDocument"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="82d5aec8-7569-4add-8904-57511a26569e"
+            name="VerifyDocument"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="bb75c811-e764-4fbc-889d-a9a9f78de24e"
+                isLeaf="false">
+                <forkNodeMoniker
+                  Id="01def8f8-6185-42ea-8749-f30ef64323d6"
+                  LastKnownName="Fork1"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <forkNode
+            Id="01def8f8-6185-42ea-8749-f30ef64323d6"
+            name="Fork1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9f6cd6be-003e-4afc-a95d-66ab8fb17dec"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="8e473267-4b71-48e1-a9b0-32a7b070a485"
+                  LastKnownName="Generate Code"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="92fa1b06-d74f-4692-9b57-ce5b52c97949"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2283b2e9-6c79-4b54-9450-03b1b212dcab"
+                  LastKnownName="Check hardcopy"
+                  LastKnownLocation="Vnsf.Architect.UserService.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <opaqueAction
+            Id="8e473267-4b71-48e1-a9b0-32a7b070a485"
+            name="Generate Code"
+            isLeaf="false" />
+          <opaqueAction
+            Id="2283b2e9-6c79-4b54-9450-03b1b212dcab"
+            name="Check hardcopy"
+            isLeaf="false" />
+          <objectNode
+            Id="837b591b-b4de-4762-afa4-54be1ea7092a"
+            name="Registration"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="08771906-d2cc-4bc5-bafa-d350255e634b"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="2eefd18e-b1e1-430d-a296-8003420dda16"
+        name="Scientist"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="1f7c99b9-dfb2-4d94-bc5c-2bcb699f2115"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="61f75477-8b4a-4eb1-9c9c-c08ba77a8dff"
+              LastKnownName="User"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="dc38ebab-590f-40dd-9ce6-6e73813d7348"
+            isDerived="false"
+            sourceEndRoleName="Scientist"
+            targetEndRoleName="Submit proposal"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2f8b427f-066f-4c01-8d55-bb7e1dab69df"
+              LastKnownName="Submit proposal"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="312837c6-b18a-4eea-9dc9-d9cca4bd097e"
+                  name="Scientist"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="304681c3-594b-46c3-9eba-bc047525163c"
+                  name="Submit proposal"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a4d095c8-16bd-4f51-b340-27386d7c76ab"
+            isDerived="false"
+            sourceEndRoleName="Scientist"
+            targetEndRoleName="Edit proposal"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="11ced806-633c-4baf-be91-2064215709a9"
+              LastKnownName="Edit proposal"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7605f3ad-4d9c-48d4-b63a-74d867121cb1"
+                  name="Scientist"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="03de59c9-42b7-4983-8c6e-d09a1760f0e8"
+                  name="Edit proposal"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0071ff1e-d036-482e-a282-c7cc08e2d739"
+            isDerived="false"
+            sourceEndRoleName="Scientist"
+            targetEndRoleName="Resubmit proposal"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5745001e-e435-49ca-be34-ec6649e62e04"
+              LastKnownName="Resubmit proposal"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2d1fb6a1-161a-4c0f-91cc-75ca5cd0cbf8"
+                  name="Scientist"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cfd7ef9d-ba2b-4172-815a-b4e2d228b9bc"
+                  name="Resubmit proposal"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="67bd7ba6-9961-4d12-8813-78833bc53be6"
+        name="Staff"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="5a924ce9-c547-44ac-9eac-8339765b3b25"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="61f75477-8b4a-4eb1-9c9c-c08ba77a8dff"
+              LastKnownName="User"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="0293b388-742f-45bd-a47e-fe3d003ed6b9"
+            isDerived="false"
+            sourceEndRoleName="Staff"
+            targetEndRoleName="Review management"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6f36aa26-f3a2-438e-9c69-d1091d16d2be"
+              LastKnownName="Review management"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="299536bb-dcbf-4e0d-8816-70a1ab72d1d2"
+                  name="Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="808a9a5d-c552-4d32-a920-26c057eecd27"
+                  name="Review management"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3854e68c-dfb3-4c3a-a56c-eff9604d7c83"
+            isDerived="false"
+            sourceEndRoleName="Staff"
+            targetEndRoleName="Report management"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f4d1eb0c-9017-48b3-8cf4-a562614126ed"
+              LastKnownName="Report management"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0db495e4-38c3-45c5-a26f-c16b1a20d9bd"
+                  name="Staff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="06b3f53e-bcc1-463c-8bfc-705dfd47a127"
+                  name="Report management"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="61f75477-8b4a-4eb1-9c9c-c08ba77a8dff"
+        name="User"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="f330267e-eb25-437d-b0df-6a76d59f12ad"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Login"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0808eb9d-2152-4cb1-b380-c632e58b881d"
+              LastKnownName="Login"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="90d40d2d-956d-4810-a933-ff8a2d5e2fce"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1fa23fba-c22a-4716-a284-7ca6fbaa4d26"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="14754d8e-fc97-4c17-8317-5776a7dccbd2"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Forgot Password"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d635fae5-25cc-406b-b875-6a19f41e1a1f"
+              LastKnownName="Forgot Password"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="392c78f5-3400-459d-bf7e-c7e3d0a35a00"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6dd17cce-75c9-42ff-9c52-84140fef6be9"
+                  name="Forgot Password"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d8818e40-aec0-42c5-83ee-12b23110523e"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Resend Confirmation Email"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2e6166ba-53b9-43f0-8eb5-f54a688adb3b"
+              LastKnownName="Resend Confirmation Email"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3287f6fc-48d7-4f1d-9b6f-e80f4c8cc08d"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c9bd9894-1bba-4854-a818-bfa8789e5732"
+                  name="Resend Confirmation Email"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="722b3ba4-c821-4563-a2ac-9c8a6f4e2252"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Signup"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="8923d219-f721-4ccf-b196-5431780e2f4a"
+              LastKnownName="Signup"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="11878b53-0509-4706-a215-bb01e8fd4a8d"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8d06dc27-e528-41f5-9ea0-247fc1f8b8b6"
+                  name="Signup"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="de3c3262-3dcc-48b2-92a1-54d4ea44eef5"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="User settings"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="86c7eefa-38c1-4f4f-8499-e8268268c104"
+              LastKnownName="User settings"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ad616098-4958-43f5-8cb0-7af4e53652fc"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="27a43294-7a0e-4426-9ff1-b771f5f3c1b0"
+                  name="User settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a6b51e25-90f6-44ea-ab73-2e656145f6a7"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Edit profile"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cefdc867-5e2e-4f8a-9259-e78c92efd368"
+              LastKnownName="Edit profile"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ac841268-8bb4-4da6-b47d-4518f2dc132b"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1c74a710-0291-4d7b-986d-47c0145bfc1c"
+                  name="Edit profile"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f7966885-2e31-4ded-bf44-43d585b57b2a"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Update password"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="63742d32-c683-4dd0-adcd-58a4eae537a2"
+              LastKnownName="Update password"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="79478fca-be94-4d97-a77a-1da0d219ffaf"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4a99efd1-4464-44c8-9da2-8b2f6f751dc1"
+                  name="Update password"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0808eb9d-2152-4cb1-b380-c632e58b881d"
+        name="Login"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d635fae5-25cc-406b-b875-6a19f41e1a1f"
+        name="Forgot Password"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="272a0091-65ef-4a09-805c-ec08fe266bd5">
+            <useCaseMoniker
+              Id="195c2f6c-5c45-4d9c-b962-7f194347897e"
+              LastKnownName="Email password recover"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </extend>
+          <extend
+            Id="bfe806cb-448b-4fc2-93d8-4eb129378c78">
+            <useCaseMoniker
+              Id="f5804f04-2703-4024-a502-eaca752f7b73"
+              LastKnownName="Mobile password recover"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2e6166ba-53b9-43f0-8eb5-f54a688adb3b"
+        name="Resend Confirmation Email"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8923d219-f721-4ccf-b196-5431780e2f4a"
+        name="Signup"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+        name="Membership"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cefdc867-5e2e-4f8a-9259-e78c92efd368"
+        name="Edit profile"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="ddd646e9-34a3-4e82-be52-85349720ab0a">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="63742d32-c683-4dd0-adcd-58a4eae537a2"
+        name="Update password"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="9477bcf3-4c59-46e4-b9f9-eef2588833b9">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="86c7eefa-38c1-4f4f-8499-e8268268c104"
+        name="User settings"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="f80118de-b514-42e7-9687-acd87f8b7c71">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+        name="Authenticate"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="e5462539-83d0-478d-ad9d-4600058d1ee4"
+        name="Administrator"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="af4e52a0-fd99-4849-97c0-d8c13106bb6d"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="61f75477-8b4a-4eb1-9c9c-c08ba77a8dff"
+              LastKnownName="User"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="195c2f6c-5c45-4d9c-b962-7f194347897e"
+        name="Email password recover"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f5804f04-2703-4024-a502-eaca752f7b73"
+        name="Mobile password recover"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="10545d8e-05ae-429b-a81a-2138680be7f9"
+        name="UserPassword"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="fc968698-ea23-4381-a6fd-4986dda432b7"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="03b73f81-1621-4bd5-a251-0bdd4796bf95"
+        name="Certificate"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="2fd212de-a87b-4fc7-b076-9d3557f41dbe"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="068659d0-4cb4-4eec-82c2-dd40c00a027d"
+        name="Two factor"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="7e2c20eb-03ca-42ad-8386-ae364cf4586b"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9d57a1ad-17a0-4bbd-bc42-566872a82ce6"
+        name="Oauth2"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="b6175728-2121-42de-bb4d-0472eb511179"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="58fba83d-08e4-47f9-bab6-93d74b3f4171"
+              LastKnownName="Authenticate"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </generalization>
+        </generalsInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="1034747a-70a6-4974-8e48-ace0ffac8f48"
+            LastKnownName="Membership"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2f8b427f-066f-4c01-8d55-bb7e1dab69df"
+        name="Submit proposal"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+        name="Proposal management system"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="11ced806-633c-4baf-be91-2064215709a9"
+        name="Edit proposal"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5745001e-e435-49ca-be34-ec6649e62e04"
+        name="Resubmit proposal"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6cb3c339-ef46-4a92-ad5c-16ed67dff36c"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8f92aa2f-de9c-4107-a05f-463e067732b6"
+        name="User management"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6cb3c339-ef46-4a92-ad5c-16ed67dff36c"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a9947535-d1c5-422d-a25b-0a3ab24f3e49"
+        name="Proposal management"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6cb3c339-ef46-4a92-ad5c-16ed67dff36c"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f4d1eb0c-9017-48b3-8cf4-a562614126ed"
+        name="Report management"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2e10ee81-4397-43f1-9d25-c803be1ae28e"
+            LastKnownName="Subsystem2"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6f36aa26-f3a2-438e-9c69-d1091d16d2be"
+        name="Review management"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2e10ee81-4397-43f1-9d25-c803be1ae28e"
+            LastKnownName="Subsystem2"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="2e10ee81-4397-43f1-9d25-c803be1ae28e"
+        name="Subsystem2"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6a49eae9-0229-49d9-bceb-9e9ef24c5134"
+        name="Submit report"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="6194c006-4ab0-4f8a-ba6e-30a0bcbe3fa0">
+            <useCaseMoniker
+              Id="6c03ab9e-d465-4f19-91ce-58aa3fc8b754"
+              LastKnownName="Final report"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </extend>
+          <extend
+            Id="cfb58d37-1542-4599-a876-dc863e62b9cb">
+            <useCaseMoniker
+              Id="df0d11f7-5177-4ea7-92ab-055fdb4c8723"
+              LastKnownName="Midterm report"
+              LastKnownLocation="Vnsf.Architect.UserService.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="51763c72-98b6-4050-8855-d2f031e11454"
+        name="Submit review"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6c03ab9e-d465-4f19-91ce-58aa3fc8b754"
+        name="Final report"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="df0d11f7-5177-4ea7-92ab-055fdb4c8723"
+        name="Midterm report"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2d5d9dd5-b07c-4368-91e9-f775f548040d"
+            LastKnownName="Proposal management system"
+            LastKnownLocation="Vnsf.Architect.UserService.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a682cca4-09ab-4e76-b056-b7b11afd353b"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="20eed139-c1ff-4a5a-9977-41a31c5c83e9"
+        name="Notifier"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

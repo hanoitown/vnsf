@@ -1,0 +1,68 @@
+﻿@model DataSync.Models.tbl_fields
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>tbl_fields</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.F_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.F_CODE)
+            @Html.ValidationMessageFor(model => model.F_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.F_PARENT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.F_PARENT)
+            @Html.ValidationMessageFor(model => model.F_PARENT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.F_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.F_NAME)
+            @Html.ValidationMessageFor(model => model.F_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.F_NAME_E)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.F_NAME_E)
+            @Html.ValidationMessageFor(model => model.F_NAME_E)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.F_DATE_S)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.F_DATE_S)
+            @Html.ValidationMessageFor(model => model.F_DATE_S)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

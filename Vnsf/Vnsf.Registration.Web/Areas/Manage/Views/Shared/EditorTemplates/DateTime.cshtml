@@ -1,0 +1,15 @@
+﻿@model DateTime?
+<div id="datetimepicker4" class="input-append">
+    @Html.TextBox("", Model.HasValue ? Model.Value.ToString("d") : String.Empty, new { @class = "form-control" })
+    <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+    </span>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#@Html.IdForModel()').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vnsf.Data.Entities.BusinessProcess">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAgAAQAAAQAAAAAAAADAAAIAAAAAAA=</HashCode>
+      <FileName>BusinessProcess.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Documents" />
+      <Property Name="Processes" />
+      <Property Name="Tasks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.BusinessDocumentType">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessDocumentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Process">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAACAAAgAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Process.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Task">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <AssociationLine Name="Assignments" Type="Vnsf.Data.Entities.TaskAssignment" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="5.72" />
+        <Point X="5.875" Y="5.72" />
+        <Point X="5.875" Y="3.875" />
+        <Point X="7" Y="3.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAIAAAAEAAACAAAAAAAAAAAAAAACABACAAAAAAAQAAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Assignments" />
+      <Property Name="Approvals" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.TaskAssignment">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAABAAAAAAAAEAAQAAAAAAAAAQAAAECAAAAABCA=</HashCode>
+      <FileName>TaskAssignment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Discussions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.TaskApproval">
+    <Position X="7" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TaskApproval.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.TaskOperation">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAECAAAAAAAAgAAAQAAAAAAAAADAAAAAAAABAA=</HashCode>
+      <FileName>TaskOperation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Discussions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.DiscussionComment">
+    <Position X="12" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAgAAAEAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>DiscussionComment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.DiscussionParticipant">
+    <Position X="12" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAARAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DiscussionParticipant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vnsf.Data.Entities.Discussion">
+    <Position X="9.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAIAA=</HashCode>
+      <FileName>Discussion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comments" />
+      <Property Name="Participants" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
