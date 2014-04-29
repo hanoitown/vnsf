@@ -12,7 +12,7 @@ namespace Vnsf.Data.Entities
     {
         public Guid Id { get; set; }
         public Doc Doc { get; set; }  // Thuyet minh de tai
-        public UserClaim User { get; set; } // ldlap@most.gov.vn
+        public string SecurityCode { get; set; }
         public Permission Permission { get; set; } // Allow Download
     }
 }

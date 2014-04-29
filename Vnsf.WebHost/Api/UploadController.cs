@@ -50,7 +50,7 @@ namespace Vnsf.WebHost.Api
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            string root = "C:\\Users\\Nguyen\\Desktop\\css";// HttpContext.Current.Server.MapPath("~/App_Data");
+            string root = "C:\\Users\\Hà\\Desktop\\upload";// HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new CustomMultipartFormDataStreamProvider(root);
             var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
 

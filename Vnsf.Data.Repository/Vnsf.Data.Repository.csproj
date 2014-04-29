@@ -43,6 +43,7 @@
     <Compile Include="IAnnouncementRepository.cs" />
     <Compile Include="IClassificationRepository.cs" />
     <Compile Include="ICultureRepository.cs" />
+    <Compile Include="IDocRepository.cs" />
     <Compile Include="IGrantRepository.cs" />
     <Compile Include="IOpportunityRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />

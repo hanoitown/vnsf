@@ -62,6 +62,7 @@
     <Compile Include="Configuration\GrantConfiguration.cs" />
     <Compile Include="Configuration\OrganizationConfiguration.cs" />
     <Compile Include="CultureRepository.cs" />
+    <Compile Include="DocRepository.cs" />
     <Compile Include="GrantRepository.cs" />
     <Compile Include="Helpers\IRepositoryProvider.cs" />
     <Compile Include="Helpers\RepositoryFactories.cs" />

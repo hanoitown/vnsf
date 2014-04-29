@@ -370,6 +370,8 @@
     <Compile Include="Models\ClassificationViewModel.cs" />
     <Compile Include="Models\ContactBindingModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\Document\DocShareBindingModel.cs" />
+    <Compile Include="Models\Document\DocShareViewModel.cs" />
     <Compile Include="Models\Document\DocumentBindingModel.cs" />
     <Compile Include="Models\Document\FileUploadModel.cs" />
     <Compile Include="Models\Document\FolderCreateModel.cs" />
@@ -658,6 +660,7 @@
     <Content Include="Areas\Cheetah\Views\Document\AddFile.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\FolderId.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Document\FileShare.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>

@@ -39,16 +39,28 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         }
         public ActionResult Index()
         {
-            var vm = _uow.Documents.All.OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
+            var vm = _uow.Documents.FilterBy(d => d.Container == null)
+                            .OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
 
             return View(vm);
         }
 
         //
         // GET: /Cheetah/Document/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
             return View();
+        }
+
+        public ActionResult FolderView(Guid Id)
+        {
+            var folder = _uow.Documents.AllIncluding(c => c.Children, c => c.Container).Where(d => d.Id == Id).FirstOrDefault();
+
+            var vm = folder.Children.AsQueryable().OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
+
+            ViewData["breadcrumb"] = string.Join(" > ", folder.GetHierachy().Select(i => i.Name));
+
+            return View("Index", vm);
         }
 
         //
@@ -56,23 +68,67 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         public ActionResult AddFile()
         {
             ViewData["Folder"] = _uow.Documents.AllIncluding(d => d.CreatedBy).Where(d => d.IsFolder == true && d.CreatedBy.Username == User.Identity.Name).ToSelectList(i => i.Id.ToString(), i => i.Name.ToString(), string.Empty);
+
             return View();
         }
+
+        //[Route("s/{securitycode}/{documentId}")]
+        public ActionResult FileShare(Guid id)
+        {
+            var doc = _uow.Documents.FindById(id);
+            return View("DocShare", AutoMapper.Mapper.Map<DocumentViewModel>(doc));
+        }
+
+        [HttpPost]
+        public ActionResult FileShare(Guid id, DocShareBindingModel form)
+        {
+            var file = _uow.Documents.FindById(id);
+            
+            //file.AddShare(form.Permissions, )
+            return View();
+        }
+
+
+        [Route("sh/{securitycode}/{documentId}")]
+        public ActionResult FolderShare(Guid documentId)
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult AddFile(DocumentBindingModel form, HttpPostedFileBase file)
         {
-            string path = @"C:\Users\Nguyen\Desktop\css\";
+            var path = @"C:\Users\Hà\Desktop\upload";
+
+            // Check permission to download 
+
+            var container = _uow.Documents.FindById(form.FolderId);
+            var document = Doc.CreateFile(form.Name, form.Description, form.IsFolder, file != null ? path + file.FileName : path, container, _user.User);
 
             if (file != null)
+            {
                 file.SaveAs(path + file.FileName);
-            var container = _uow.Documents.FindById(form.FolderId);
-            var document = Doc.Create(form.Name, form.Description, file.ContentType, file.ContentLength, form.IsFolder, file != null ? path + file.FileName : path, container, _user.User);
+                document.ContentType = file.ContentType;
+                document.ContentLength = file.ContentLength;
+            }
+
             _uow.Documents.Add(document);
             _uow.Save();
 
             return RedirectToAction<DocumentController>(c => c.Index());
         }
 
+        public ActionResult DownloadFile(Guid id)
+        {
+            var file = _uow.Documents.FindById(id);
+            return File(file.Path, System.Net.Mime.MediaTypeNames.Application.Octet, file.Name);
+        }
+
+        private ActionResult File()
+        {
+            throw new NotImplementedException();
+        }
 
         //
         // POST: /Cheetah/Document/Create

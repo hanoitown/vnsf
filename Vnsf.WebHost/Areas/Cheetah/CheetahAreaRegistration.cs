@@ -20,6 +20,14 @@ namespace Vnsf.WebHost.Areas.Cheetah
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
             );
+
+            context.MapRoute(
+                "Folder",
+                "Cheetah/{controller}/{action}/{folder}/{id}",
+                new { controller = "Document", action = "FolderView", id = UrlParameter.Optional },
+                new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
+);
+
         }
     }
 }

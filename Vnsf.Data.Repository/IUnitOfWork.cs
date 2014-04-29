@@ -24,7 +24,7 @@ namespace Vnsf.Data.Repository
         IRepository<Organization> Organizations { get; }
         IRepository<Category> Categories { get; }
         IRepository<Storage> Storages { get; }
-        IRepository<Doc> Documents { get; }
+        IDocRepository Documents { get; }
 
     }
 }

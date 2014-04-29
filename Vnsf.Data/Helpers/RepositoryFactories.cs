@@ -39,6 +39,7 @@ namespace Vnsf.Data.Helpers
                     {typeof(IGrantRepository), dbContext => new GrantRepository(dbContext)},
                     {typeof(IOpportunityRepository), dbContext => new OpportunityRepository(dbContext)},
                     {typeof(IAnnouncementRepository), dbContext => new AnnouncementRepository(dbContext)},
+                    {typeof(IDocRepository), dbContext => new DocRepository(dbContext)},
                     {typeof(IClassificationRepository), dbContext => new ClassificationRepository(dbContext)}
                 };
             

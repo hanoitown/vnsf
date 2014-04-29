@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities.Account;
+using Vnsf.Data.Entities.Security;
 
 namespace Vnsf.Data.Entities
 {
@@ -28,10 +29,10 @@ namespace Vnsf.Data.Entities
             Children = new List<Doc>();
         }
 
-        public static Doc Create(string name, string description, string contentType, int contentLength, bool isFolder, string path, Doc container, UserAccount owner)
+        public static Doc CreateFile(string name, string description, bool isFolder, string path, Doc container, UserAccount owner)
         {
             if (isFolder)
-                return CreateFolder(name, description, contentType, contentLength, path, container, owner);
+                return CreateFolder(name, description, path, container, owner);
             else
                 return new Doc
                 {
@@ -48,7 +49,7 @@ namespace Vnsf.Data.Entities
                 };
         }
 
-        public static Doc CreateFolder(string name, string description, string contentType, int contentLength, string path, Doc container, UserAccount owner)
+        public static Doc CreateFolder(string name, string description, string path, Doc container, UserAccount owner)
         {
             return new Doc
             {
@@ -64,5 +65,53 @@ namespace Vnsf.Data.Entities
                 LastUpdatedBy = owner
             };
         }
+
+        public IEnumerable<Doc> GetHierachy()
+        {
+            var list = new List<Doc>();
+            list.Add(this);
+
+            var parent = this.Container;
+            while (parent != null)
+            {
+                list.Insert(0, parent);
+                parent = parent.Container;
+            }
+
+            return list;
+        }
+
+        public void AddShare(Permission permission, UserAccount account, int effectiveDuration, string securityCode = null)
+        {
+            //encrypted file
+            //decrypted before streaming
+            var share = new DocShare
+            {
+                Id = Guid.NewGuid(),
+                Account = account,
+                SecurityCode = securityCode,
+                ExpireDate = DateTime.UtcNow.AddDays(effectiveDuration)
+            };
+            share.Rights.Add(permission);
+        }
+
+        public void AddShare(IEnumerable<Permission> permissions, UserAccount account, int effectiveDuration, string securityCode = null)
+        {
+            var shares = this.Shares.Where(s => s.Account.Id == account.Id).FirstOrDefault();
+            if (shares == null)
+                this.Shares.Add(new DocShare
+                {
+                    Id = Guid.NewGuid(),
+                    Account = account,
+                    SecurityCode = securityCode,
+                    ExpireDate = DateTime.UtcNow.AddDays(effectiveDuration)
+                });
+
+            foreach (var permission in permissions)
+            {
+                shares.Rights.Add(permission);
+            }
+        }
+
     }
 }

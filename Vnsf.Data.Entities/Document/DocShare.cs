@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vnsf.Data.Entities.Account;
+using Vnsf.Data.Entities.Security;
 
 
 namespace Vnsf.Data.Entities
 {
-    public class DocShare : BaseBusiness
+    public class DocShare
     {
+        public Guid Id { get; set; }
         public DateTime ExpireDate { get; set; }
         public string SecurityCode { get; set; }
-        public virtual ICollection<Doc> Documents { get; set; }
-        public virtual ICollection<DocProtection> Rights { get; set; }
+        public virtual Doc Document { get; set; }
+        public virtual ICollection<Permission> Rights { get; set; }
+        public virtual UserAccount Account { get; set; }
+
+        public DocShare()
+        {
+            Rights = new List<Permission>();
+        }
 
     }
 }

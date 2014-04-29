@@ -8,7 +8,8 @@ namespace Vnsf.Data.Entities.Security
 {
     public class Permission
     {
-        public string Name { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }  // Read, write, download, view, change name ....
         public string Description { get; set; }
         public bool Allow { get; set; }
         public bool Deny { get; set; }
