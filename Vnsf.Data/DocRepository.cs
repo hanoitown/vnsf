@@ -20,11 +20,11 @@ namespace Vnsf.Data.EF
             var doc = DbSet.Find(id);
             list.Add(doc);
 
-            var parent = doc.Container;
+            var parent = doc.Parent;
             while (parent != null)
             {
                 list.Insert(0, parent);
-                parent = parent.Container;
+                parent = parent.Parent;
             }
 
             return list;

@@ -57,6 +57,8 @@
     <Compile Include="ApplicationVersion.cs" />
     <Compile Include="AssignmentType.cs" />
     <Compile Include="ChangeRequest.cs" />
+    <Compile Include="Configuration\ApplicationInformation.cs" />
+    <Compile Include="Constants\VnsfConstants.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="BusinessProcess.cs" />
     <Compile Include="BusinessDocument.cs" />

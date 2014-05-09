@@ -37,14 +37,39 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         {
             _user = user;
         }
+        //public ActionResult Index()
+        //{
+        //    var vm = _uow.Documents.FilterBy(d => d.Parent == null)
+        //                    .OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
+
+        //    return View(vm);
+        //}
+
         public ActionResult Index()
         {
-            var vm = _uow.Documents.FilterBy(d => d.Container == null)
-                            .OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
+            var vm = new DocumentsSelectionViewModel();
+            var docs = _uow.Documents.FilterBy(d => d.Parent == null);
+            foreach (var doc in docs)
+            {
+                vm.Documents.Add(new SelectDocumentBindingModel
+                {
+                    Id = doc.Id,
+                    Name = doc.Name,
+                    Description = doc.Description
+                });
+            }
 
             return View(vm);
         }
 
+        [HttpPost]
+        public ActionResult Index(DocumentsSelectionViewModel model)
+        {
+            var selectedIds = model.GetSelectedIds();
+
+            var selectedDocs = _uow.Documents.FilterBy(d => selectedIds.Contains(d.Id));
+            return View();
+        }
         //
         // GET: /Cheetah/Document/Details/5
         public ActionResult Details(Guid id)
@@ -54,36 +79,56 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 
         public ActionResult FolderView(Guid Id)
         {
-            var folder = _uow.Documents.AllIncluding(c => c.Children, c => c.Container).Where(d => d.Id == Id).FirstOrDefault();
+            var folder = _uow.Documents.AllIncluding(c => c.Children, c => c.Parent).Where(d => d.Id == Id).FirstOrDefault();
 
-            var vm = folder.Children.AsQueryable().OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
+            //var vm = folder.Children.AsQueryable().OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
 
-            ViewData["breadcrumb"] = string.Join(" > ", folder.GetHierachy().Select(i => i.Name));
+            var vm = new DocumentsSelectionViewModel();
+            var docs = folder.Children.AsQueryable().OrderByDescending(d => d.IsFolder);
+            foreach (var doc in docs)
+            {
+                vm.Documents.Add(new SelectDocumentBindingModel
+                {
+                    Id = doc.Id,
+                    Name = doc.Name,
+                    Description = doc.Description,
+                    ContentType = doc.ContentType,
+                    ContentLength = doc.ContentLength,
+                    IsFolder = doc.IsFolder
+                });
+            }
 
+            ViewData["folderId"] = Id;
+            ViewData["breadcrumb"] = folder.GetHierachy().Select(c => new DocumentViewModel
+            {
+                Id = c.Id,
+                Name = c.Name
+            });
             return View("Index", vm);
         }
 
         //
         // GET: /Cheetah/Document/Create
-        public ActionResult AddFile()
+        public ActionResult AddFile(Guid folderId)
         {
-            ViewData["Folder"] = _uow.Documents.AllIncluding(d => d.CreatedBy).Where(d => d.IsFolder == true && d.CreatedBy.Username == User.Identity.Name).ToSelectList(i => i.Id.ToString(), i => i.Name.ToString(), string.Empty);
+            //ViewData["Folder"] = _uow.Documents.AllIncluding(d => d.CreatedBy).Where(d => d.IsFolder == true && d.CreatedBy.Username == User.Identity.Name).ToSelectList(i => i.Id.ToString(), i => i.Name.ToString(), string.Empty);
 
             return View();
         }
 
         //[Route("s/{securitycode}/{documentId}")]
+        [AllowAnonymous]
         public ActionResult FileShare(Guid id)
         {
             var doc = _uow.Documents.FindById(id);
-            return View("DocShare", AutoMapper.Mapper.Map<DocumentViewModel>(doc));
+            return View(AutoMapper.Mapper.Map<DocumentViewModel>(doc));
         }
 
         [HttpPost]
         public ActionResult FileShare(Guid id, DocShareBindingModel form)
         {
             var file = _uow.Documents.FindById(id);
-            
+
             //file.AddShare(form.Permissions, )
             return View();
         }
@@ -99,7 +144,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         [HttpPost]
         public ActionResult AddFile(DocumentBindingModel form, HttpPostedFileBase file)
         {
-            var path = @"C:\Users\Hà\Desktop\upload";
+            var path = @"C:\Users\Hà\Desktop\upload\";
 
             // Check permission to download 
 
@@ -116,13 +161,13 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             _uow.Documents.Add(document);
             _uow.Save();
 
-            return RedirectToAction<DocumentController>(c => c.Index());
+            return RedirectToAction<DocumentController>(c => c.FolderView(form.FolderId));
         }
-
+        [AllowAnonymous]
         public ActionResult DownloadFile(Guid id)
         {
             var file = _uow.Documents.FindById(id);
-            return File(file.Path, System.Net.Mime.MediaTypeNames.Application.Octet, file.Name);
+            return File(file.Path, file.ContentType ?? System.Net.Mime.MediaTypeNames.Application.Octet, file.Name);
         }
 
         private ActionResult File()
@@ -197,7 +242,8 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                //var selectedDocs = _uow.Documents.FilterBy(d => selectedIds.Contains(d.Id));
+                
                 return RedirectToAction("Index");
             }
             catch

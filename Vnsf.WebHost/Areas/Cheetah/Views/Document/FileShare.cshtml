@@ -1,22 +1,16 @@
 ﻿@model Vnsf.WebHost.Models.DocumentViewModel
+@using Humanizer
 
 @{
-    ViewBag.Title = "FileShare";
+    Layout = "~/Areas/Cheetah/Views/Shared/_LayoutForAnonymous.cshtml";
 }
 
-<h2>FileShare</h2>
+<h2>FileShare - @Model.Name</h2>
 
 <div>
     <h4>DocumentViewModel</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -42,13 +36,6 @@
             @Html.DisplayFor(model => model.ContentLength)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFolder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFolder)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Path)
@@ -57,10 +44,12 @@
         <dd>
             @Html.DisplayFor(model => model.Path)
         </dd>
+        <dd>
+            @((Model.LastUpdated != null) ? ((DateTime)Model.LastUpdated).Humanize(false, DateTime.Now) : string.Empty)
+        </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@Html.ActionLink("Download", "DownloadFile", new { id = Model.Id }, new { @class = "btn btn-primary" })
+

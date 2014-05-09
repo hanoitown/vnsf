@@ -13,7 +13,8 @@ namespace Vnsf.WebHost.Models.Document
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsFolder { get; set; }
-        public Guid? FolderId { get; set; }
+        [HiddenInput]
+        public Guid FolderId { get; set; }
         public HttpPostedFileBase File { get; set; }
 
     }

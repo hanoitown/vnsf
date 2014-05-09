@@ -71,6 +71,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Humanizer.1.22.1\lib\portable-win+net40+sl50+wp8\Humanizer.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -326,7 +329,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\ModelMetadata\Filters\CultureDropDownFilter.cs" />
-    <Compile Include="Infrastructure\ModelMetadata\Filters\FolderDropDownFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\PasswordInputByNameFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\EmailInputByNameFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\LabelConventionFilter.cs" />
@@ -373,9 +375,11 @@
     <Compile Include="Models\Document\DocShareBindingModel.cs" />
     <Compile Include="Models\Document\DocShareViewModel.cs" />
     <Compile Include="Models\Document\DocumentBindingModel.cs" />
+    <Compile Include="Models\Document\DocumentsSelectionViewModel.cs" />
     <Compile Include="Models\Document\FileUploadModel.cs" />
     <Compile Include="Models\Document\FolderCreateModel.cs" />
     <Compile Include="Models\Document\FolderViewModel.cs" />
+    <Compile Include="Models\Document\SelectDocumentBindingModel.cs" />
     <Compile Include="Models\LocalizedCultureViewModel.cs" />
     <Compile Include="Models\Document\DocumentViewModel.cs" />
     <Compile Include="Models\GrantViewModel.cs" />
@@ -644,7 +648,6 @@
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\CultureId.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserAccount\Setting.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Index.cshtml" />
-    <Content Include="Areas\Cheetah\Views\Document\Index.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\UploadSingleDoc.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\CreateFolder.cshtml" />
     <Content Include="Content\Selectize\less\selectize.less" />
@@ -661,6 +664,10 @@
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\FolderId.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\FileShare.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Document\EditorTemplates\SelectDocumentBindingModel.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Document\Index.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Document\_FileView.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\_LayoutForAnonymous.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>

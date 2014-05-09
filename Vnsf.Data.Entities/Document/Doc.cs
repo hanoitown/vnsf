@@ -18,7 +18,7 @@ namespace Vnsf.Data.Entities
         public bool IsFolder { get; set; }
         public string Path { get; set; }
 
-        public virtual Doc Container { get; set; }
+        public virtual Doc Parent { get; set; }
         public virtual ICollection<Doc> Children { get; set; }
         public virtual ICollection<DocShare> Shares { get; set; }
         public virtual ICollection<DocProtection> Rights { set; get; }
@@ -41,7 +41,7 @@ namespace Vnsf.Data.Entities
                     Description = description,
                     IsFolder = false,
                     Path = path,
-                    Container = container,
+                    Parent = container,
                     Created = DateTime.Now,
                     CreatedBy = owner,
                     LastUpdated = DateTime.Now,
@@ -57,7 +57,7 @@ namespace Vnsf.Data.Entities
                 Name = name,
                 Description = description,
                 Path = path,
-                Container = container,
+                Parent = container,
                 IsFolder = true,
                 Created = DateTime.Now,
                 CreatedBy = owner,
@@ -65,53 +65,46 @@ namespace Vnsf.Data.Entities
                 LastUpdatedBy = owner
             };
         }
+        //public static Doc CreateFolder(UserAccount account)
+        //{
+        //    return new Doc
+        //    {
+        //        Id = Guid.NewGuid(),
+        //        Name = account.Username.GetHashCode().ToString(),
+        //        Description = string.Format("Personal folder for user {0}", account.Username),
+        //        Path = BaseUrl + 
+        //    };
+        //}
 
         public IEnumerable<Doc> GetHierachy()
         {
             var list = new List<Doc>();
             list.Add(this);
 
-            var parent = this.Container;
+            var parent = this.Parent;
             while (parent != null)
             {
                 list.Insert(0, parent);
-                parent = parent.Container;
+                parent = parent.Parent;
             }
 
             return list;
         }
 
-        public void AddShare(Permission permission, UserAccount account, int effectiveDuration, string securityCode = null)
+        public void AddShare(Permission permission, int effectiveDuration, string securityCode = null)
         {
             //encrypted file
             //decrypted before streaming
-            var share = new DocShare
+            Shares.Add(new DocShare
             {
                 Id = Guid.NewGuid(),
-                Account = account,
                 SecurityCode = securityCode,
-                ExpireDate = DateTime.UtcNow.AddDays(effectiveDuration)
-            };
-            share.Rights.Add(permission);
+                ExpireDate = DateTime.UtcNow.AddDays(effectiveDuration),
+                Right = permission
+            });
+
         }
 
-        public void AddShare(IEnumerable<Permission> permissions, UserAccount account, int effectiveDuration, string securityCode = null)
-        {
-            var shares = this.Shares.Where(s => s.Account.Id == account.Id).FirstOrDefault();
-            if (shares == null)
-                this.Shares.Add(new DocShare
-                {
-                    Id = Guid.NewGuid(),
-                    Account = account,
-                    SecurityCode = securityCode,
-                    ExpireDate = DateTime.UtcNow.AddDays(effectiveDuration)
-                });
-
-            foreach (var permission in permissions)
-            {
-                shares.Rights.Add(permission);
-            }
-        }
 
     }
 }

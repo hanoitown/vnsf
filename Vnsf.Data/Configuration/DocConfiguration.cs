@@ -12,7 +12,7 @@ namespace Vnsf.Data.EF.Configuration
     {
         public DocConfiguration()
         {
-            this.HasOptional(d => d.Container);
+            this.HasOptional(d => d.Parent);
             this.HasOptional(d => d.CreatedBy).WithMany().WillCascadeOnDelete(false);
             this.HasOptional(d => d.LastUpdatedBy).WithMany().WillCascadeOnDelete(false);
         }

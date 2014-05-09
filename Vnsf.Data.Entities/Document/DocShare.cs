@@ -15,13 +15,8 @@ namespace Vnsf.Data.Entities
         public DateTime ExpireDate { get; set; }
         public string SecurityCode { get; set; }
         public virtual Doc Document { get; set; }
-        public virtual ICollection<Permission> Rights { get; set; }
-        public virtual UserAccount Account { get; set; }
-
-        public DocShare()
-        {
-            Rights = new List<Permission>();
-        }
+        public virtual Permission Right { get; set; }
+        public virtual UserAccount Account { get; set; }        
 
     }
 }

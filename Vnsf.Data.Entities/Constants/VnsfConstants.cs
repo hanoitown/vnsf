@@ -7,7 +7,7 @@ using System;
 
 namespace Vnsf.Data.Entities.Constants
 {
-    public class MembershipRebootConstants
+    public class VnsfConstants
     {
         public class ClaimTypes
         {
