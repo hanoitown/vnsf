@@ -39,11 +39,35 @@ namespace Vnsf.Data.EF
         public void Save()
         {
             //System.Diagnostics.Debug.WriteLine("Committed");
+            foreach (var change in DbContext.ChangeTracker.Entries().Where(x => x.State == System.Data.Entity.EntityState.Added || x.State == System.Data.Entity.EntityState.Modified))
+            {
+                var audited = change.Entity as IAudit;
+                if (audited != null)
+                {
+                    if (change.State == System.Data.Entity.EntityState.Added)
+                    {
+                        audited.Created = DateTime.Now;
+                    }
+                    audited.LastUpdated = DateTime.Now;
+                }
+            }
             DbContext.SaveChanges();
         }
 
         public async Task<int> SaveAsync()
         {
+            foreach (var change in DbContext.ChangeTracker.Entries().Where(x => x.State == System.Data.Entity.EntityState.Added || x.State == System.Data.Entity.EntityState.Modified))
+            {
+                var audited = change.Entity as IAudit;
+                if (audited != null)
+                {
+                    if (change.State == System.Data.Entity.EntityState.Added)
+                    {
+                        audited.Created = DateTime.Now;
+                    }
+                    audited.LastUpdated = DateTime.Now;
+                }
+            }
             return await DbContext.SaveChangesAsync();
         }
 

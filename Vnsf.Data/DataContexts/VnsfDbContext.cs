@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Vnsf.Data.Configuration;
+using Vnsf.Data.Configurations;
 using Vnsf.Data.EF;
-using Vnsf.Data.EF.Configuration;
+using Vnsf.Data.EF.Configurations;
 using Vnsf.Data.EF.Samples;
 using Vnsf.Data.Entities;
 using Vnsf.Data.Entities.Account;
@@ -49,7 +49,7 @@ namespace Vnsf.Data
         {
             // Use singular table names
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
+            modelBuilder.HasDefaultSchema("vnsf");
             //modelBuilder.Configurations.Add(new CountryConfiguration());
             //modelBuilder.Configurations.Add(new CountryLocalizedConfiguration());
             //modelBuilder.Configurations.Add(new LanguageConfiguration());

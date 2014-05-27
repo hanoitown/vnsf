@@ -109,10 +109,13 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = UserAccount.Init(model.Username, model.Password, string.Empty);
+                var user = UserAccount.Init(model.Username, model.Password, model.Email);
+                user.MobilePhoneNumber = model.Mobile;
+                _uow.UserAccounts.Add(user);
+                await _uow.SaveAsync();
                 await LoginAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "UserAccount");
 
+                return RedirectToAction("Index", "UserAccount");
             }
 
             // If we got this far, something failed, redisplay form
@@ -127,6 +130,8 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
                 new Claim(ClaimTypes.Name, account.Username),
                 new Claim(ClaimTypes.Email, account.Email)  
             };
+            claims.AddRange(account.Claims.Select(c => new Claim(c.Type, c.Value)));
+
             var id = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
             var principal = new ClaimsPrincipal(id);
             Thread.CurrentPrincipal = principal;

@@ -7,20 +7,20 @@ using System;
 using System.Configuration;
 using System.Linq;
 
-namespace BrockAllen.MembershipReboot
+namespace Vnsf.Data
 {
-    public class SecuritySettings : ConfigurationSection
+    public class AppSettings : ConfigurationSection
     {
-        public static SecuritySettings Instance { get; set; }
+        public static AppSettings Instance { get; set; }
 
-        static SecuritySettings()
+        static AppSettings()
         {
             Instance = FromConfiguration();
         }
 
-        public static SecuritySettings FromConfiguration()
+        public static AppSettings FromConfiguration()
         {
-            var instance = new SecuritySettings();
+            var instance = new AppSettings();
             var configSection = GetConfigSection();
             if (configSection != null)
             {
@@ -33,17 +33,14 @@ namespace BrockAllen.MembershipReboot
             return instance;
         }
 
-        public const string SectionName = "membershipReboot";
+        public const string SectionName = "Vnsf";
 
-        static SecuritySettings GetConfigSection()
+        static AppSettings GetConfigSection()
         {
-            return (SecuritySettings)System.Configuration.ConfigurationManager.GetSection(SectionName);
+            return (AppSettings)System.Configuration.ConfigurationManager.GetSection(SectionName);
         }
 
-        private const string MULTITENANT = "multiTenant";
-        private const string DEFAULTTENANT = "defaultTenant";
-        private const string EMAILISUSERNAME = "emailIsUsername";
-        private const string USERNAMESUNIQUEACROSSTENANTS = "usernamesUniqueAcrossTenants";
+        private const string BASEURL = "/upload/";
         private const string REQUIREACCOUNTVERIFICATION = "requireAccountVerification";
         private const string ALLOWLOGINAFTERACCOUNTCREATION = "allowLoginAfterAccountCreation";
         private const string ACCOUNTLOCKOUTFAILEDLOGINATTEMPTS = "accountLockoutFailedLoginAttempts";
@@ -52,77 +49,57 @@ namespace BrockAllen.MembershipReboot
         private const string PASSWORDHASHINGITERATIONCOUNT = "passwordHashingIterationCount";
         private const string PASSWORDRESETFREQUENCY = "passwordResetFrequency";
 
-        [ConfigurationProperty(MULTITENANT, DefaultValue = false)]
-        public bool MultiTenant
+
+        [ConfigurationProperty(REQUIREACCOUNTVERIFICATION, DefaultValue = VnsfConstants.AppSettingDefaults.RequireAccountVerification)]
+        public string BaseUrl
         {
-            get { return (bool)this[MULTITENANT]; }
-            set { this[MULTITENANT] = value; }
+            get { return (string)this[BASEURL]; }
+            set { this[BASEURL] = value; }
         }
 
-        [ConfigurationProperty(DEFAULTTENANT, DefaultValue = "default")]
-        public string DefaultTenant
-        {
-            get { return (string)this[DEFAULTTENANT]; }
-            set { this[DEFAULTTENANT] = value; }
-        }
-
-        [ConfigurationProperty(EMAILISUSERNAME, DefaultValue = false)]
-        public bool EmailIsUsername
-        {
-            get { return (bool)this[EMAILISUSERNAME]; }
-            set { this[EMAILISUSERNAME] = value; }
-        }
-
-        [ConfigurationProperty(USERNAMESUNIQUEACROSSTENANTS, DefaultValue = false)]
-        public bool UsernamesUniqueAcrossTenants
-        {
-            get { return (bool)this[USERNAMESUNIQUEACROSSTENANTS]; }
-            set { this[USERNAMESUNIQUEACROSSTENANTS] = value; }
-        }
-
-        [ConfigurationProperty(REQUIREACCOUNTVERIFICATION, DefaultValue = true)]
+        [ConfigurationProperty(REQUIREACCOUNTVERIFICATION, DefaultValue = VnsfConstants.AppSettingDefaults.RequireAccountVerification)]
         public bool RequireAccountVerification
         {
             get { return (bool)this[REQUIREACCOUNTVERIFICATION]; }
             set { this[REQUIREACCOUNTVERIFICATION] = value; }
         }
 
-        [ConfigurationProperty(ALLOWLOGINAFTERACCOUNTCREATION, DefaultValue = true)]
+        [ConfigurationProperty(ALLOWLOGINAFTERACCOUNTCREATION, DefaultValue = VnsfConstants.AppSettingDefaults.AllowLoginAfterAccountCreation)]
         public bool AllowLoginAfterAccountCreation
         {
             get { return (bool)this[ALLOWLOGINAFTERACCOUNTCREATION]; }
             set { this[ALLOWLOGINAFTERACCOUNTCREATION] = value; }
         }
 
-        [ConfigurationProperty(ACCOUNTLOCKOUTFAILEDLOGINATTEMPTS, DefaultValue = 10)]
+        [ConfigurationProperty(ACCOUNTLOCKOUTFAILEDLOGINATTEMPTS, DefaultValue = VnsfConstants.AppSettingDefaults.AccountLockoutFailedLoginAttempts)]
         public int AccountLockoutFailedLoginAttempts
         {
             get { return (int)this[ACCOUNTLOCKOUTFAILEDLOGINATTEMPTS]; }
             set { this[ACCOUNTLOCKOUTFAILEDLOGINATTEMPTS] = value; }
         }
 
-        [ConfigurationProperty(ACCOUNTLOCKOUTDURATION, DefaultValue="00:05:00")]
+        [ConfigurationProperty(ACCOUNTLOCKOUTDURATION, DefaultValue=VnsfConstants.AppSettingDefaults.AccountLockoutDuration)]
         public TimeSpan AccountLockoutDuration
         {
             get { return (TimeSpan)this[ACCOUNTLOCKOUTDURATION]; }
             set { this[ACCOUNTLOCKOUTDURATION] = value; }
         }
 
-        [ConfigurationProperty(ALLOWACCOUNTDELETION, DefaultValue = true)]
+        [ConfigurationProperty(ALLOWACCOUNTDELETION, DefaultValue = VnsfConstants.AppSettingDefaults.AllowAccountDeletion)]
         public bool AllowAccountDeletion
         {
             get { return (bool)this[ALLOWACCOUNTDELETION]; }
             set { this[ALLOWACCOUNTDELETION] = value; }
         }
 
-        [ConfigurationProperty(PASSWORDHASHINGITERATIONCOUNT, DefaultValue = 0)]
+        [ConfigurationProperty(PASSWORDHASHINGITERATIONCOUNT, DefaultValue = VnsfConstants.AppSettingDefaults.PasswordHashingIterationCount)]
         public int PasswordHashingIterationCount
         {
             get { return (int)this[PASSWORDHASHINGITERATIONCOUNT]; }
             set { this[PASSWORDHASHINGITERATIONCOUNT] = value; }
         }
 
-        [ConfigurationProperty(PASSWORDRESETFREQUENCY, DefaultValue = 0)]
+        [ConfigurationProperty(PASSWORDRESETFREQUENCY, DefaultValue = VnsfConstants.AppSettingDefaults.PasswordResetFrequency)]
         public int PasswordResetFrequency
         {
             get { return (int)this[PASSWORDRESETFREQUENCY]; }

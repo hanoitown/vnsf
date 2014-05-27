@@ -16,7 +16,6 @@ namespace Vnsf.Data.Entities
         public string Email { set; get; }
         public Address PostalAddress { set; get; }
         public Address VisitingAddress { get; set; }
-        public string Website { get; set; }
 
         public Contact()
         {

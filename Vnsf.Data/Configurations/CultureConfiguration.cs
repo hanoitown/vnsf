@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 using Vnsf.Data.Entities;
 using Vnsf.Data.Entities.Globalization;
 
-namespace Vnsf.Data.Configuration
+namespace Vnsf.Data.Configurations
 {
     internal class CultureConfiguration : EntityTypeConfiguration<Culture>
     {

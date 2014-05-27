@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
@@ -50,7 +51,6 @@
     <Compile Include="Address.cs" />
     <Compile Include="Announcement.cs" />
     <Compile Include="AnnouncementVersion.cs" />
-    <Compile Include="Applicant.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="ApplicationDocument.cs" />
     <Compile Include="ApplicationStatus.cs" />
@@ -58,6 +58,8 @@
     <Compile Include="AssignmentType.cs" />
     <Compile Include="ChangeRequest.cs" />
     <Compile Include="Configuration\ApplicationInformation.cs" />
+    <Compile Include="Configuration\AppSettings.cs" />
+    <Compile Include="Configuration\AppConfiguration.cs" />
     <Compile Include="Constants\VnsfConstants.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="BusinessProcess.cs" />
@@ -73,6 +75,10 @@
     <Compile Include="ReportVersion.cs" />
     <Compile Include="ReviewVersion.cs" />
     <Compile Include="Security\Permission.cs" />
+    <Compile Include="Shared\Audit.cs" />
+    <Compile Include="Shared\IAudit.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TaskOperation.cs" />
     <Compile Include="DiscussionParticipant.cs" />
     <Compile Include="DiscussionComment.cs" />
@@ -84,7 +90,6 @@
     <Compile Include="EvaluationScale.cs" />
     <Compile Include="Award.cs" />
     <Compile Include="BankAccount.cs" />
-    <Compile Include="Shared\BaseAudit.cs" />
     <Compile Include="Budget.cs" />
     <Compile Include="CategorgyHierchy.cs" />
     <Compile Include="CategoryChild.cs" />
@@ -146,9 +151,7 @@
     <Compile Include="TaskItem.cs" />
     <Compile Include="TaskAssignment.cs" />
     <Compile Include="TaskApproval.cs" />
-    <Compile Include="TimeUnit.cs" />
     <Compile Include="University.cs" />
-    <Compile Include="Version.cs" />
     <Compile Include="Job.cs" />
   </ItemGroup>
   <ItemGroup>

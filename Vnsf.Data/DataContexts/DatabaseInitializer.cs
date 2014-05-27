@@ -9,7 +9,7 @@ namespace Vnsf.Data.EF.Samples
 {
     public class VnsfDatabaseInitializer :
         //CreateDatabaseIfNotExists<VnsfDbContext>      // when model is stable
-        DropCreateDatabaseIfModelChanges<VnsfDbContext> // when iterating
+        CreateDatabaseIfNotExists<VnsfDbContext> // when iterating
     {
         private const string FallbackCulture = "vi-VN";
         private const string Secondary = "en-US";
@@ -18,37 +18,37 @@ namespace Vnsf.Data.EF.Samples
         {
             // Seed code here
             //InitializeCultureData(context);
-            context.Grants.AddOrUpdate(
-                g => g.Code,
-                new Grant { Id = Guid.NewGuid(), Code = "119", Name = "Đề tài 119", Description = "Đề tài theo nghị định 119NDCP", MaxAward = 0, MaxDuration = 24, Objective = "119" }
-                );
+            //context.Grants.AddOrUpdate(
+            //    g => g.Code,
+            //    new Grant { Id = Guid.NewGuid(), Code = "119", Name = "Đề tài 119", Description = "Đề tài theo nghị định 119NDCP", MaxAward = 0, MaxDuration = 24, Objective = "119" }
+            //    );
 
-            var admin = UserAccount.Init("admin", "654321", "admin@hanoitown.com");
-            var hanm = UserAccount.Init("hanm", "123456", "ha@hanoitown.com");
-            context.UserAccounts.AddOrUpdate(p => p.Email, admin);
-            context.UserAccounts.AddOrUpdate(p => p.Email, hanm);
+            //var admin = UserAccount.Init("admin", "654321", "admin@hanoitown.com");
+            //var hanm = UserAccount.Init("hanm", "123456", "ha@hanoitown.com");
+            //context.UserAccounts.AddOrUpdate(p => p.Email, admin);
+            //context.UserAccounts.AddOrUpdate(p => p.Email, hanm);
 
 
-            context.Classification.AddOrUpdate(c => c.Name, new Classification
-            {
-                Id = Guid.NewGuid(),
-                Name = "119",
-                Categories = new List<Category>
-                                    {
-                                        new Category( "Đơn đề nghị", string.Empty),
-                                        new Category("Thuyết minh đề cương", string.Empty)
-                                    }
-            });
+            //context.Classification.AddOrUpdate(c => c.Name, new Classification
+            //{
+            //    Id = Guid.NewGuid(),
+            //    Name = "119",
+            //    Categories = new List<Category>
+            //                        {
+            //                            new Category( "Đơn đề nghị", string.Empty),
+            //                            new Category("Thuyết minh đề cương", string.Empty)
+            //                        }
+            //});
 
-            context.Organizations.AddOrUpdate(o => o.ShortName, new FundingAgency
-            {
-                Id = Guid.NewGuid(),
-                Name = "QUY PTKHCN QG",
-                ShortName = "Nafosted",
-                Contact = new Contact()
-            });
+            //context.Organizations.AddOrUpdate(o => o.ShortName, new FundingAgency
+            //{
+            //    Id = Guid.NewGuid(),
+            //    Name = "QUY PTKHCN QG",
+            //    ShortName = "Nafosted",
+            //    Contact = new Contact()
+            //});
 
-            context.SaveChanges();
+            //context.SaveChanges();
 
         }
 

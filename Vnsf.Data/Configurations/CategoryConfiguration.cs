@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities;
 
-namespace Vnsf.Data.EF.Configuration
+namespace Vnsf.Data.EF.Configurations
 {
     internal class CategoryConfiguration : EntityTypeConfiguration<Category>
     {

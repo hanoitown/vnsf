@@ -13,10 +13,10 @@
 
 <p>
     @Html.ActionLink("Upload", "AddFile", new { folderId = ViewData["folderId"] }, new { @class = "btn btn-sm btn-primary" })
-    @Html.ActionLink("Create folder", "AddFile", new { folderId = ViewData["folderId"] }, new { @class = "btn btn-sm btn-primary" })
+    @Html.ActionLink("Create folder", "Create", new { path = Model.Path, isFolder = true }, new { @class = "btn btn-sm btn-primary" })
     @Html.ActionLink("Download", "AddFile", new { folderId = ViewData["folderId"] }, new { @class = "btn btn-sm btn-primary" })
     @Html.ActionLink("Delete", "AddFile", new { folderId = ViewData["folderId"] }, new { @class = "btn btn-sm btn-primary" })
-    
+
 </p>
 <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
 
@@ -39,8 +39,6 @@
     <script type="text/javascript">
         function toggleChecked(status) {
             $("input").each(function () {
-                // Set the checked status of each to match the
-                // checked status of the check all checkbox:
                 $(this).prop("checked", status);
             });
         }
@@ -48,10 +46,8 @@
         $(document).ready(function () {
 
             //Set the default value of the global checkbox to true:
-            //$("#checkall").prop('checked', true);
+            // $("#checkall").prop('checked', true);
 
-            // Attach the call to toggleChecked to the
-            // click event of the global checkbox:
             $("#checkall").click(function () {
                 var status = $("#checkall").prop('checked');
                 toggleChecked(status);

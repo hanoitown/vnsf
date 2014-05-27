@@ -6,14 +6,14 @@ namespace Vnsf.Data.EF.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class AgencyUpdate : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
+    public sealed partial class InitialCreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AgencyUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404021342448_AgencyUpdate"; }
+            get { return "201405210019181_InitialCreated"; }
         }
         
         string IMigrationMetadata.Source

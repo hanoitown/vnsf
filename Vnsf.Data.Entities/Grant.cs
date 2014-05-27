@@ -36,7 +36,6 @@ namespace Vnsf.Data.Entities
             this.Description = description;
             this.Total = total;
             this.MaxAward = maxaward;
-            this.Created = DateTime.Now;
         }
 
         // add opportunity

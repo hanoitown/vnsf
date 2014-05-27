@@ -11,7 +11,7 @@ namespace Vnsf.Data.Entities
     public class Applicant : Person
     {
         
-        public virtual UserAccount LoginAccount { get; set; }
+        //public virtual UserAccount LoginAccount { get; set; }
 
         public Applicant(UserAccount account)
         {

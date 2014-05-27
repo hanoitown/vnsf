@@ -6,15 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities;
 
-namespace Vnsf.Data.EF.Configuration
+namespace Vnsf.Data.EF.Configurations
 {
     internal class DocConfiguration : EntityTypeConfiguration<Doc>
     {
         public DocConfiguration()
         {
             this.HasOptional(d => d.Parent);
-            this.HasOptional(d => d.CreatedBy).WithMany().WillCascadeOnDelete(false);
-            this.HasOptional(d => d.LastUpdatedBy).WithMany().WillCascadeOnDelete(false);
         }
     }
 }

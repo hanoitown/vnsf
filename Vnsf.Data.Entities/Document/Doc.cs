@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities.Account;
 using Vnsf.Data.Entities.Security;
+using Vnsf.Data.Entities.Shared;
 
 namespace Vnsf.Data.Entities
 {
-    public class Doc : BaseAudit
+    public class Doc
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -22,6 +23,7 @@ namespace Vnsf.Data.Entities
         public virtual ICollection<Doc> Children { get; set; }
         public virtual ICollection<DocShare> Shares { get; set; }
         public virtual ICollection<DocProtection> Rights { set; get; }
+        public virtual UserAccount Owner { get; set; }
         public Doc()
         {
             Shares = new List<DocShare>();
@@ -42,10 +44,7 @@ namespace Vnsf.Data.Entities
                     IsFolder = false,
                     Path = path,
                     Parent = container,
-                    Created = DateTime.Now,
-                    CreatedBy = owner,
-                    LastUpdated = DateTime.Now,
-                    LastUpdatedBy = owner
+                    Owner = owner
                 };
         }
 
@@ -59,10 +58,7 @@ namespace Vnsf.Data.Entities
                 Path = path,
                 Parent = container,
                 IsFolder = true,
-                Created = DateTime.Now,
-                CreatedBy = owner,
-                LastUpdated = DateTime.Now,
-                LastUpdatedBy = owner
+                Owner = owner
             };
         }
         //public static Doc CreateFolder(UserAccount account)

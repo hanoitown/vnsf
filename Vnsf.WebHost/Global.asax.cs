@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Vnsf.Data.EF.DataContexts;
 using Vnsf.Data.EF.Samples;
 using Vnsf.WebHost.Infrastructure.Mapping;
 using Vnsf.WebHost.Infrastructure.Tasks;
@@ -19,7 +20,7 @@ namespace Vnsf.WebHost
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer(new VnsfDatabaseInitializer());
+            //VnsfDbInit.InitDb();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -28,7 +29,7 @@ namespace Vnsf.WebHost
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Email;
-            AutoMapperBootstrapper.Init();
+            //AutoMapperBootstrapper.Init();
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
@@ -41,7 +42,6 @@ namespace Vnsf.WebHost
             {
                 task.Execute();
             }
-
         }
 
         public void Application_BeginRequest()

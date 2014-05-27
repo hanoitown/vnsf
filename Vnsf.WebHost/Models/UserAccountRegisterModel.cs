@@ -10,12 +10,14 @@ namespace Vnsf.WebHost.Models
     public class UserAccountRegisterModel
     {        
         [Required]
-        [Display(Name="Email or Mobile")]
         public string Username { get; set; }
+        [Required]
+        public string Email { get; set; }
+        public string Mobile { get; set; }
         [Required, MinLength(8)]
         public string Password { get; set; }
         [Required, MinLength(8)]
-        public string RePassword { set; get; }
+        public string ConfirmPassword { set; get; }
 
     }
 }

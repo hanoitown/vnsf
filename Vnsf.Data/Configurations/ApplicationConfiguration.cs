@@ -5,17 +5,16 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vnsf.Data.Entities.Authorization;
+using Vnsf.Data.Entities;
 
-namespace Vnsf.Data.Configuration
+namespace Vnsf.Data.EF.Configurations
 {
     public class ApplicationConfiguration : EntityTypeConfiguration<Application>
     {
         public ApplicationConfiguration()
         {
-            this.ToTable("Application", "vnsf");
 
-            this.Property(o => o.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity); ;
+            //this.HasRequired(a=>a.Applicant).WithMany(u=>u.Applications).WillCascadeOnDelete(false);
 
         }
     }

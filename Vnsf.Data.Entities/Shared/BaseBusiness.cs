@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities.Globalization;
+using Vnsf.Data.Entities.Shared;
 
 namespace Vnsf.Data.Entities
 {
-    public abstract class BaseBusiness : BaseAudit
+    public abstract class BaseBusiness : Audit
     {
         public virtual Guid Id { set; get; }
         public virtual string Name { set; get; }

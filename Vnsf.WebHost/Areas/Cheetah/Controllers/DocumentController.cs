@@ -24,6 +24,8 @@ using AutoMapper.QueryableExtensions;
 using Vnsf.WebHost.Models;
 using Vnsf.WebHost.Models.Document;
 using Vnsf.WebHost.Infrastructure;
+using System.Diagnostics;
+using Vnsf.Data;
 
 namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 {
@@ -31,35 +33,58 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
     public class DocumentController : MvcBaseController
     {
         ICurrentUser _user;
-
+        AppConfiguration _config;
         public DocumentController(IUnitOfWork uow, ICurrentUser user)
             : base(uow)
         {
             _user = user;
+            _config = new AppConfiguration(AppSettings.Instance);
         }
-        //public ActionResult Index()
-        //{
-        //    var vm = _uow.Documents.FilterBy(d => d.Parent == null)
-        //                    .OrderByDescending(d => d.LastUpdated).Project().To<DocumentViewModel>();
-
-        //    return View(vm);
-        //}
 
         public ActionResult Index()
         {
             var vm = new DocumentsSelectionViewModel();
-            var docs = _uow.Documents.FilterBy(d => d.Parent == null);
-            foreach (var doc in docs)
-            {
-                vm.Documents.Add(new SelectDocumentBindingModel
+            if (Request.RequestContext.RouteData.Values["path"] == null)
+                vm.Path = "/home/";
+            else
+                vm.Path = Request.RequestContext.RouteData.Values["path"].ToString();
+
+            vm.Documents = _uow.Documents.AllIncluding(o => o.Owner).Where(d => d.Parent == null && d.Owner.Id == _user.User.Id).Select(doc => new SelectDocumentBindingModel
                 {
                     Id = doc.Id,
                     Name = doc.Name,
                     Description = doc.Description
-                });
-            }
+                }).ToList();
+            Debug.WriteLine(Request.RequestContext.RouteData.Values["path"]);
+            return View(vm);
+        }
+
+        public ActionResult Create(bool isFolder, string path)
+        {
+            //var path = Request.RequestContext.RouteData.Values["path"].ToString();
+            var vm = new DocumentBindingModel(isFolder, path);
 
             return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Create(DocumentBindingModel form, HttpPostedFileBase file)
+        {
+
+            var container = _uow.Documents.FilterBy(d => d.Path == form.Path).FirstOrDefault();
+            var document = Doc.CreateFile(file.FileName, string.Empty, true, _config.BaseUrl, container, _user.User);
+
+            if (file != null)
+            {
+                file.SaveAs(_config.BaseUrl + file.FileName);
+                document.ContentType = file.ContentType;
+                document.ContentLength = file.ContentLength;
+            }
+
+            _uow.Documents.Add(document);
+            _uow.Save();
+
+            return RedirectToAction<DocumentController>(c => c.Index());
         }
 
         [HttpPost]
@@ -167,7 +192,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         public ActionResult DownloadFile(Guid id)
         {
             var file = _uow.Documents.FindById(id);
-            return File(file.Path, file.ContentType ?? System.Net.Mime.MediaTypeNames.Application.Octet, file.Name);
+            return File(file.Path, MimeMapping.GetMimeMapping(file.Name), file.Name);
         }
 
         private ActionResult File()
@@ -243,7 +268,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             {
                 // TODO: Add delete logic here
                 //var selectedDocs = _uow.Documents.FilterBy(d => selectedIds.Contains(d.Id));
-                
+
                 return RedirectToAction("Index");
             }
             catch

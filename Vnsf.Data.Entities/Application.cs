@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vnsf.Data.Entities.Account;
+using Vnsf.Data.Entities.Shared;
 
 namespace Vnsf.Data.Entities
 {
-    public class Application : BaseAudit
+    public class Application 
     {
         public Guid Id { get; set; }
         public ApplicationStatus Status { get; set; } // submitted / withdraw / return / overdue
@@ -16,9 +17,8 @@ namespace Vnsf.Data.Entities
         public Guid OpportunityId { get; set; }
         public virtual Opportunity Opportunity { get; set; }
 
-        public virtual UserAccount Applicant{ get; set; }
+        //public virtual UserAccount Applicant{ get; set; }
 
-        public virtual ICollection<ApplicationDocument> Documents { get; set; }
 
         public Application()
         {
@@ -28,12 +28,9 @@ namespace Vnsf.Data.Entities
         {
             Id = Guid.NewGuid();
             Opportunity = opportunity;
-            Applicant = userAccount;
+            //Applicant = userAccount;
  
-            Documents = new List<ApplicationDocument>();
-
             Status = ApplicationStatus.Creating;
-            Created = DateTime.UtcNow;
         }
     }
 }

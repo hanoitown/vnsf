@@ -48,7 +48,7 @@ namespace Vnsf.Data.Entities.Account
         public virtual ICollection<UserClaim> Claims { get; internal set; }
         public virtual ICollection<LinkedAccount> LinkedAccounts { get; internal set; }
         public virtual ICollection<UserCertificate> Certificates { get; internal set; }
-        public virtual ICollection<Application> Applications { get; internal set; }
+        public virtual ICollection<Application> Applications { get;  set; }
 
         public static UserAccount Init(string username, string password, string email)
         {
