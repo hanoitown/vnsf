@@ -17,13 +17,28 @@ namespace Vnsf.WebHost.Models.Document
         public int ContentLength { get; set; }
         public bool IsFolder { get; set; }
         public string Path { get; set; }
-        public DateTime? LastUpdated { get; set; }
-        public DateTime? Created { get; set; }
+        public string Location { get; set; }
         public void CreateMapping(AutoMapper.IConfiguration configuration)
         {
             configuration.CreateMap<Doc, SelectDocumentBindingModel>()
                 .ForMember(d => d.Selected, opt => opt.Ignore());
+                //.ForMember(d=>d.ContentType, opt=> opt.MapFrom(s=>DocKind.Get(s.ContentType)));
+            
+        }
+    }
 
+    public class DocKind
+    {
+        public static string Get(string contentType)
+        {
+            switch (contentType)
+            {
+                case "img/png":
+                case "img/jpg":
+                    return "images";
+                default:
+                    return "File";
+            }
         }
     }
 }

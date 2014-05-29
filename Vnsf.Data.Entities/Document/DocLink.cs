@@ -9,14 +9,12 @@ using Vnsf.Data.Entities.Security;
 
 namespace Vnsf.Data.Entities
 {
-    public class DocShare
+    public class DocLink
     {
         public Guid Id { get; set; }
         public DateTime ExpireDate { get; set; }
         public string SecurityCode { get; set; }
         public virtual Doc Document { get; set; }
-        public virtual Permission Right { get; set; }
-        public virtual UserAccount Account { get; set; }        
-
+        public DateTime Created { get; set; }
     }
 }

@@ -108,7 +108,7 @@
     <Compile Include="EducationDetail.cs" />
     <Compile Include="EducationLevel.cs" />
     <Compile Include="Operation.cs" />
-    <Compile Include="Document\DocShare.cs" />
+    <Compile Include="Document\DocLink.cs" />
     <Compile Include="Document\DocStore.cs" />
     <Compile Include="Extensions\DisposableExtensions.cs">
       <SubType>Code</SubType>

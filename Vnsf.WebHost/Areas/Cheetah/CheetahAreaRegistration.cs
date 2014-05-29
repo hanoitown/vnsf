@@ -16,8 +16,8 @@ namespace Vnsf.WebHost.Areas.Cheetah
         {
             context.MapRoute(
                 "Directory",
-                "Cheetah/{controller}/{action}/{*path}",
-                new { Controller="Document", action = "Index", path = UrlParameter.Optional },
+                "Cheetah/{controller}/{action}/{*location}",
+                new { Controller="Document", action = "Index", Location = UrlParameter.Optional },
                 new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
             );
 

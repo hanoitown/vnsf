@@ -10,7 +10,8 @@ namespace Vnsf.Data
     public class VnsfConstants
     {
         public class AppSettingDefaults
-        {            
+        {
+            internal const string BaseUrl = "/documents";
             internal const bool RequireAccountVerification = true;
             internal const bool AllowLoginAfterAccountCreation = true;
             internal const int AccountLockoutFailedLoginAttempts = 5;
@@ -18,6 +19,7 @@ namespace Vnsf.Data
             internal const bool AllowAccountDeletion = true;
             internal const int PasswordHashingIterationCount = 0;
             internal const int PasswordResetFrequency = 0;
+
         }
 
         public class UserAccount

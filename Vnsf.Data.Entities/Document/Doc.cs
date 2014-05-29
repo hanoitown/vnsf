@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,18 +19,29 @@ namespace Vnsf.Data.Entities
         public int ContentLength { get; set; }
         public bool IsFolder { get; set; }
         public string Path { get; set; }
-
+        public string Location { get; set; }
         public virtual Doc Parent { get; set; }
         public virtual ICollection<Doc> Children { get; set; }
-        public virtual ICollection<DocShare> Shares { get; set; }
+        public virtual DocLink Link { get; set; }
         public virtual ICollection<DocProtection> Rights { set; get; }
         public virtual UserAccount Owner { get; set; }
         public Doc()
         {
-            Shares = new List<DocShare>();
             Rights = new List<DocProtection>();
             Children = new List<Doc>();
         }
+        public Doc(DirectoryInfo dir)
+        {
+            Name = dir.Name;
+            Path = dir.FullName;
+        }
+
+        public Doc(FileInfo fi)
+        {
+            Name = fi.Name;
+            Path = fi.FullName;
+        }
+
 
         public static Doc CreateFile(string name, string description, bool isFolder, string path, Doc container, UserAccount owner)
         {
@@ -87,18 +99,15 @@ namespace Vnsf.Data.Entities
             return list;
         }
 
-        public void AddShare(Permission permission, int effectiveDuration, string securityCode = null)
+        public DocLink AddLink(int effectiveDuration, string securityCode = null)
         {
-            //encrypted file
-            //decrypted before streaming
-            Shares.Add(new DocShare
+            return Link = new DocLink
             {
                 Id = Guid.NewGuid(),
-                SecurityCode = securityCode,
-                ExpireDate = DateTime.UtcNow.AddDays(effectiveDuration),
-                Right = permission
-            });
-
+                Created = DateTime.Now,
+                ExpireDate = DateTime.Now.AddMonths(1)
+                
+            };
         }
 
 

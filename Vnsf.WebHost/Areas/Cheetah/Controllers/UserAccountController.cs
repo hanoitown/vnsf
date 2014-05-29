@@ -101,7 +101,6 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             return View();
         }
 
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

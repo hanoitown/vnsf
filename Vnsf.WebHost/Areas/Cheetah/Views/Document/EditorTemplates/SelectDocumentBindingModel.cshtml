@@ -10,12 +10,12 @@
         {
             <p>
                 <i class="fa fa-folder-o fa-fw"></i>
-                @Html.ActionLink(Model.Name, "FolderView", new { id = Model.Id })
+                @Html.ActionLink(Model.Name, "Browse", new { location = string.Format("{0}/{1}", Model.Location, Model.Name) })
             </p>
         }
         else
         {
-            @Html.ActionLink(Model.Name, "FolderView", new { id = Model.Id })
+            @Html.ActionLink(Model.Name, "Browse", new { path = string.Format("{0}/{1}", Model.Location ?? "home/", Model.Name) })
 
         }
     </td>
@@ -25,7 +25,7 @@
         @(string.IsNullOrEmpty(Model.ContentType) ? "--" : Model.ContentType)
     </td>
     <td>
-        @(Model.ContentLength == 0 ? "--" : (Model.ContentLength*8).Bits().ToString("##.##"))
+        @(Model.ContentLength == 0 ? "--" : (Model.ContentLength * 8).Bits().ToString("##.##"))
         @*@Html.DisplayFor(modelItem => item.ContentLength.Bits().Kilobytes)*@
     </td>
     <td>
@@ -38,9 +38,6 @@
                 <li><a href="@Url.Action("FileShare",new {id=Model.Id})"><i class="fa fa-share-square-o fa-fw"></i> Share Link ..</a></li>
                 <li><a href="@Url.Action("DownloadFile",new {id=Model.Id})"><i class='fa fa-download fa-fw'></i>  Download</a></li>
                 <li><a href="#"><i class="fa fa-edit fa-fw"></i> Rename ..</a></li>
-                <li><a href="#"><i class="fa fa-reply fa-fw"></i> Move ..</a></li>
-                <li><a href="#"><i class="fa fa-copy fa-fw"></i> Copy ..</a></li>
-                <li><a href="#"><i class="fa fa-clock-o fa-fw"></i> Previous versions</a></li>
             </ul>
         </div>
     </td>

@@ -376,17 +376,11 @@
     <Compile Include="Models\ClassificationViewModel.cs" />
     <Compile Include="Models\ContactBindingModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
-    <Compile Include="Models\Document\DocShareBindingModel.cs" />
-    <Compile Include="Models\Document\DocShareViewModel.cs" />
-    <Compile Include="Models\Document\DocumentBindingModel.cs" />
     <Compile Include="Models\Document\DocumentsSelectionViewModel.cs" />
-    <Compile Include="Models\Document\FileUploadModel.cs" />
+    <Compile Include="Models\Document\FileUploadBindingModel.cs" />
     <Compile Include="Models\Document\FolderBindingModel.cs" />
-    <Compile Include="Models\Document\FolderCreateModel.cs" />
-    <Compile Include="Models\Document\FolderViewModel.cs" />
     <Compile Include="Models\Document\SelectDocumentBindingModel.cs" />
     <Compile Include="Models\LocalizedCultureViewModel.cs" />
-    <Compile Include="Models\Document\DocumentViewModel.cs" />
     <Compile Include="Models\GrantViewModel.cs" />
     <Compile Include="Models\GrantBindingModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -410,7 +404,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_offline1.htm" />
-    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Areas\Admin\Scripts\Budget.js" />
     <Content Include="Areas\Admin\Scripts\Budgets.js" />
     <Content Include="Areas\Admin\Scripts\Categories.js" />
@@ -665,12 +658,12 @@
     <Content Include="Content\Selectize\less\plugins\dropdown_header.less" />
     <Content Include="Content\Selectize\less\plugins\drag_drop.less" />
     <Content Include="Content\jasny-bootstrap.css.map" />
-    <Content Include="Areas\Cheetah\Views\Document\AddFile.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Document\Upload.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\FolderId.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\FileShare.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\EditorTemplates\SelectDocumentBindingModel.cshtml" />
-    <Content Include="Areas\Cheetah\Views\Document\Index.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Document\Browse.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\_FileView.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\_LayoutForAnonymous.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\Create.cshtml" />

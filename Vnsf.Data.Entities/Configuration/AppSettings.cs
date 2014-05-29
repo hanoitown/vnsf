@@ -40,7 +40,7 @@ namespace Vnsf.Data
             return (AppSettings)System.Configuration.ConfigurationManager.GetSection(SectionName);
         }
 
-        private const string BASEURL = "/upload/";
+        private const string BASEURL = "baseUrl";
         private const string REQUIREACCOUNTVERIFICATION = "requireAccountVerification";
         private const string ALLOWLOGINAFTERACCOUNTCREATION = "allowLoginAfterAccountCreation";
         private const string ACCOUNTLOCKOUTFAILEDLOGINATTEMPTS = "accountLockoutFailedLoginAttempts";
@@ -50,7 +50,7 @@ namespace Vnsf.Data
         private const string PASSWORDRESETFREQUENCY = "passwordResetFrequency";
 
 
-        [ConfigurationProperty(REQUIREACCOUNTVERIFICATION, DefaultValue = VnsfConstants.AppSettingDefaults.RequireAccountVerification)]
+        [ConfigurationProperty(BASEURL, DefaultValue = VnsfConstants.AppSettingDefaults.BaseUrl)]
         public string BaseUrl
         {
             get { return (string)this[BASEURL]; }

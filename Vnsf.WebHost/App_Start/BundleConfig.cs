@@ -62,6 +62,8 @@ namespace Vnsf.WebHost
                       "~/Content/jquery.fileupload-ui-noscript.css",
                       "~/Content/jquery.fileupload-ui.css",
                       "~/Content/site.css"));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

@@ -67,6 +67,24 @@ namespace Vnsf.Data.Entities.Account
             };
         }
 
+        public static UserAccount Register( string email, string mobile, string password)
+        {
+            return new UserAccount
+            {
+                Id = Guid.NewGuid(),
+                Username = email,
+                Email = email,
+                MobilePhoneNumber = mobile,
+                Created = DateTime.UtcNow,
+                LastUpdated = DateTime.UtcNow,
+                HashedPassword = HashPassword(password),
+                PasswordChanged = DateTime.UtcNow,
+                IsAccountVerified = false,
+                IsLoginAllowed = false,
+                VerificationPurpose = VerificationKeyPurpose.VerifyAccount
+            };
+        }
+
         public void UpdateUser(string username, string email)
         {
             Username = username;

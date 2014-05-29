@@ -20,7 +20,7 @@ namespace Vnsf.WebHost
     {
         protected void Application_Start()
         {
-            //VnsfDbInit.InitDb();
+            VnsfDbInit.InitDb();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -29,7 +29,7 @@ namespace Vnsf.WebHost
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Email;
-            //AutoMapperBootstrapper.Init();
+            AutoMapperBootstrapper.Init();
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
