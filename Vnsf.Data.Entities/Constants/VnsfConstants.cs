@@ -19,6 +19,10 @@ namespace Vnsf.Data
             internal const bool AllowAccountDeletion = true;
             internal const int PasswordHashingIterationCount = 0;
             internal const int PasswordResetFrequency = 0;
+            internal const string GoogleClientId = "212507878610-4b9qn1edep6iotto0muc273028icku4a.apps.googleusercontent.com";
+            internal const string GoogleClientSecret = "7XbIZQekpt69tvwNJA4Lt3vW";
+            internal const string FacebookClientId = "212507878610-4b9qn1edep6iotto0muc273028icku4a.apps.googleusercontent.com";
+            internal const string FacebookClientSecret = "7XbIZQekpt69tvwNJA4Lt3vW";
 
         }
 

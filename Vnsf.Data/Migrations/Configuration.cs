@@ -10,6 +10,7 @@ namespace Vnsf.Data.EF.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Vnsf.Data.VnsfDbContext context)

@@ -32,8 +32,7 @@ namespace Vnsf.WebHost
                         "~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.validate.unobtrusive.js",
-                        "~/Scripts/jquery.fileupload.js",
-                        "~/Scripts/jquery.iframe-transport.js",
+
 
                         // Knockout and its plugins
                         "~/Scripts/knockout-{version}.js",
@@ -43,9 +42,13 @@ namespace Vnsf.WebHost
                         // Other 3rd party libraries
                         "~/Scripts/underscore.js",
                         "~/Scripts/moment.js",
-                        "~/Scripts/bootstrap-datetimepicker.js",
+                //"~/Scripts/bootstrap-datetimepicker.js",
+                //"~/Scripts/jquery.fileupload.js",
+                //"~/Scripts/jquery.iframe-transport.js",
+                        "~/Scripts/selectize.js"
 
-                        "~/Scripts/jasny-bootstrap.js"
+                        //"~/Scripts/jasny-bootstrap.js"
+
                         ));
 
 
@@ -56,11 +59,11 @@ namespace Vnsf.WebHost
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/bootstrap-datetimepicker.css",
-                      "~/Content/jasny-bootstrap.css",
+                //"~/Content/bootstrap-datetimepicker.css",
                       "~/Content/font-awesome.css",
-                      "~/Content/jquery.fileupload-ui-noscript.css",
-                      "~/Content/jquery.fileupload-ui.css",
+                //"~/Content/jquery.fileupload-ui-noscript.css",
+                //"~/Content/jquery.fileupload-ui.css",
+                      "~/Content/selectize.bootstrap3.css",
                       "~/Content/site.css"));
 
             BundleTable.EnableOptimizations = false;

@@ -79,9 +79,11 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         {
             if (ModelState.IsValid)
             {
-                var account = _uow.UserAccounts.All.FirstOrDefault(u => u.Username == model.UserName);
-                if (account != null)
+                var account = _uow.UserAccounts.All.FirstOrDefault(u => u.Email == model.EmailOrMobile || u.MobilePhoneNumber == model.EmailOrMobile);
+                var result = account.VerifyPassword(model.Password);
+                if (result)
                 {
+                    //verify password
                     await LoginAsync(account, model.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
@@ -182,6 +184,9 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+
+
+                //_uow.UserAccounts.FilterBy(u => u.Email == info.Email).Any()
 
                 if (!_uow.UserAccounts.FilterBy(u => u.Username == model.UserName).Any())
                 {
@@ -364,6 +369,10 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         //    return View(model);
         //}
 
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
 
         [ChildActionOnly]
         public ActionResult RemoveAccountList()

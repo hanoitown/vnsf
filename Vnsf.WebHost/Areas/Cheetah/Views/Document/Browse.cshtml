@@ -1,7 +1,7 @@
 ﻿@model Vnsf.WebHost.Models.Document.DocumentsSelectionViewModel
 
 @{
-    ViewBag.Title = "Index2";
+    ViewBag.Title = "Document manager";
 }
 
 <h2>Document manager</h2>
@@ -20,7 +20,7 @@
         @Html.ActionLink("Up", "Up", new { location = Model.CurrLocation.LastIndexOf('/') > 0 ? Model.CurrLocation.Substring(0, Model.CurrLocation.LastIndexOf('/')) : "" }, new { @class = "btn btn-sm btn-primary" })
 
         @Html.ActionLink("Upload", "Upload", new { location = Model.CurrLocation }, new { @class = "btn btn-sm btn-primary" })
-        @Html.ActionLink("Create folder", "Create", new { location = Model.CurrLocation, isFolder = true }, new { @class = "btn btn-sm btn-primary" })
+        @Html.ActionLink("New folder", "Create", new { location = Model.CurrLocation, isFolder = true }, new { @class = "btn btn-sm btn-primary" })
         <button class="btn btn-sm btn-primary" type="submit" value="submit">Delete</button>
 
     </p>
@@ -29,7 +29,7 @@
         <tr>
             <th><input type="checkbox" id="checkall" /><span></span></th>
             <th>Name</th>
-            <th>Content Type</th>
+            <th>Kind</th>
             <th>Length</th>
             <th></th>
         </tr>
@@ -57,31 +57,3 @@
         });
     </script>
 }
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <div><p>Choose files to upload to the folder temp. You can select more than one file at a time. You can also drag and drop files anywhere on this page to start uploading.</p></div>
-                <div class="well">
-                    <span>Uploaded 3 files</span><span>- 1.69 MB</span><span class=" pull-right"></span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div>
-                    <span class="pull-left">
-                        Having problems? Try the
-                        <a>basic uploader</a>.
-                    </span>
-                    <div class="pull-right">
-                        <input style="position: relative; z-index: 1;" type="button" id="choose-button" value="Choose files" class="btn btn-primary">
-                        <input type="button" onclick="Modal.hide();" value="Cancel" class="btn btn-default">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

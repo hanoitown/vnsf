@@ -8,12 +8,12 @@ namespace Vnsf.WebHost.Models.Document
 {
     public class DocumentsSelectionViewModel
     {
-        public IEnumerable<SelectDocumentBindingModel> Documents { get; set; }
+        public List<DocumentViewModel> Documents { get; set; }
         [HiddenInput]
         public string CurrLocation { get; set; }
         public DocumentsSelectionViewModel()
         {
-            Documents = new List<SelectDocumentBindingModel>();
+            Documents = new List<DocumentViewModel>();
         }
 
         public IEnumerable<Guid> GetSelectedIds()

@@ -90,6 +90,11 @@ namespace Vnsf.Data.Entities.Account
             Username = username;
             Email = email;
         }
+        
+        public bool VerifyPassword(string password)
+        {
+            return VerifyHashedPassword(password);
+        }
 
         protected internal static string HashPassword(string password)
         {

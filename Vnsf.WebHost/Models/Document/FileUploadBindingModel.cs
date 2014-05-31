@@ -10,8 +10,10 @@ namespace Vnsf.WebHost.Models.Document
     {
         [HiddenInput]
         public Guid Id { get; set; }
+        [HiddenInput]
         public string Name { get; set; }
         public HttpPostedFileBase File { get; set; }
+        public string Description { get; set; }
         [HiddenInput]
         public string Location { get; set; }
 

@@ -27,6 +27,8 @@ using Vnsf.WebHost.Infrastructure;
 using System.Diagnostics;
 using Vnsf.Data;
 using System.IO;
+using ICSharpCode.SharpZipLib.Zip;
+using System.Text;
 
 namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 {
@@ -58,12 +60,24 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             {
                 vm.CurrLocation = _home;
                 // parent is null
-                vm.Documents = _uow.Documents.AllIncluding(o => o.Owner).Where(d => d.Parent == null && d.Owner.Id == _user.User.Id).OrderByDescending(o => o.IsFolder).ThenBy(o => o.Name).Project().To<SelectDocumentBindingModel>();
+                vm.Documents = new List<DocumentViewModel>();
+                var docs = _uow.Documents.AllIncluding(o => o.Owner).Where(d => d.Parent == null && d.Owner.Id == _user.User.Id).OrderByDescending(o => o.IsFolder).ThenBy(o => o.Name);
+
+                foreach (var item in docs)
+                {
+                    vm.Documents.Add(AutoMapper.Mapper.Map<Doc, DocumentViewModel>(item));
+                }
             }
             else
             {
                 vm.CurrLocation = Request.RequestContext.RouteData.Values["location"].ToString();
-                vm.Documents = _uow.Documents.AllIncluding(o => o.Owner).Where(d => d.Location == location && d.Owner.Id == _user.User.Id).OrderByDescending(o => o.IsFolder).ThenBy(o => o.Name).Project().To<SelectDocumentBindingModel>();
+                vm.Documents = new List<DocumentViewModel>();
+                var docs = _uow.Documents.AllIncluding(o => o.Owner).Where(d => d.Location == location && d.Owner.Id == _user.User.Id).OrderByDescending(o => o.IsFolder).ThenBy(o => o.Name);
+
+                foreach (var item in docs)
+                {
+                    vm.Documents.Add(AutoMapper.Mapper.Map<Doc, DocumentViewModel>(item));
+                }
             }
 
             //var _name = location.Substring(location.LastIndexOf('/') + 1);
@@ -89,6 +103,15 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         [HttpPost]
         public async Task<ActionResult> Browse(DocumentsSelectionViewModel model)
         {
+            //var selectedIds = model.GetSelectedIds();
+            //var files = new List<string>();
+            //foreach (var id in selectedIds)
+            //{
+            //    var doc = await _uow.Documents.FindAsyncById(id);
+            //    files.Add(doc.Path);
+            //}
+            //return new ZipActionResult(files);
+
             var selectedIds = model.GetSelectedIds();
             foreach (var id in selectedIds)
             {
@@ -186,7 +209,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
                 file.SaveAs(path);
 
             // logical
-            var document = Doc.CreateFile(string.IsNullOrEmpty(form.Name) ? file.FileName : form.Name, string.Empty, false,
+            var document = Doc.CreateFile(string.IsNullOrEmpty(form.Name) ? file.FileName : form.Name, form.Description, false,
                                     new FileInfo(path).FullName, container, _user.User);
             document.ContentLength = file.ContentLength;
             document.ContentType = MimeMapping.GetMimeMapping(file.FileName);
@@ -200,12 +223,119 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 
 
         [AllowAnonymous]
-        public ActionResult DownloadFile(Guid id)
+        public ActionResult Download(Guid id)
         {
             var file = _uow.Documents.FindById(id);
             return File(file.Path, MimeMapping.GetMimeMapping(file.Name), file.Name);
         }
 
+        [AllowAnonymous]
+        public ActionResult FileLink(Guid id)
+        {
+            var file = _uow.Documents.AllIncluding(c => c.Link).Where(d => d.Id == id).FirstOrDefault();
 
+            if (file.Link == null)
+            {
+                file.CreateLink();
+                _uow.Save();
+            }
+
+            var vm = new DocumentLinkModel()
+            {
+                Id = file.Id,
+                Name = file.Name,
+                Description = file.Description,
+                Path = file.Path,
+                ContentType = file.ContentType,
+                ContentLength = file.ContentLength,
+                SecurityCode = file.Link == null ? string.Empty : file.Link.SecurityCode,
+                Created = file.Link.Created,
+                Expire = file.Link.ExpireDate
+            };
+            //AutoMapper.Mapper.Map(file, vm);
+            return View(vm);
+        }
+
+        public static IEnumerable<string> GenerateFileList(string directory)
+        {
+            var files = new List<string>();
+            var empty = true;
+
+            foreach (var file in Directory.GetFiles(directory))
+            {
+                files.Add(file);
+                empty = false;
+            }
+
+            if (empty && Directory.GetDirectories(directory).Length == 0)
+                files.Add(directory + @"/");
+
+            files.AddRange(Directory.GetDirectories(directory).SelectMany(GenerateFileList));
+            return files;
+        }
+
+    }
+
+    public class ZipActionResult : FileResult
+    {
+        public IEnumerable<string> FilesToZip { set; get; }
+        public ZipActionResult(IEnumerable<string> filesToZip)
+            : base("application/zip")
+        {
+            FilesToZip = filesToZip;
+        }
+        protected override void WriteFile(HttpResponseBase response)
+        {
+            response.BufferOutput = false;
+
+            response.Clear();
+            response.ClearContent();
+            response.ClearHeaders();
+            response.Cookies.Clear();
+            response.ContentType = ContentType;
+            response.ContentEncoding = Encoding.Default;
+            response.AddHeader("Content-Type", ContentType);
+            response.AddHeader("Content-Disposition",
+                                    String.Format("attachment; filename={0}",
+                                    this.FileDownloadName));
+            byte[] buffer = new byte[4096];
+
+            using (ZipOutputStream zipOutputStream =
+                        new ZipOutputStream(response.OutputStream))
+            {
+                foreach (string fileName in FilesToZip)
+                {
+                    int folderOffset = fileName.LastIndexOf('\\');
+
+                    Stream fs = System.IO.File.OpenRead(fileName);    // or any suitable inputstream
+                    string entryName = fileName.Substring(folderOffset);
+                    ZipEntry entry = new ZipEntry(ZipEntry.CleanName(entryName));
+                    entry.Size = fs.Length;
+                    // Setting the Size provides WinXP built-in extractor compatibility,
+                    //  but if not available, you can set zipOutputStream.UseZip64 = UseZip64.Off instead.
+
+                    zipOutputStream.PutNextEntry(entry);
+                    //zipOutputStream.SetLevel(3); // 0-9 for compression level
+                    //zipOutputStream.Password(); // security
+
+                    int count = fs.Read(buffer, 0, buffer.Length);
+                    while (count > 0)
+                    {
+                        zipOutputStream.Write(buffer, 0, count);
+                        count = fs.Read(buffer, 0, buffer.Length);
+                        if (!response.IsClientConnected)
+                        {
+                            break;
+                        }
+                        response.Flush();
+                    }
+                    fs.Close();
+                }
+                zipOutputStream.Finish();
+            }
+            //response.OutputStream.Flush();
+            response.End();
+
+        }
     }
 }

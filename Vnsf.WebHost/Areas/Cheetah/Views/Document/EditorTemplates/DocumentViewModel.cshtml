@@ -1,0 +1,46 @@
+﻿@model Vnsf.WebHost.Models.Document.DocumentViewModel
+@using Humanizer
+<tr>
+    <td>
+        @Html.CheckBoxFor(model => model.Selected)
+        @Html.HiddenFor(model => model.Id)
+    </td>
+    <td>
+        @if (Model.IsFolder)
+        {
+            <p>
+                <i class="fa fa-folder-o fa-fw"></i>
+                @Html.ActionLink(Model.Name, "Browse", new { location = string.Format("{0}/{1}", Model.Location, Model.Name) })
+            </p>
+        }
+        else
+        {
+            @Model.Name
+
+        }
+    </td>
+
+    <td>
+        @*@Html.DisplayFor(modelItem => item.ContentType)*@
+        @(string.IsNullOrEmpty(Model.ContentType) ? "folder" : Model.Kind)
+    </td>
+    <td>
+        @(Model.ContentLength == 0 ? "--" : (Model.ContentLength * 8).Bits().ToString("##.##"))
+        @*@Html.DisplayFor(modelItem => item.ContentLength.Bits().Kilobytes)*@
+    </td>
+    <td>
+        <div class="btn-group ">
+            <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="fa fa-link fa-fw"></span>
+                <span class="fa fa-caret-down"></span>
+            </a>
+            <ul class="dropdown-menu pull-right">
+                <li><a href="@Url.Action("FileLink", new { id = Model.Id})"><i class="fa fa-share-square-o fa-fw"></i> Share Link ..</a></li>
+                <li><a href="@Url.Action("Download",new {id=Model.Id})"><i class='fa fa-download fa-fw'></i>  Download</a></li>
+                <li><a href="#"><i class="fa fa-edit fa-fw"></i> Rename ..</a></li>
+            </ul>
+        </div>
+    </td>
+
+
+</tr>

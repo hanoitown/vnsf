@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 namespace Vnsf.WebHost.Infrastructure.ModelMetadata.Filters
 {
-    public class PasswordInputByNameFilter : IModelMetadataInterface
+    public class EmailInputByNameFilter : IModelMetadataInterface
     {
 
-        static HashSet<string> PasswordFieldNames = new HashSet<string>
+        static HashSet<string> EmailFieldNames = new HashSet<string>
                                     {
-                                          "password"             
+                                          "email"             
                                     };
         public void TransformMetadata(System.Web.Mvc.ModelMetadata metadata, System.Collections.Generic.IEnumerable<System.Attribute> attributes)
         {
-            if (string.IsNullOrEmpty(metadata.DataTypeName) && !string.IsNullOrEmpty(metadata.PropertyName) && PasswordFieldNames.Contains(metadata.PropertyName.ToLower()))
+            if (string.IsNullOrEmpty(metadata.DataTypeName) && !string.IsNullOrEmpty(metadata.PropertyName) && EmailFieldNames.Contains(metadata.PropertyName.ToLower()))
             {
-                metadata.DataTypeName = "Password";
+                metadata.DataTypeName = "EmailAddress";
             }
 
         }

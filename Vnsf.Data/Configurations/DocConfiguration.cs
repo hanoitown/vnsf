@@ -13,6 +13,7 @@ namespace Vnsf.Data.EF.Configurations
         public DocConfiguration()
         {
             this.HasOptional(d => d.Parent);
+            this.HasOptional(d => d.Link).WithRequired(l => l.Document);
         }
     }
 }

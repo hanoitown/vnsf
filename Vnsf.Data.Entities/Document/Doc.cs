@@ -99,14 +99,14 @@ namespace Vnsf.Data.Entities
             return list;
         }
 
-        public DocLink AddLink(int effectiveDuration, string securityCode = null)
+        public void CreateLink(string securityCode = "nafostef")
         {
-            return Link = new DocLink
+            Link = new DocLink
             {
                 Id = Guid.NewGuid(),
                 Created = DateTime.Now,
-                ExpireDate = DateTime.Now.AddMonths(1)
-                
+                ExpireDate = DateTime.Now.AddMonths(1),
+                SecurityCode = securityCode
             };
         }
 

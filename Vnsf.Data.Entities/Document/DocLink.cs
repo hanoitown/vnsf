@@ -16,5 +16,9 @@ namespace Vnsf.Data.Entities
         public string SecurityCode { get; set; }
         public virtual Doc Document { get; set; }
         public DateTime Created { get; set; }
+        public DocLink()
+        {
+
+        }
     }
 }
