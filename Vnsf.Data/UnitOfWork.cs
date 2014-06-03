@@ -24,6 +24,7 @@ namespace Vnsf.Data.EF
         public IRepository<Category> Categories { get { return GetStandardRepo<Category>(); } }
         public IRepository<Classification> CS { get { return GetStandardRepo<Classification>(); } }
         public IRepository<Storage> Storages { get { return GetStandardRepo<Storage>(); } }
+        public IRepository<ApplicationItem> AppItems { get { return GetStandardRepo<ApplicationItem>(); } }
         public IDocRepository Documents { get { return GetRepo<IDocRepository>(); } }
         public UnitOfWork(IRepositoryProvider repositoryProvider)
         {

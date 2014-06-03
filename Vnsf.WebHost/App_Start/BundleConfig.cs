@@ -42,7 +42,8 @@ namespace Vnsf.WebHost
                         // Other 3rd party libraries
                         "~/Scripts/underscore.js",
                         "~/Scripts/moment.js",
-                //"~/Scripts/bootstrap-datetimepicker.js",
+                        
+                        "~/Scripts/bootstrap-datetimepicker.js",
                 //"~/Scripts/jquery.fileupload.js",
                 //"~/Scripts/jquery.iframe-transport.js",
                         "~/Scripts/selectize.js"
@@ -58,11 +59,11 @@ namespace Vnsf.WebHost
             //            "~/Content/styles.less"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                //"~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/bootstrap.css",                
                       "~/Content/font-awesome.css",
                 //"~/Content/jquery.fileupload-ui-noscript.css",
                 //"~/Content/jquery.fileupload-ui.css",
+                      "~/Content/bootstrap-datepicker.css",
                       "~/Content/selectize.bootstrap3.css",
                       "~/Content/site.css"));
 

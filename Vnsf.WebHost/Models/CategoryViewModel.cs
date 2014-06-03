@@ -10,6 +10,7 @@ namespace Vnsf.WebHost.Models
 {
     public class CategoryViewModel : IMapFrom<Category>
     {
+        [HiddenInput]
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

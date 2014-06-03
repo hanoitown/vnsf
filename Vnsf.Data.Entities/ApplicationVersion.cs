@@ -20,7 +20,6 @@ namespace Vnsf.Data.Entities
         public virtual ICollection<ProposePublication> Publications { get; set; }
         public virtual ICollection<ProposeEducation> Educations { set; get; }
         public virtual ICollection<Review> Reviews { get; set; }
-        public virtual ICollection<ApplicationDocument> ApplicationPackage { get; set; }
         public virtual Application Application { get; set; }
 
 

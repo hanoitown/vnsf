@@ -22,7 +22,7 @@ namespace Vnsf.Data.Entities.Account
             this.Claims = new HashSet<UserClaim>();
             this.LinkedAccounts = new HashSet<LinkedAccount>();
             this.Certificates = new HashSet<UserCertificate>();
-            this.Applications = new HashSet<Application>(); 
+            this.Applications = new HashSet<Application>();
         }
 
         public Guid Id { get; set; }
@@ -48,7 +48,7 @@ namespace Vnsf.Data.Entities.Account
         public virtual ICollection<UserClaim> Claims { get; internal set; }
         public virtual ICollection<LinkedAccount> LinkedAccounts { get; internal set; }
         public virtual ICollection<UserCertificate> Certificates { get; internal set; }
-        public virtual ICollection<Application> Applications { get;  set; }
+        public virtual ICollection<Application> Applications { get; set; }
 
         public static UserAccount Init(string username, string password, string email)
         {
@@ -67,7 +67,7 @@ namespace Vnsf.Data.Entities.Account
             };
         }
 
-        public static UserAccount Register( string email, string mobile, string password)
+        public static UserAccount Register(string email, string mobile, string password)
         {
             return new UserAccount
             {
@@ -90,7 +90,7 @@ namespace Vnsf.Data.Entities.Account
             Username = username;
             Email = email;
         }
-        
+
         public bool VerifyPassword(string password)
         {
             return VerifyHashedPassword(password);
@@ -324,15 +324,14 @@ namespace Vnsf.Data.Entities.Account
         #endregion
         public Application ApplyForGrant(Opportunity opportunity)
         {
-            var application = Applications.Where(a => a.OpportunityId == opportunity.Id).FirstOrDefault();
-            if (application == null)
+            var app = new Application()
             {
-                application = new Application();
-                application.Init(opportunity, this);
-                Applications.Add(application);
-            }
+                Id = Guid.NewGuid(),
+                Opportunity = opportunity
+            };
+            Applications.Add(app);
 
-            return application;
+            return app;
             // Raise event
         }
     }

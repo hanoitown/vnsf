@@ -51,8 +51,9 @@
     <Compile Include="Address.cs" />
     <Compile Include="Announcement.cs" />
     <Compile Include="AnnouncementVersion.cs" />
-    <Compile Include="Application.cs" />
-    <Compile Include="ApplicationDocument.cs" />
+    <Compile Include="Document\FileBase.cs" />
+    <Compile Include="Registration\Application.cs" />
+    <Compile Include="Registration\ApplicationItem.cs" />
     <Compile Include="ApplicationStatus.cs" />
     <Compile Include="ApplicationVersion.cs" />
     <Compile Include="AssignmentType.cs" />
@@ -117,9 +118,9 @@
     <Compile Include="Account\LinkedAccount.cs" />
     <Compile Include="Account\LinkedAccountClaim.cs" />
     <Compile Include="Shared\BaseBusiness.cs" />
-    <Compile Include="Grant.cs" />
+    <Compile Include="Registration\Grant.cs" />
     <Compile Include="GrantCategory.cs" />
-    <Compile Include="Opportunity.cs" />
+    <Compile Include="Registration\Opportunity.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="OrganizationType.cs" />

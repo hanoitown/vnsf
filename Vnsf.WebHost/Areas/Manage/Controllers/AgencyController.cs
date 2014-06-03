@@ -10,6 +10,7 @@ using Vnsf.WebHost.Infrastructure.Alerts;
 using AutoMapper.QueryableExtensions;
 using Vnsf.WebHost.Infrastructure.Alerts;
 using Vnsf.WebHost.Models;
+using Vnsf.WebHost.Areas.Manage.Models;
 
 namespace Vnsf.WebHost.Areas.Manage.Controllers
 {
@@ -32,7 +33,7 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
 
         //
         // GET: /Manage/Agency/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
             return View();
         }
@@ -41,18 +42,28 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
         // GET: /Manage/Agency/Create
         public ActionResult Create()
         {
-            return View();
+            var vm = new AgencyBindingModel();
+            return View(vm);
         }
 
         //
         // POST: /Manage/Agency/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AgencyBindingModel form)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                if (ModelState.IsValid)
+                {
+                    _uow.Organizations.Add(new FundingAgency
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = form.Name,
+                        ShortName = form.ShortName
+                    });
+                    _uow.Save();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -87,9 +98,13 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
 
         //
         // GET: /Manage/Agency/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            var item = _uow.Organizations.FindById(id);
+            _uow.Organizations.Remove(item);
+            _uow.Save();
+
+            return RedirectToAction<AgencyController>(a => a.Index());
         }
 
         //

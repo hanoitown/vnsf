@@ -5,15 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Vnsf.Data.Entities;
+using Vnsf.Data.Repository;
 using Vnsf.Service.Contract.Service_Contracts;
 using Vnsf.WebHost.Base;
 using Vnsf.WebHost.Models;
 
 namespace Vnsf.WebHost.Areas.Admin.Controllers
 {
-    public class GrantsController : Controller
+    public class GrantsController : MvcBaseController
     {
         IInformationService _svc;
+
         public GrantsController(IInformationService service)
         {
             _svc = service;
@@ -22,6 +24,7 @@ namespace Vnsf.WebHost.Areas.Admin.Controllers
         // GET: /Admin/Grants/
         public ActionResult Index()
         {
+            //var vm = _uow.Grants.AllIncluding(g => g.Agency);
             var vm = _svc.GetAvailableGrants().Select(g => new GrantViewModel
             {
                 Id = g.Id,
@@ -51,11 +54,7 @@ namespace Vnsf.WebHost.Areas.Admin.Controllers
         // GET: /Admin/Grants/Create
         public ActionResult Create()
         {
-            var agencies = _svc.GetAllOrganizations();
-            var grant = new Grant();
-
-            var vm = new GrantBindingModel(grant, agencies);
-            return View(vm);
+            return View();
         }
 
         //
@@ -67,7 +66,12 @@ namespace Vnsf.WebHost.Areas.Admin.Controllers
             {
                 // TODO: Add insert logic here
                 if (ModelState.IsValid)
+                {
+                    var agengy = _uow.Organizations.FindById(grant.AgencyId);
+                    grant.Agency = (FundingAgency)agengy;
                     _svc.CreateGrant(grant);
+                }
+
                 return RedirectToAction("Index");
             }
             catch
@@ -80,11 +84,11 @@ namespace Vnsf.WebHost.Areas.Admin.Controllers
         // GET: /Admin/Grants/Edit/5
         public ActionResult Edit(Guid id)
         {
-            var grant = _svc.GetGrantDetailById(id);
-            var agencies = _svc.GetAllOrganizations();
+            //var grant = _svc.GetGrantDetailById(id);
+            //var agencies = _svc.GetAllOrganizations();
 
-            var vm = new GrantBindingModel(grant, agencies);
-            return View(vm);
+            //var vm = new GrantBindingModel(grant, agencies);
+            return View();
         }
 
         //
@@ -100,7 +104,7 @@ namespace Vnsf.WebHost.Areas.Admin.Controllers
                     _svc.PutGrantById(id, grant);
                 }
                 var agencies = _svc.GetAllOrganizations();
-                var vm = new GrantBindingModel(grant, agencies);
+                //var vm = new GrantBindingModel(grant, agencies);
                 return RedirectToAction("Index");
             }
             catch

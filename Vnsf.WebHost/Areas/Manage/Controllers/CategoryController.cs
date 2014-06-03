@@ -45,10 +45,11 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
         // GET: /Manage/Category/Create
         public ActionResult Create()
         {
-            ViewData["Classifications"] = _uow.ClassificationRepo.All
+            var repo = _uow.ClassificationRepo.All.ToList();
+            ViewData["Classifications"] = repo
                         .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), string.Empty);
-
-            return View();
+            var vm = new CategoryBindingModel();
+            return View(vm);
         }
 
         //

@@ -277,31 +277,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AgencyController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AnnouncementsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ClassificationController.cs" />
-    <Compile Include="Areas\Admin\Controllers\GrantsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\OpportunitiesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ScientistController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Cheetah\CheetahAreaRegistration.cs" />
     <Compile Include="Areas\Cheetah\Controllers\ApplicationController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\DocumentController.cs" />
-    <Compile Include="Areas\Cheetah\Controllers\GrantController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\HomeController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\OpportunityController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\UserAccountController.cs" />
+    <Compile Include="Areas\Cheetah\Models\ApplicationBindingModel.cs" />
     <Compile Include="Areas\Cheetah\Models\UserAccountLoginModel.cs" />
     <Compile Include="Areas\Cheetah\Models\UserAccountManageModel.cs" />
     <Compile Include="Areas\Manage\Controllers\AgencyController.cs" />
+    <Compile Include="Areas\Manage\Controllers\ApplicationItemController.cs" />
     <Compile Include="Areas\Manage\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Manage\Controllers\ClassificationController.cs" />
     <Compile Include="Areas\Manage\Controllers\CultureController.cs" />
     <Compile Include="Areas\Manage\Controllers\GrantController.cs" />
+    <Compile Include="Areas\Manage\Controllers\OpportunityController.cs" />
     <Compile Include="Areas\Manage\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
+    <Compile Include="Areas\Manage\Models\AgencyBindingModel.cs" />
+    <Compile Include="Areas\Manage\Models\AppItem.cs" />
+    <Compile Include="Areas\Manage\Models\AppItemBindingModel.cs" />
+    <Compile Include="Areas\Manage\Models\AppItemViewModel.cs" />
+    <Compile Include="Areas\Manage\Models\OppBindingModel.cs" />
+    <Compile Include="Areas\Manage\Models\OppViewModel.cs" />
     <Compile Include="Infrastructure\Base\ApiBaseController.cs" />
     <Compile Include="Filters\SetCultureAttribute.cs" />
     <Compile Include="Infrastructure\Helpers\CultureHelper.cs" />
@@ -325,7 +324,10 @@
     <Compile Include="Infrastructure\Mapping\IHaveCustomMapping.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Infrastructure\ModelMetadata\ExtensibleModelMetadataProvider.cs" />
-    <Compile Include="Infrastructure\ModelMetadata\Filters\ClassificationDropDownFilter.cs">
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForOpportunity.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForGrants.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForIssuer.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForClassification.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\ModelMetadata\Filters\CultureDropDownFilter.cs" />
@@ -359,7 +361,7 @@
     <Compile Include="Infrastructure\TransactionPerRequest.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AgencyViewModel.cs" />
+    <Compile Include="Areas\Manage\Models\AgencyViewModel.cs" />
     <Compile Include="Models\AnnouncementBindingModel.cs" />
     <Compile Include="Models\AnnouncementViewModel.cs" />
     <Compile Include="Models\ApplicationBindingModel.cs" />
@@ -377,6 +379,8 @@
     <Compile Include="Models\Document\FileUploadBindingModel.cs" />
     <Compile Include="Models\Document\FolderBindingModel.cs" />
     <Compile Include="Models\Document\DocumentViewModel.cs" />
+    <Compile Include="Models\ISO\EgibilityGroup.cs" />
+    <Compile Include="Models\ISO\PublishFee.cs" />
     <Compile Include="Models\LocalizedCultureViewModel.cs" />
     <Compile Include="Models\GrantViewModel.cs" />
     <Compile Include="Models\GrantBindingModel.cs" />
@@ -401,22 +405,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_offline1.htm" />
-    <Content Include="Areas\Admin\Scripts\Budget.js" />
-    <Content Include="Areas\Admin\Scripts\Budgets.js" />
-    <Content Include="Areas\Admin\Scripts\Categories.js" />
-    <Content Include="Areas\Admin\Scripts\Category.js" />
-    <Content Include="Areas\Admin\Scripts\grant.js" />
-    <Content Include="Areas\Admin\Scripts\grants.js" />
-    <Content Include="Areas\Admin\Scripts\organization.js" />
-    <Content Include="Areas\Admin\Scripts\organizations.js" />
     <Content Include="Areas\Manage\Views\Shared\EditorTemplates\ClassificationId.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\page_white.png" />
@@ -502,33 +500,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Areas\Admin\Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_sideBar.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_topBar.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_bottomBar.cshtml" />
-    <Content Include="Areas\Admin\Views\Grant\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Grant\Manage.cshtml" />
-    <Content Include="Areas\Admin\Views\Grant\Budgets.cshtml" />
-    <Content Include="Areas\Admin\Views\Grant\Budget.cshtml" />
-    <Content Include="Areas\Admin\Views\Organization\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Organization\Manage.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\OrganizationCategory\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\OrganizationCategory\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\OrganizationCategory\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\OrganizationCategory\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\OrganizationCategory\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Classification\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Classification\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Classification\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Classification\Edit.cshtml" />
     <Content Include="Areas\Cheetah\Views\web.config" />
-    <Content Include="Areas\Admin\Views\UserAccount\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\UserAccount\Create.cshtml" />
     <Content Include="Areas\Cheetah\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserAccount\Login.cshtml" />
@@ -540,32 +512,9 @@
     <Content Include="Areas\Cheetah\Views\UserAccount\_SetPasswordPartial.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserAccount\_ChangePasswordPartial.cshtml" />
     <Content Include="Areas\Cheetah\Views\Grant\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Grants\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Grants\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Grants\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Grants\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Grants\_Opportunities.cshtml" />
-    <Content Include="Areas\Admin\Views\Grants\CreateOpportunity.cshtml" />
-    <Content Include="Areas\Admin\Views\Opportunities\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Opportunities\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Opportunities\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Announcements\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Announcements\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Announcements\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Agency\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Agency\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Agency\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Agency\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Agency\Index.cshtml" />
     <Content Include="Areas\Cheetah\Views\Opportunity\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Cheetah\Views\Application\Apply.cshtml" />
     <Content Include="Areas\Cheetah\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Alerts.cshtml" />
     <Content Include="Areas\Manage\Views\web.config" />
     <Content Include="Areas\Manage\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Manage\Views\Shared\_Layout.cshtml" />
@@ -582,7 +531,6 @@
     <Content Include="Areas\Manage\Views\Category\Delete.cshtml" />
     <Content Include="Areas\Manage\Views\UserAccount\Index.cshtml" />
     <Content Include="Areas\Manage\Views\UserAccount\Create.cshtml" />
-    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Areas\Manage\Views\UserAccount\Delete.cshtml" />
     <Content Include="Areas\Manage\Views\UserAccount\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Grant\Index.cshtml" />
@@ -615,6 +563,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Manage\Views\Grant\Create.cshtml" />
+    <Content Include="Areas\Manage\Views\Agency\Create.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\IssuerId.cshtml" />
+    <Content Include="Areas\Manage\Views\Grant\Edit.cshtml" />
+    <Content Include="Areas\Manage\Views\Opportunity\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\GrantId.cshtml" />
+    <Content Include="Areas\Manage\Views\Opportunity\Create.cshtml" />
+    <Content Include="Areas\Manage\Views\Opportunity\Edit.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Manage\Views\Opportunity\Details.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\OpportunityId.cshtml" />
+    <Content Include="Areas\Manage\Views\ApplicationItem\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\ApplicationItem\Create.cshtml" />
+    <Content Include="Areas\Manage\Views\ApplicationItem\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -654,6 +616,7 @@
     <Content Include="ReadMe.txt" />
     <Content Include="RecaptchaNet.ReadMe.txt" />
     <Content Include="Scripts\app\service.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -688,6 +651,8 @@
     <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Scripts\moment-with-langs.js" />
     <Content Include="Scripts\moment-with-langs.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -716,11 +681,15 @@
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime1.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\Object.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ReadOnly.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -731,12 +700,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Contact\" />
-    <Folder Include="Areas\Admin\Views\Scientist\" />
-    <Folder Include="Areas\Admin\Views\Shared\EditorTemplates\" />
     <Folder Include="Areas\Cheetah\Scripts\" />
-    <Folder Include="Areas\Manage\Models\" />
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>

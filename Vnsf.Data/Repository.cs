@@ -76,7 +76,7 @@ namespace Vnsf.Data.EF
 
         public IQueryable<T> All
         {
-            get { return this.DbSet; }
+            get { return DbSet; }
         }
 
         public IQueryable<T> FilterBy(Expression<Func<T, bool>> predicate)

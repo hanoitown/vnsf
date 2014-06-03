@@ -15,8 +15,8 @@ namespace Vnsf.WebHost.Models
         public OpportunityBindingModel(Opportunity opp, IEnumerable<Grant> grants, IEnumerable<Classification> classifications)
         {
             Opportunity = opp;
-            Grants = grants.ToSelectList(g => g.Id.ToString(), g => g.Name, opp.GrantId.ToString());
-            Classifications = classifications.ToSelectList(c => c.Id.ToString(), c => c.Name, opp.ClassificationId.ToString());
+            //Grants = grants.ToSelectList(g => g.Id.ToString(), g => g.Name, opp.GrantId.ToString());
+            //Classifications = classifications.ToSelectList(c => c.Id.ToString(), c => c.Name, opp.ClassificationId.ToString());
         }
     }
 }

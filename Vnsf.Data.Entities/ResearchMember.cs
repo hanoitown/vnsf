@@ -10,6 +10,5 @@ namespace Vnsf.Data.Entities
     {
         public string Organization { get; set; }
         public EducationLevel EducationLevel { get; set; }
-        public virtual ApplicationVersion Proposal { set; get; }
     }
 }

@@ -32,20 +32,30 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         }
 
         [Authorize]
-        public ActionResult Apply(Guid opportunityId)
+        public ActionResult Detail(Guid id)
         {
-            var opportunity = _uow.OpportunitiesRepo.FindById(opportunityId);
 
-            var documentCategories = _uow.Categories.All;//FilterBy(c => c.ClassificationId == opportunity.ClassificationId).ToList();
-
-            if (!_user.User.Applications.Where(a => a.OpportunityId == opportunityId).Any())
+            var application = _user.User.Applications.First(a => a.Id == id);
+            if (application!=null)
             {
-                var application = _user.User.ApplyForGrant(opportunity);
-                _uow.Save();
-            }
+                var docs = _uow.OpportunitiesRepo.AllIncluding(o => o.ApplicationPackage).First(o => o.Id == application.Opportunity.Id);
 
-            var vm = new ApplicationBindingModel(new Application(), _user.User, opportunity, documentCategories);
-            return View(vm);
+
+                var documentCategories = _uow.Categories.All;//FilterBy(c => c.ClassificationId == opportunity.ClassificationId).ToList();
+
+                //if (!_user.User.Applications.Where(a => a.OpportunityId == opportunityId).Any())
+                //{
+                //    var application = _user.User.ApplyForGrant(opportunity);
+                //    _uow.Save();
+                //}
+
+                //var vm = new ApplicationBindingModel(new Application(), _user.User, opportunity, documentCategories);
+                //return View(vm);
+
+                return null;
+            }
+            else
+                return RedirectToAction<OpportunityController>(o => o.Index());
 
         }
 

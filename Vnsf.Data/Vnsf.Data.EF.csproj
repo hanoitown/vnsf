@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AnnouncementRepository.cs" />
     <Compile Include="Configurations\ApplicationConfiguration.cs" />
+    <Compile Include="Configurations\UserAccountConfiguration.cs" />
     <Compile Include="DataContexts\BaseContext.cs" />
     <Compile Include="ClassificationRepository.cs" />
     <Compile Include="Configurations\DocConfiguration.cs" />

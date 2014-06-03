@@ -9,7 +9,8 @@ using Vnsf.WebHost.Models;
 using Microsoft.Web.Mvc;
 using Vnsf.WebHost.Infrastructure.Alerts;
 using AutoMapper.QueryableExtensions;
-using Vnsf.WebHost.Infrastructure.Alerts;
+using Vnsf.Data.Entities;
+using System.Threading.Tasks;
 
 namespace Vnsf.WebHost.Areas.Manage.Controllers
 {
@@ -41,19 +42,40 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
         // GET: /Manage/Grant/Create
         public ActionResult Create()
         {
-            return View();
+            ViewData["Issuers"] = _uow.Organizations.All.OfType<FundingAgency>()
+                                   .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), string.Empty);
+            var vm = new GrantBindingModel();
+            return View(vm);
         }
 
         //
         // POST: /Manage/Grant/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(GrantBindingModel form)
         {
             try
             {
                 // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    var issuer = _uow.Organizations.All.OfType<FundingAgency>().First(a => a.Id == form.IssuerId);
+                    //var grant = AutoMapper.Mapper.Map<Grant>(form);
 
-                return RedirectToAction("Index");
+                    _uow.Grants.Add(new Grant
+                    {
+                        Id = Guid.NewGuid(),
+                        Code = form.Code,
+                        Name = form.Name,
+                        Description = form.Description,
+                        Total = form.Total,
+                        MaxAward = form.MaxAward,
+                        MaxDuration = form.MaxDuration,
+                        Agency = issuer
+                    });
+                    await _uow.SaveAsync();
+                }
+
+                return RedirectToAction<GrantController>(c => c.Index()).WithSuccess("Created");
             }
             catch
             {
@@ -63,21 +85,43 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
 
         //
         // GET: /Manage/Grant/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            var item = _uow.Grants.AllIncluding(g => g.Agency).First(g => g.Id == id);
+            var vm = AutoMapper.Mapper.Map<GrantBindingModel>(item);
+
+            ViewData["Issuers"] = _uow.Organizations.All.OfType<FundingAgency>()
+           .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), item.Agency.ToString());
+
+
+            return View(vm);
         }
 
         //
         // POST: /Manage/Grant/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(Guid id, GrantBindingModel form)
         {
             try
             {
                 // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    var issuer = _uow.Organizations.All.OfType<FundingAgency>().First(a => a.Id == form.IssuerId);
+                    var grant = await _uow.Grants.FindAsyncById(id);
+                    grant.Code = form.Code;
+                    grant.Name = form.Name;
+                    grant.Description = form.Description;
+                    grant.Objective = form.Objective;
+                    grant.MaxAward = form.MaxAward;
+                    grant.MaxDuration = form.MaxDuration;
+                    grant.Total = form.Total;
+                    grant.Agency = issuer;
 
-                return RedirectToAction("Index");
+                    await _uow.SaveAsync();
+                }
+
+                return RedirectToAction<GrantController>(c => c.Index()).WithSuccess("Updated");
             }
             catch
             {
