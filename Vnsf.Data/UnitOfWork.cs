@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities;
+using Vnsf.Data.Entities.Registration;
 using Vnsf.Data.Helpers;
 using Vnsf.Data.Repository;
 using Vnsf.Infrastructure.Repository;
@@ -16,15 +17,17 @@ namespace Vnsf.Data.EF
         public ICultureRepository Cultures { get { return GetRepo<ICultureRepository>(); } }
         public IUserAccountRepository UserAccounts { get { return GetRepo<IUserAccountRepository>(); } }
         public IGrantRepository GrantRepo { get { return GetRepo<IGrantRepository>(); } }
-        public IOpportunityRepository OpportunitiesRepo { get { return GetRepo<IOpportunityRepository>(); } }
         public IAnnouncementRepository AnnouncementRepo { get { return GetRepo<IAnnouncementRepository>(); } }
         public IClassificationRepository ClassificationRepo { get { return GetRepo<IClassificationRepository>(); } }
         public IRepository<Grant> Grants { get { return GetStandardRepo<Grant>(); } }
+        public IRepository<Opportunity> Opps { get { return GetStandardRepo<Opportunity>(); } }
         public IRepository<Organization> Organizations { get { return GetStandardRepo<Organization>(); } }
         public IRepository<Category> Categories { get { return GetStandardRepo<Category>(); } }
         public IRepository<Classification> CS { get { return GetStandardRepo<Classification>(); } }
         public IRepository<Storage> Storages { get { return GetStandardRepo<Storage>(); } }
-        public IRepository<ApplicationItem> AppItems { get { return GetStandardRepo<ApplicationItem>(); } }
+        public IRepository<Application> Apps { get { return GetStandardRepo<Application>(); } }
+        public IRepository<ApplicationForm> AppForms { get { return GetStandardRepo<ApplicationForm>(); } }
+        public IRepository<ApplicationDocument> AppDocuments { get { return GetStandardRepo<ApplicationDocument>(); } }
         public IDocRepository Documents { get { return GetRepo<IDocRepository>(); } }
         public UnitOfWork(IRepositoryProvider repositoryProvider)
         {

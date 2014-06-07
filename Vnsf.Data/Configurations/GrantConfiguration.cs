@@ -12,9 +12,7 @@ namespace Vnsf.Data.EF.Configurations
     {
         public GrantConfiguration()
         {
-            //this.HasMany(o => o.Budgets)
-            //       .WithRequired(o => o.Grant)
-            //        .WillCascadeOnDelete(true);            
+            this.HasMany(g => g.Opportunities).WithRequired(o => o.Grant).WillCascadeOnDelete(true);
         }
     }
 }

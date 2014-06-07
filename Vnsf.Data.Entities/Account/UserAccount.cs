@@ -322,13 +322,13 @@ namespace Vnsf.Data.Entities.Account
         }
 
         #endregion
-        public Application ApplyForGrant(Opportunity opportunity)
+        public Application ApplyForOpportunity(Opportunity opportunity, UserAccount applicant)
         {
-            var app = new Application()
-            {
-                Id = Guid.NewGuid(),
-                Opportunity = opportunity
-            };
+            var app = Applications.FirstOrDefault(a => a.Opportunity.Id == opportunity.Id && a.Applicant.Id == applicant.Id);
+
+            if (app == null)
+                app = Application.NewApplication(opportunity, applicant);
+
             Applications.Add(app);
 
             return app;

@@ -20,11 +20,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
-                @Html.Partial("_LanguageSelector")
             </div>
+
+
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Grants", "Index", "Grant", null, null)</li>
+                    <li>@Html.ActionLink("Opportunities", "Index", "Opportunity", null, null)</li>
+                    <li>@Html.ActionLink("AppForm", "Index", "ApplicationForm", null, null)</li>
+                </ul>
+                @*@Html.Partial("_LanguageSelector")*@
+
+
             </div>
+
+
         </div>
     </div>
     <div class="container body-content">
@@ -32,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year</p>
         </footer>
     </div>
     @Scripts.Render("~/bundles/bootstrap")

@@ -53,7 +53,8 @@
     <Compile Include="AnnouncementVersion.cs" />
     <Compile Include="Document\FileBase.cs" />
     <Compile Include="Registration\Application.cs" />
-    <Compile Include="Registration\ApplicationItem.cs" />
+    <Compile Include="Registration\ApplicationForm.cs" />
+    <Compile Include="Registration\ApplicationDocument.cs" />
     <Compile Include="ApplicationStatus.cs" />
     <Compile Include="ApplicationVersion.cs" />
     <Compile Include="AssignmentType.cs" />

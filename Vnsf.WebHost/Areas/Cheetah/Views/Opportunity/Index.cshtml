@@ -1,79 +1,60 @@
-﻿@model IEnumerable<Vnsf.WebHost.Areas.Manage.Models.OppViewModel>
+﻿@model IEnumerable<Vnsf.WebHost.Areas.Cheetah.Models.OppViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Opps";
 }
+<h2>Opps</h2>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Deadline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxDuration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EstimateTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AwardCeiling)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AwardFloor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GrantName)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-lg-3 list-group">
+        <a href="#" class="list-group-item active">All opportunities</a>
+        <a href=@Url.Action("RecentOpportunity") class="list-group-item">Recent opportunities</a>
+        <a href="#" class="list-group-item">Browse by Grant</a>
+    </div>
+    <div class="col-lg-9">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Deadline)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxDuration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EstimateTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AwardCeiling)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AwardFloor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GrantName)
-        </td>
-        <td>
-            @Html.ActionLink("Apply NOW", "Apply", new { id=item.Id }) 
-        </td>
-    </tr>
-}
 
-</table>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Deadline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GrantName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deadline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GrantName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("More infor ..", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Apply NOW", "Apply", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

@@ -165,7 +165,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
         [HttpPost]
@@ -188,9 +188,9 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 
                 //_uow.UserAccounts.FilterBy(u => u.Email == info.Email).Any()
 
-                if (!_uow.UserAccounts.FilterBy(u => u.Username == model.UserName).Any())
+                if (!_uow.UserAccounts.FilterBy(u => u.Email == model.Email).Any())
                 {
-                    var user = UserAccount.Init(model.UserName, Crypto.GenerateSalt(), info.Email);
+                    var user = UserAccount.Init(model.Email, Crypto.GenerateSalt(), model.Email);
                     user.AddOrUpdateLinkedAccount(info.Login.LoginProvider, info.Login.ProviderKey, info.ExternalIdentity.Claims);
                     _uow.UserAccounts.Add(user);
                     await _uow.SaveAsync();
@@ -276,7 +276,6 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         //    AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         //}
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

@@ -13,6 +13,7 @@ using System.Globalization;
 using Vnsf.WebHost.Infrastructure;
 using Vnsf.WebHost.Models;
 using AutoMapper.QueryableExtensions;
+using Vnsf.Data;
 
 namespace Vnsf.WebHost
 {
@@ -20,10 +21,12 @@ namespace Vnsf.WebHost
     {
         //protected ModelFactory _modelFactory;
         protected IUnitOfWork _uow;
+        protected AppConfiguration _config;
 
         public MvcBaseController(IUnitOfWork unitOfWork)
         {
             _uow = unitOfWork;
+            _config = new AppConfiguration(AppSettings.Instance);
         }
 
         public MvcBaseController()

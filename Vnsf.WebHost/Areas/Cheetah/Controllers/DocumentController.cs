@@ -36,12 +36,10 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
     public class DocumentController : MvcBaseController
     {
         ICurrentUser _user;
-        AppConfiguration _config;
         public DocumentController(IUnitOfWork uow, ICurrentUser user)
             : base(uow)
         {
             _user = user;
-            _config = new AppConfiguration(AppSettings.Instance);
         }
 
         private const string _home = "home";

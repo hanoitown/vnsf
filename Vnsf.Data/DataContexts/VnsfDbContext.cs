@@ -59,8 +59,8 @@ namespace Vnsf.Data
             //modelBuilder.Configurations.Add(new RegionConfiguration());
             //modelBuilder.Configurations.Add(new RegionLocalizedConfiguration());
 
-            //modelBuilder.Configurations.Add(new ApplicationConfiguration());
-            //modelBuilder.Configurations.Add(new GrantConfiguration());
+            modelBuilder.Configurations.Add(new ApplicationConfiguration());
+            modelBuilder.Configurations.Add(new GrantConfiguration());
             //modelBuilder.Configurations.Add(new OrganizationConfiguration());
             modelBuilder.Configurations.Add(new DocConfiguration());
             modelBuilder.Configurations.Add(new ClassificationConfiguration());

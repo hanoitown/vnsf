@@ -11,8 +11,8 @@ using Vnsf.WebHost.Infrastructure.Alerts;
 using AutoMapper.QueryableExtensions;
 using Vnsf.Data.Entities;
 using System.Threading.Tasks;
-using Vnsf.WebHost.Areas.Manage.Models;
 using Vnsf.WebHost.Infrastructure;
+using Vnsf.WebHost.Areas.Cheetah.Models;
 
 
 namespace Vnsf.WebHost.Areas.Cheetah.Controllers
@@ -30,19 +30,42 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         // GET: /Cheetah/Opportunity/
         public ActionResult Index()
         {
-            var vm = _uow.OpportunitiesRepo.AllIncluding(o => o.Grant)
+            var vm = _uow.Opps.AllIncluding(o => o.Grant)
                             .Project().To<OppViewModel>();
 
             return View(vm);
         }
 
-        public async Task<ActionResult> Apply(Guid id)
+        public ActionResult RecentOpportunity()
         {
-            var opportunity = await _uow.OpportunitiesRepo.FindAsyncById(id);
-            var app = _user.User.ApplyForGrant(opportunity);
-            await _uow.SaveAsync();
+            var vm = _uow.Opps.AllIncluding(o => o.Grant)
+                                .Where(o => DateTime.Compare(DateTime.Now, o.StartDate) < 30)
+                                .Project().To<OppViewModel>();
+            return View("Index", vm);
+        }
 
-            return RedirectToAction<ApplicationController>(a => a.Detail(app.Id));
+        public ActionResult Details(Guid id)
+        {
+            var vm = _uow.Opps.AllIncluding(o => o.Grant)
+                                .Project().To<OppViewModel>()
+                                .First(o => o.Id == id);
+            return View(vm);
+        }
+
+        [Authorize]
+        
+        public ActionResult Apply(Guid id)
+        {
+            var opportunity = _uow.Opps.FindById(id);
+            if (opportunity == null)
+                throw new InvalidOperationException();
+            if (_user.User == null)
+                throw new InvalidOperationException();
+
+            var app = _user.User.ApplyForOpportunity(opportunity, _user.User);
+            _uow.Save();
+
+            return RedirectToAction<ApplicationController>(a => a.Details(app.Id));
         }
 
     }
