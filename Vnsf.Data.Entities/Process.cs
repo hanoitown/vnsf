@@ -9,7 +9,6 @@ namespace Vnsf.Data.Entities
     {
         public int Duration { get; set; }
         public Organization Responsibility { get; set; }
-        public virtual ICollection<BusinessDocumentType> Documents { get; set; }
         public virtual ICollection<Process> NextProcess { get; set; }
     }
 }

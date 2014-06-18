@@ -11,7 +11,7 @@ namespace Vnsf.Data.Entities
 {
     public class Grant : Audit
     {
-        public static Grant NewGrant(string code, string name, string description, string objective, string scope, bool isActive, long total)
+        public static Grant NewGrant(string code, string name, string description, string objective, string scope, bool isActive, long total, Classification clas)
         {
             return new Grant()
             {
@@ -23,6 +23,7 @@ namespace Vnsf.Data.Entities
                 Scope = scope,
                 IsActive = isActive,
                 Total = total,
+                Classification = clas
             };
         }
 
@@ -34,6 +35,7 @@ namespace Vnsf.Data.Entities
         public string Scope { get; set; }
         public bool IsActive { get; set; }
         public long Total { set; get; }
+        public virtual Classification Classification { get; set; }
         public virtual ICollection<Opportunity> Opportunities { get; set; }
 
         public Grant()

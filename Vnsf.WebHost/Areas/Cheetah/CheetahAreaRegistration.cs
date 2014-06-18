@@ -14,19 +14,20 @@ namespace Vnsf.WebHost.Areas.Cheetah
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+
             context.MapRoute(
                 "Directory",
                 "Cheetah/{controller}/{action}/{*location}",
-                new { Controller="Document", action = "Index", Location = UrlParameter.Optional },
+                new { Controller = "Document", action = "Index", Location = UrlParameter.Optional },
                 new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
             );
 
-            //context.MapRoute(
-            //    "Folder",
-            //    "Cheetah/{controller}/{action}/{folder}/{id}",
-            //    new { controller = "Document", action = "FolderView", id = UrlParameter.Optional },
-            //    new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
-            //);
+            context.MapRoute(
+                "profile",
+                "Cheetah/UserProfile/Education/{action}",
+                new { controller = "UserProfile", action = "NewEducation", id = UrlParameter.Optional },
+                new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
+            );
 
             context.MapRoute(
                 "Cheetah_default",

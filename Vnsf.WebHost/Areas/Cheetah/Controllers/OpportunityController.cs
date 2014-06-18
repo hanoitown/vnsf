@@ -46,14 +46,16 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 
         public ActionResult Details(Guid id)
         {
-            var vm = _uow.Opps.AllIncluding(o => o.Grant)
+            var vm = _uow.Opps.AllIncluding(o => o.Grant, o=>o.Grant.Classification)
                                 .Project().To<OppViewModel>()
                                 .First(o => o.Id == id);
+
+            
             return View(vm);
         }
 
         [Authorize]
-        
+        [HttpPost]
         public ActionResult Apply(Guid id)
         {
             var opportunity = _uow.Opps.FindById(id);
@@ -62,7 +64,8 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             if (_user.User == null)
                 throw new InvalidOperationException();
 
-            var app = _user.User.ApplyForOpportunity(opportunity, _user.User);
+            var app = _uow.UserAccounts.AllIncluding(u => u.Applications).First(u => u.Id == _user.User.Id)
+                                        .CreateApplication(opportunity);
             _uow.Save();
 
             return RedirectToAction<ApplicationController>(a => a.Details(app.Id));

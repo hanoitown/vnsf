@@ -49,6 +49,7 @@ namespace Vnsf.Data.Entities.Account
         public virtual ICollection<LinkedAccount> LinkedAccounts { get; internal set; }
         public virtual ICollection<UserCertificate> Certificates { get; internal set; }
         public virtual ICollection<Application> Applications { get; set; }
+        public virtual UserProfile Profile { get; set; }
 
         public static UserAccount Init(string username, string password, string email)
         {
@@ -322,12 +323,13 @@ namespace Vnsf.Data.Entities.Account
         }
 
         #endregion
-        public Application ApplyForOpportunity(Opportunity opportunity, UserAccount applicant)
+        public Application CreateApplication(Opportunity opportunity)
         {
-            var app = Applications.FirstOrDefault(a => a.Opportunity.Id == opportunity.Id && a.Applicant.Id == applicant.Id);
+            //check if already applied for this opportunity
+            var app = Applications.FirstOrDefault(a => a.Opportunity.Id == opportunity.Id);
 
             if (app == null)
-                app = Application.NewApplication(opportunity, applicant);
+                app = Application.NewApplication(opportunity);
 
             Applications.Add(app);
 

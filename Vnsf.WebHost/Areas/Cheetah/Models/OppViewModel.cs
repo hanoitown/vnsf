@@ -17,6 +17,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Models
         public long? TotalAward { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime Deadline { get; set; }
+        //public GrantViewModel Grant { get; set; }
         public string GrantCode { get; set; }
         public string GrantName { get; set; }
         public string GrantDescription { get; set; }
@@ -24,7 +25,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Models
         public string GrantScope { get; set; }
         public bool GrantIsActive { get; set; }
         public long GrantTotal { set; get; }
-        public bool IsApplied { get; set; }
+        //public bool IsApplied { get; set; }
 
     }
 }

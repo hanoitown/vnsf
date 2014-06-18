@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Vnsf.Data.Entities
 {
-    public class ProposeEducation : BaseBusiness
+    public class AppEducation : BaseBusiness
     {
         public int Quantity { get; set; }
         public EducationLevel Level { get; set; }
-        public ICollection<EducationDetail> Details { get; set; }
+        public virtual Organization School { get; set; }
     }
 }

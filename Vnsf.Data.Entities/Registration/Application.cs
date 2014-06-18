@@ -10,24 +10,26 @@ namespace Vnsf.Data.Entities
 {
     public class Application : Audit
     {
-        public static Application NewApplication(Opportunity opportunity, UserAccount userAccount)
+        public static Application NewApplication(Opportunity opportunity)
         {
             return new Application()
             {
                 Id = Guid.NewGuid(),
                 Opportunity = opportunity,
-                Applicant = userAccount,
                 Status = ApplicationStatus.Creating
             };
 
         }
 
         public Guid Id { get; set; }
-        public ApplicationStatus Status { get; set; } // submitted / withdraw / return / overdue
+        public ApplicationStatus Status { get; set; } // submitted / withdraw / return / overdue      
+
+        public virtual ICollection<UserProfile> Participations { get; set; }
+        public virtual Proposal Proposal { get; set; }
         public virtual Opportunity Opportunity { get; set; }
         public virtual UserAccount Applicant { get; set; }
         public virtual ICollection<ApplicationDocument> Documents { get; set; }
-
+        public virtual ApplicationPI PI { get; set; }
         //public virtual UserAccount Applicant{ get; set; }
 
 

@@ -53,6 +53,7 @@
     <Compile Include="AnnouncementRepository.cs" />
     <Compile Include="Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Configurations\OpportunityConfiguration.cs" />
+    <Compile Include="Configurations\UserProfileConfiguration.cs" />
     <Compile Include="Configurations\UserAccountConfiguration.cs" />
     <Compile Include="DataContexts\BaseContext.cs" />
     <Compile Include="ClassificationRepository.cs" />
@@ -71,9 +72,9 @@
     <Compile Include="Helpers\IRepositoryProvider.cs" />
     <Compile Include="Helpers\RepositoryFactories.cs" />
     <Compile Include="Helpers\RepositoryProvider.cs" />
-    <Compile Include="Migrations\201405210019181_InitialCreated.cs" />
-    <Compile Include="Migrations\201405210019181_InitialCreated.Designer.cs">
-      <DependentUpon>201405210019181_InitialCreated.cs</DependentUpon>
+    <Compile Include="Migrations\201406141129166_initial.cs" />
+    <Compile Include="Migrations\201406141129166_initial.Designer.cs">
+      <DependentUpon>201406141129166_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DataContexts\DatabaseInitializer.cs" />
@@ -104,8 +105,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405210019181_InitialCreated.resx">
-      <DependentUpon>201405210019181_InitialCreated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201406141129166_initial.resx">
+      <DependentUpon>201406141129166_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

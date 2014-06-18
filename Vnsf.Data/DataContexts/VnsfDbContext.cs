@@ -40,7 +40,6 @@ namespace Vnsf.Data
         //public DbSet<Target> Targets { get; set; }
         public DbSet<Grant> Grants { get; set; }
         public DbSet<Organization> Organizations { set; get; }
-        public DbSet<Person> People { set; get; }
         public DbSet<Category> Categories { set; get; }
         public DbSet<Classification> Classification { set; get; }
         public DbSet<Contact> Contacts { set; get; }
@@ -60,10 +59,12 @@ namespace Vnsf.Data
             //modelBuilder.Configurations.Add(new RegionLocalizedConfiguration());
 
             modelBuilder.Configurations.Add(new ApplicationConfiguration());
+            modelBuilder.Configurations.Add(new UserAccountConfiguration());
             modelBuilder.Configurations.Add(new GrantConfiguration());
-            //modelBuilder.Configurations.Add(new OrganizationConfiguration());
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new DocConfiguration());
             modelBuilder.Configurations.Add(new ClassificationConfiguration());
+            modelBuilder.Configurations.Add(new UserProfileConfiguration());
         }
 
     }

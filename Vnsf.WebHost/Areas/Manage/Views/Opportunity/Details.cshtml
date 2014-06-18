@@ -1,0 +1,90 @@
+﻿@model Vnsf.WebHost.Areas.Manage.Models.OppViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OppViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deadline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deadline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxDuration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxDuration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimateTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimateTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AwardCeiling)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AwardCeiling)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AwardFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AwardFloor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrantName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

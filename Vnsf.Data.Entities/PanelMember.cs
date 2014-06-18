@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Vnsf.Data.Entities
 {
-    public class PanelMember : Researcher
+    public class PanelMember
     {
         public virtual PanelMemberRole PanelMemberRole { get; set; }
     }

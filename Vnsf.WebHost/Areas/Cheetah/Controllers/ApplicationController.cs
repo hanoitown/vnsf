@@ -28,11 +28,37 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             _user = user;
         }
 
+
+        public ActionResult Create(Guid id)
+        {
+            var vm = AutoMapper.Mapper.Map<AppBindingModel>(_uow.Apps.FindById(id));
+
+            return View(vm);
+        }
+
+        public ActionResult Proposal(Guid id)
+        {
+            var vm = AutoMapper.Mapper.Map<AppBindingModel>(_uow.Apps.FindById(id));
+            return View("_Proposal", vm.Proposal);
+        }
+        [HttpPost, ChildActionOnly]
+        public ActionResult Proposal(Guid id, ProposalBindingModel form)
+        {
+            return View();
+        }
+
+        public ActionResult Participations(Guid id)
+        {
+            var vm = AutoMapper.Mapper.Map<AppBindingModel>(_uow.Apps.FindById(id));
+            return View("_Participations", vm.Participations);
+        }
+
         [Authorize]
         public ActionResult Details(Guid id)
         {
 
             var application = _uow.Apps.AllIncluding(a => a.Documents, a => a.Opportunity).First(a => a.Id == id);
+            //ModelState.AddModelError("Documents", "Document is not fullfil requirements");
 
             if (application != null)
             {
@@ -55,21 +81,13 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             var form = _uow.AppForms.All.Where(f => f.Opportunity.Id == item.Opportunity.Id).ToList();
 
             // in order to join, need 2 lists first, queryable not support
-            var vm = form.GroupJoin(doc, f => f.Id, d => d.Form.Id,
+            var vm = form.OrderBy(f=>f.Code).GroupJoin(doc, f => f.Id, d => d.Form.Id,
                     (p, c) => c
                     .Select(a => new AppDocumentViewModel { Id = a.Id, FormId = p.Id, FileName = a.FileName, FormName = p.Name, FormCode = p.Code })
                     .DefaultIfEmpty(new AppDocumentViewModel { FormId = p.Id, FileName = string.Empty, FormName = p.Name, FormCode = p.Code }))
                     .SelectMany(c => c).ToList();
 
             return PartialView("_AppDocs", vm);
-        }
-
-        [ChildActionOnly]
-        public ActionResult OppDetail(Guid oppId)
-        {
-            var opp = _uow.Opps.All.Where(o => o.Id == oppId).Project().To<OppViewModel>().First();
-
-            return PartialView("_OppDetail", opp);
         }
 
         public ActionResult Upload(Guid formId)
@@ -109,9 +127,9 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         {
             var app = _uow.Apps.FindById(Id);
             // Validate application detail
-
             // Save application
             app.Status = ApplicationStatus.Submitted;
+            _uow.Save();
             // Raise event
 
             return RedirectToAction<ApplicationController>(a => a.Details(Id));

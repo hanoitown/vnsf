@@ -14,6 +14,7 @@ namespace Vnsf.Data.EF.Configurations
         public ApplicationConfiguration()
         {
             this.HasMany(a => a.Documents).WithRequired(d => d.Application).WillCascadeOnDelete(true);
+            this.HasOptional(a => a.Proposal).WithRequired(p => p.Application);
         }
     }
 }

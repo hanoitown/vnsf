@@ -25,6 +25,7 @@ namespace Vnsf.WebHost.Areas.Manage.Models
         public string Scope { get; set; }
         public bool IsActive { get; set; }
         public long Total { set; get; }
+        public Guid? ClassificationId { get; set; }
 
         public GrantBindingModel()
         {

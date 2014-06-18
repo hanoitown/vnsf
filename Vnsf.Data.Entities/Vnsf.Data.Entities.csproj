@@ -51,7 +51,11 @@
     <Compile Include="Address.cs" />
     <Compile Include="Announcement.cs" />
     <Compile Include="AnnouncementVersion.cs" />
+    <Compile Include="Avatar.cs" />
     <Compile Include="Document\FileBase.cs" />
+    <Compile Include="Principle\Project.cs" />
+    <Compile Include="Principle\UserPublication.cs" />
+    <Compile Include="Registration\Proposal.cs" />
     <Compile Include="Registration\Application.cs" />
     <Compile Include="Registration\ApplicationForm.cs" />
     <Compile Include="Registration\ApplicationDocument.cs" />
@@ -65,15 +69,13 @@
     <Compile Include="Constants\VnsfConstants.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="BusinessProcess.cs" />
-    <Compile Include="BusinessDocument.cs" />
-    <Compile Include="BusinessDocumentType.cs" />
     <Compile Include="Discussion.cs" />
     <Compile Include="Document\DocProtection.cs" />
     <Compile Include="Expense.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
     <Compile Include="FundingAgency.cs" />
     <Compile Include="MeasurementUnit.cs" />
-    <Compile Include="OpportunityStatus.cs" />
+    <Compile Include="Registration\ApplicationPI.cs" />
     <Compile Include="ReportVersion.cs" />
     <Compile Include="ReviewVersion.cs" />
     <Compile Include="Security\Permission.cs" />
@@ -91,25 +93,22 @@
     <Compile Include="ReviewDetail.cs" />
     <Compile Include="EvaluationScale.cs" />
     <Compile Include="Award.cs" />
-    <Compile Include="BankAccount.cs" />
     <Compile Include="Budget.cs" />
     <Compile Include="CategorgyHierchy.cs" />
-    <Compile Include="CategoryChild.cs" />
     <Compile Include="Classification.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Document\Doc.cs" />
-    <Compile Include="Education.cs" />
-    <Compile Include="JobDescription.cs" />
-    <Compile Include="JobTitle.cs" />
+    <Compile Include="HR\Education.cs" />
+    <Compile Include="HR\JobDescription.cs" />
+    <Compile Include="HR\JobTitle.cs" />
     <Compile Include="EvaluationValue.cs" />
     <Compile Include="PanelMeeting.cs" />
     <Compile Include="PanelMember.cs" />
     <Compile Include="PanelMemberRole.cs" />
     <Compile Include="Review.cs" />
-    <Compile Include="ProposeEducation.cs" />
-    <Compile Include="EducationDetail.cs" />
-    <Compile Include="EducationLevel.cs" />
-    <Compile Include="Operation.cs" />
+    <Compile Include="Registration\ProposeEducation.cs" />
+    <Compile Include="Registration\AppEducation.cs" />
+    <Compile Include="HR\EducationLevel.cs" />
     <Compile Include="Document\DocLink.cs" />
     <Compile Include="Document\DocStore.cs" />
     <Compile Include="Extensions\DisposableExtensions.cs">
@@ -120,18 +119,16 @@
     <Compile Include="Account\LinkedAccountClaim.cs" />
     <Compile Include="Shared\BaseBusiness.cs" />
     <Compile Include="Registration\Grant.cs" />
-    <Compile Include="GrantCategory.cs" />
     <Compile Include="Registration\Opportunity.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="OrganizationType.cs" />
     <Compile Include="OrganizationUnit.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="ProposePublication.cs" />
-    <Compile Include="Publication.cs" />
+    <Compile Include="Principle\UserProfile.cs" />
+    <Compile Include="Registration\ProposePublication.cs" />
+    <Compile Include="Principle\Publication.cs" />
     <Compile Include="ResearchMember.cs" />
     <Compile Include="ResearchRole.cs" />
-    <Compile Include="Researcher.cs" />
     <Compile Include="Panel.cs" />
     <Compile Include="ReviewTemplate.cs" />
     <Compile Include="SecurityLevel.cs" />
@@ -148,13 +145,11 @@
     <Compile Include="Account\UserCertificate.cs" />
     <Compile Include="Account\UserClaim.cs" />
     <Compile Include="Account\VerificationKeyPurpose.cs" />
-    <Compile Include="Staff.cs" />
     <Compile Include="Document\Storage.cs" />
     <Compile Include="TaskItem.cs" />
     <Compile Include="TaskAssignment.cs" />
     <Compile Include="TaskApproval.cs" />
-    <Compile Include="University.cs" />
-    <Compile Include="Job.cs" />
+    <Compile Include="Principle\Job.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Account\UserAccount.cd" />
@@ -170,9 +165,7 @@
       <Name>Vnsf.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessProcess\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vnsf.Data.Entities.Document;
 
 namespace Vnsf.Data.Entities
 {
-    public class University : Organization
+    public class Avatar : FileBase
     {
-        public bool IsStateOwn { get; set; }
+        public string Alias { get; set; }
     }
 }

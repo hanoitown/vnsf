@@ -3,7 +3,7 @@ namespace Vnsf.Data.EF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreated : DbMigration
+    public partial class inital : DbMigration
     {
         public override void Up()
         {
@@ -71,46 +71,74 @@ namespace Vnsf.Data.EF.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Status = c.Int(nullable: false),
-                        BudgetTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        BudgetApply = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        OpportunityId = c.Guid(nullable: false),
-                        UserAccount_Id = c.Guid(),
-                        Researcher_Id = c.Guid(),
+                        Created = c.DateTime(),
+                        LastUpdated = c.DateTime(),
+                        Opportunity_Id = c.Guid(),
+                        User_Id = c.Guid(),
+                        Applicant_Id = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Opportunity", t => t.OpportunityId, cascadeDelete: true)
-                .ForeignKey("vnsf.UserAccount", t => t.UserAccount_Id)
-                .ForeignKey("vnsf.Person", t => t.Researcher_Id)
-                .Index(t => t.OpportunityId)
-                .Index(t => t.UserAccount_Id)
-                .Index(t => t.Researcher_Id);
+                .ForeignKey("vnsf.Opportunity", t => t.Opportunity_Id)
+                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
+                .ForeignKey("vnsf.UserAccount", t => t.Applicant_Id)
+                .Index(t => t.Opportunity_Id)
+                .Index(t => t.User_Id)
+                .Index(t => t.Applicant_Id);
+            
+            CreateTable(
+                "vnsf.ApplicationDocument",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Description = c.String(),
+                        CreateDate = c.DateTime(nullable: false),
+                        FileName = c.String(),
+                        ContentType = c.String(),
+                        ContentLength = c.Int(nullable: false),
+                        Path = c.String(),
+                        Form_Id = c.Guid(),
+                        Application_Id = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.ApplicationForm", t => t.Form_Id)
+                .ForeignKey("vnsf.Application", t => t.Application_Id, cascadeDelete: true)
+                .Index(t => t.Form_Id)
+                .Index(t => t.Application_Id);
+            
+            CreateTable(
+                "vnsf.ApplicationForm",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Code = c.String(),
+                        Name = c.String(),
+                        Description = c.String(),
+                        Opportunity_Id = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.Opportunity", t => t.Opportunity_Id)
+                .Index(t => t.Opportunity_Id);
             
             CreateTable(
                 "vnsf.Opportunity",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        StartDate = c.DateTime(nullable: false),
-                        Deadline = c.DateTime(nullable: false),
-                        MaxDuration = c.Int(nullable: false),
-                        EstimateTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        AwardCeiling = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        AwardFloor = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Status = c.Int(nullable: false),
-                        GrantId = c.Guid(nullable: false),
-                        ClassificationId = c.Guid(nullable: false),
                         Name = c.String(),
                         Description = c.String(),
+                        NumberOfAward = c.Int(),
+                        TotalAward = c.Long(),
+                        StartDate = c.DateTime(nullable: false),
+                        Deadline = c.DateTime(nullable: false),
                         Created = c.DateTime(),
                         LastUpdated = c.DateTime(),
+                        Grant_Id = c.Guid(nullable: false),
                         User_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Classification", t => t.ClassificationId, cascadeDelete: true)
-                .ForeignKey("vnsf.Grant", t => t.GrantId, cascadeDelete: true)
+                .ForeignKey("vnsf.Grant", t => t.Grant_Id, cascadeDelete: true)
                 .ForeignKey("vnsf.UserAccount", t => t.User_Id)
-                .Index(t => t.GrantId)
-                .Index(t => t.ClassificationId)
+                .Index(t => t.Grant_Id)
                 .Index(t => t.User_Id);
             
             CreateTable(
@@ -245,19 +273,16 @@ namespace Vnsf.Data.EF.Migrations
                         Organization_Id = c.Guid(),
                         User_Id = c.Guid(),
                         ReportVersion_Id = c.Guid(),
-                        Researcher_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("vnsf.Category", t => t.Field_Id)
                 .ForeignKey("vnsf.Organization", t => t.Organization_Id)
                 .ForeignKey("vnsf.UserAccount", t => t.User_Id)
                 .ForeignKey("vnsf.ReportVersion", t => t.ReportVersion_Id)
-                .ForeignKey("vnsf.Person", t => t.Researcher_Id)
                 .Index(t => t.Field_Id)
                 .Index(t => t.Organization_Id)
                 .Index(t => t.User_Id)
-                .Index(t => t.ReportVersion_Id)
-                .Index(t => t.Researcher_Id);
+                .Index(t => t.ReportVersion_Id);
             
             CreateTable(
                 "vnsf.Organization",
@@ -373,7 +398,6 @@ namespace Vnsf.Data.EF.Migrations
                         Organization_Id = c.Guid(),
                         User_Id = c.Guid(),
                         ReportVersion_Id = c.Guid(),
-                        Researcher_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("vnsf.Category", t => t.Category_Id)
@@ -381,13 +405,11 @@ namespace Vnsf.Data.EF.Migrations
                 .ForeignKey("vnsf.Organization", t => t.Organization_Id)
                 .ForeignKey("vnsf.UserAccount", t => t.User_Id)
                 .ForeignKey("vnsf.ReportVersion", t => t.ReportVersion_Id)
-                .ForeignKey("vnsf.Person", t => t.Researcher_Id)
                 .Index(t => t.Category_Id)
                 .Index(t => t.Document_Id)
                 .Index(t => t.Organization_Id)
                 .Index(t => t.User_Id)
-                .Index(t => t.ReportVersion_Id)
-                .Index(t => t.Researcher_Id);
+                .Index(t => t.ReportVersion_Id);
             
             CreateTable(
                 "vnsf.Doc",
@@ -400,11 +422,28 @@ namespace Vnsf.Data.EF.Migrations
                         ContentLength = c.Int(nullable: false),
                         IsFolder = c.Boolean(nullable: false),
                         Path = c.String(),
+                        Location = c.String(),
+                        Owner_Id = c.Guid(),
                         Parent_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.UserAccount", t => t.Owner_Id)
                 .ForeignKey("vnsf.Doc", t => t.Parent_Id)
+                .Index(t => t.Owner_Id)
                 .Index(t => t.Parent_Id);
+            
+            CreateTable(
+                "vnsf.DocLink",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        ExpireDate = c.DateTime(nullable: false),
+                        SecurityCode = c.String(),
+                        Created = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.Doc", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "vnsf.DocProtection",
@@ -432,40 +471,6 @@ namespace Vnsf.Data.EF.Migrations
                         Deny = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "vnsf.DocShare",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        ExpireDate = c.DateTime(nullable: false),
-                        SecurityCode = c.String(),
-                        Account_Id = c.Guid(),
-                        Document_Id = c.Guid(),
-                        Right_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.UserAccount", t => t.Account_Id)
-                .ForeignKey("vnsf.Doc", t => t.Document_Id)
-                .ForeignKey("vnsf.Permission", t => t.Right_Id)
-                .Index(t => t.Account_Id)
-                .Index(t => t.Document_Id)
-                .Index(t => t.Right_Id);
-            
-            CreateTable(
-                "vnsf.Classification",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Created = c.DateTime(),
-                        LastUpdated = c.DateTime(),
-                        User_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
-                .Index(t => t.User_Id);
             
             CreateTable(
                 "vnsf.Contract",
@@ -517,171 +522,12 @@ namespace Vnsf.Data.EF.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Code = c.String(),
+                        Name = c.String(),
+                        Description = c.String(),
                         Objective = c.String(),
-                        MaxDuration = c.Int(nullable: false),
-                        Total = c.Double(nullable: false),
-                        MaxAward = c.Int(nullable: false),
-                        AgencyId = c.Guid(),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Created = c.DateTime(),
-                        LastUpdated = c.DateTime(),
-                        ClassificationSystem_Id = c.Guid(),
-                        Logo_Id = c.Guid(),
-                        User_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Organization", t => t.AgencyId)
-                .ForeignKey("vnsf.Classification", t => t.ClassificationSystem_Id)
-                .ForeignKey("vnsf.Doc", t => t.Logo_Id)
-                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
-                .Index(t => t.AgencyId)
-                .Index(t => t.ClassificationSystem_Id)
-                .Index(t => t.Logo_Id)
-                .Index(t => t.User_Id);
-            
-            CreateTable(
-                "vnsf.GrantLocalized",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Objective = c.String(),
-                        CultureId = c.Guid(nullable: false),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Grant_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Culture", t => t.CultureId, cascadeDelete: true)
-                .ForeignKey("vnsf.Grant", t => t.Grant_Id)
-                .Index(t => t.CultureId)
-                .Index(t => t.Grant_Id);
-            
-            CreateTable(
-                "vnsf.Culture",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Code = c.String(),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "vnsf.LocalizedCulture",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        CultureId = c.Guid(nullable: false),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Culture", t => t.CultureId, cascadeDelete: true)
-                .Index(t => t.CultureId);
-            
-            CreateTable(
-                "vnsf.Panel",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        FromDate = c.DateTime(nullable: false),
-                        ToDate = c.DateTime(nullable: false),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Created = c.DateTime(),
-                        LastUpdated = c.DateTime(),
-                        Opportunity_Id = c.Guid(),
-                        User_Id = c.Guid(),
-                        Grant_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Opportunity", t => t.Opportunity_Id)
-                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
-                .ForeignKey("vnsf.Grant", t => t.Grant_Id)
-                .Index(t => t.Opportunity_Id)
-                .Index(t => t.User_Id)
-                .Index(t => t.Grant_Id);
-            
-            CreateTable(
-                "vnsf.Person",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        FullName_FirsName = c.String(),
-                        FullName_LastName = c.String(),
-                        BirthDay = c.DateTime(),
-                        Gender = c.Boolean(nullable: false),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
-                        PanelMemberRole_Id = c.Guid(),
-                        Panel_Id = c.Guid(),
-                        Account_Id = c.Guid(),
-                        BankAccount_Id = c.Guid(),
-                        Contact_Id = c.Guid(),
-                        Organization_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.PanelMemberRole", t => t.PanelMemberRole_Id)
-                .ForeignKey("vnsf.Panel", t => t.Panel_Id)
-                .ForeignKey("vnsf.UserAccount", t => t.Account_Id)
-                .ForeignKey("vnsf.BankAccount", t => t.BankAccount_Id)
-                .ForeignKey("vnsf.Contact", t => t.Contact_Id)
-                .ForeignKey("vnsf.Organization", t => t.Organization_Id)
-                .Index(t => t.PanelMemberRole_Id)
-                .Index(t => t.Panel_Id)
-                .Index(t => t.Account_Id)
-                .Index(t => t.BankAccount_Id)
-                .Index(t => t.Contact_Id)
-                .Index(t => t.Organization_Id);
-            
-            CreateTable(
-                "vnsf.BankAccount",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        AccountNo = c.String(),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Created = c.DateTime(),
-                        LastUpdated = c.DateTime(),
-                        User_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
-                .Index(t => t.User_Id);
-            
-            CreateTable(
-                "vnsf.Job",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Position = c.String(),
-                        QuitReseason = c.String(),
-                        FromDate = c.DateTime(nullable: false),
-                        ToDate = c.DateTime(),
-                        Company = c.String(),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Created = c.DateTime(),
-                        LastUpdated = c.DateTime(),
-                        Organization_Id = c.Guid(),
-                        User_Id = c.Guid(),
-                        Researcher_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("vnsf.Organization", t => t.Organization_Id)
-                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
-                .ForeignKey("vnsf.Person", t => t.Researcher_Id)
-                .Index(t => t.Organization_Id)
-                .Index(t => t.User_Id)
-                .Index(t => t.Researcher_Id);
-            
-            CreateTable(
-                "vnsf.PanelMemberRole",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Name = c.String(),
-                        Description = c.String(),
+                        Scope = c.String(),
+                        IsActive = c.Boolean(nullable: false),
+                        Total = c.Long(nullable: false),
                         Created = c.DateTime(),
                         LastUpdated = c.DateTime(),
                         User_Id = c.Guid(),
@@ -742,6 +588,79 @@ namespace Vnsf.Data.EF.Migrations
                 .Index(t => new { t.UserAccountID, t.ProviderName, t.ProviderAccountID });
             
             CreateTable(
+                "vnsf.UserProfile",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        FullName_FirsName = c.String(),
+                        FullName_LastName = c.String(),
+                        BirthDay = c.DateTime(),
+                        Gender = c.Boolean(nullable: false),
+                        BankAccount_Id = c.Guid(),
+                        Contact_Id = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.BankAccount", t => t.BankAccount_Id)
+                .ForeignKey("vnsf.Contact", t => t.Contact_Id)
+                .ForeignKey("vnsf.UserAccount", t => t.Id)
+                .Index(t => t.Id)
+                .Index(t => t.BankAccount_Id)
+                .Index(t => t.Contact_Id);
+            
+            CreateTable(
+                "vnsf.BankAccount",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        AccountNo = c.String(),
+                        Name = c.String(),
+                        Description = c.String(),
+                        Created = c.DateTime(),
+                        LastUpdated = c.DateTime(),
+                        User_Id = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
+                .Index(t => t.User_Id);
+            
+            CreateTable(
+                "vnsf.Classification",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(),
+                        Description = c.String(),
+                        Created = c.DateTime(),
+                        LastUpdated = c.DateTime(),
+                        User_Id = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.UserAccount", t => t.User_Id)
+                .Index(t => t.User_Id);
+            
+            CreateTable(
+                "vnsf.Culture",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Code = c.String(),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "vnsf.LocalizedCulture",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        CultureId = c.Guid(nullable: false),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("vnsf.Culture", t => t.CultureId, cascadeDelete: true)
+                .Index(t => t.CultureId);
+            
+            CreateTable(
                 "vnsf.Storage",
                 c => new
                     {
@@ -762,38 +681,24 @@ namespace Vnsf.Data.EF.Migrations
         public override void Down()
         {
             DropForeignKey("vnsf.Storage", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Publication", "Researcher_Id", "vnsf.Person");
-            DropForeignKey("vnsf.Person", "Organization_Id", "vnsf.Organization");
-            DropForeignKey("vnsf.Job", "Researcher_Id", "vnsf.Person");
-            DropForeignKey("vnsf.Education", "Researcher_Id", "vnsf.Person");
-            DropForeignKey("vnsf.Application", "Researcher_Id", "vnsf.Person");
-            DropForeignKey("vnsf.Person", "Contact_Id", "vnsf.Contact");
-            DropForeignKey("vnsf.Person", "BankAccount_Id", "vnsf.BankAccount");
-            DropForeignKey("vnsf.Person", "Account_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.LocalizedCulture", "CultureId", "vnsf.Culture");
+            DropForeignKey("vnsf.Classification", "User_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.Category", "Classification_Id", "vnsf.Classification");
             DropForeignKey("vnsf.CategoryChild", "User_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.UserProfile", "Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.UserProfile", "Contact_Id", "vnsf.Contact");
+            DropForeignKey("vnsf.UserProfile", "BankAccount_Id", "vnsf.BankAccount");
+            DropForeignKey("vnsf.BankAccount", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.LinkedAccount", "UserAccountID", "vnsf.UserAccount");
             DropForeignKey("vnsf.LinkedAccountClaim", new[] { "UserAccountID", "ProviderName", "ProviderAccountID" }, "vnsf.LinkedAccount");
             DropForeignKey("vnsf.UserClaim", "UserAccountID", "vnsf.UserAccount");
             DropForeignKey("vnsf.UserCertificate", "UserAccountID", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Application", "UserAccount_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.Application", "Applicant_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.Application", "User_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.ApplicationDocument", "Application_Id", "vnsf.Application");
             DropForeignKey("vnsf.Opportunity", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.Grant", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Panel", "Grant_Id", "vnsf.Grant");
-            DropForeignKey("vnsf.Panel", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Panel", "Opportunity_Id", "vnsf.Opportunity");
-            DropForeignKey("vnsf.Person", "Panel_Id", "vnsf.Panel");
-            DropForeignKey("vnsf.PanelMemberRole", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Person", "PanelMemberRole_Id", "vnsf.PanelMemberRole");
-            DropForeignKey("vnsf.Job", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Job", "Organization_Id", "vnsf.Organization");
-            DropForeignKey("vnsf.BankAccount", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Opportunity", "GrantId", "vnsf.Grant");
-            DropForeignKey("vnsf.Grant", "Logo_Id", "vnsf.Doc");
-            DropForeignKey("vnsf.GrantLocalized", "Grant_Id", "vnsf.Grant");
-            DropForeignKey("vnsf.GrantLocalized", "CultureId", "vnsf.Culture");
-            DropForeignKey("vnsf.LocalizedCulture", "CultureId", "vnsf.Culture");
-            DropForeignKey("vnsf.Grant", "ClassificationSystem_Id", "vnsf.Classification");
-            DropForeignKey("vnsf.Grant", "AgencyId", "vnsf.Organization");
+            DropForeignKey("vnsf.Opportunity", "Grant_Id", "vnsf.Grant");
             DropForeignKey("vnsf.Contract", "Opportunity_Id", "vnsf.Opportunity");
             DropForeignKey("vnsf.Contract", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.Report", "Contract_Id", "vnsf.Contract");
@@ -801,9 +706,6 @@ namespace Vnsf.Data.EF.Migrations
             DropForeignKey("vnsf.ChangeRequest", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.ChangeRequest", "Category_Id", "vnsf.Category");
             DropForeignKey("vnsf.Contract", "Application_Id", "vnsf.Application");
-            DropForeignKey("vnsf.Opportunity", "ClassificationId", "vnsf.Classification");
-            DropForeignKey("vnsf.Classification", "User_Id", "vnsf.UserAccount");
-            DropForeignKey("vnsf.Category", "Classification_Id", "vnsf.Classification");
             DropForeignKey("vnsf.Award", "Opportunity_Id", "vnsf.Opportunity");
             DropForeignKey("vnsf.Award", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.Report", "Award_Id", "vnsf.Award");
@@ -812,12 +714,11 @@ namespace Vnsf.Data.EF.Migrations
             DropForeignKey("vnsf.Publication", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.Publication", "Organization_Id", "vnsf.Organization");
             DropForeignKey("vnsf.Publication", "Document_Id", "vnsf.Doc");
-            DropForeignKey("vnsf.DocShare", "Right_Id", "vnsf.Permission");
-            DropForeignKey("vnsf.DocShare", "Document_Id", "vnsf.Doc");
-            DropForeignKey("vnsf.DocShare", "Account_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.DocProtection", "Permission_Id", "vnsf.Permission");
             DropForeignKey("vnsf.DocProtection", "Doc_Id", "vnsf.Doc");
             DropForeignKey("vnsf.Doc", "Parent_Id", "vnsf.Doc");
+            DropForeignKey("vnsf.Doc", "Owner_Id", "vnsf.UserAccount");
+            DropForeignKey("vnsf.DocLink", "Id", "vnsf.Doc");
             DropForeignKey("vnsf.Publication", "Category_Id", "vnsf.Category");
             DropForeignKey("vnsf.Expense", "ReportVersion_Id", "vnsf.ReportVersion");
             DropForeignKey("vnsf.Expense", "User_Id", "vnsf.UserAccount");
@@ -835,51 +736,36 @@ namespace Vnsf.Data.EF.Migrations
             DropForeignKey("vnsf.Report", "ReportCategory_Id", "vnsf.Category");
             DropForeignKey("vnsf.Report", "Category_Id", "vnsf.Category");
             DropForeignKey("vnsf.Award", "Application_Id", "vnsf.Application");
-            DropForeignKey("vnsf.Application", "OpportunityId", "vnsf.Opportunity");
+            DropForeignKey("vnsf.Application", "Opportunity_Id", "vnsf.Opportunity");
+            DropForeignKey("vnsf.ApplicationForm", "Opportunity_Id", "vnsf.Opportunity");
             DropForeignKey("vnsf.AnnouncementVersion", "AnnouncementId", "vnsf.Announcement");
             DropForeignKey("vnsf.Announcement", "User_Id", "vnsf.UserAccount");
             DropForeignKey("vnsf.Announcement", "OpportunityId", "vnsf.Opportunity");
+            DropForeignKey("vnsf.ApplicationDocument", "Form_Id", "vnsf.ApplicationForm");
             DropForeignKey("vnsf.CategoryChild", "CategoryId", "vnsf.Category");
             DropIndex("vnsf.Storage", new[] { "User_Id" });
+            DropIndex("vnsf.LocalizedCulture", new[] { "CultureId" });
+            DropIndex("vnsf.Classification", new[] { "User_Id" });
+            DropIndex("vnsf.BankAccount", new[] { "User_Id" });
+            DropIndex("vnsf.UserProfile", new[] { "Contact_Id" });
+            DropIndex("vnsf.UserProfile", new[] { "BankAccount_Id" });
+            DropIndex("vnsf.UserProfile", new[] { "Id" });
             DropIndex("vnsf.LinkedAccountClaim", new[] { "UserAccountID", "ProviderName", "ProviderAccountID" });
             DropIndex("vnsf.LinkedAccount", new[] { "UserAccountID" });
             DropIndex("vnsf.UserClaim", new[] { "UserAccountID" });
             DropIndex("vnsf.UserCertificate", new[] { "UserAccountID" });
-            DropIndex("vnsf.PanelMemberRole", new[] { "User_Id" });
-            DropIndex("vnsf.Job", new[] { "Researcher_Id" });
-            DropIndex("vnsf.Job", new[] { "User_Id" });
-            DropIndex("vnsf.Job", new[] { "Organization_Id" });
-            DropIndex("vnsf.BankAccount", new[] { "User_Id" });
-            DropIndex("vnsf.Person", new[] { "Organization_Id" });
-            DropIndex("vnsf.Person", new[] { "Contact_Id" });
-            DropIndex("vnsf.Person", new[] { "BankAccount_Id" });
-            DropIndex("vnsf.Person", new[] { "Account_Id" });
-            DropIndex("vnsf.Person", new[] { "Panel_Id" });
-            DropIndex("vnsf.Person", new[] { "PanelMemberRole_Id" });
-            DropIndex("vnsf.Panel", new[] { "Grant_Id" });
-            DropIndex("vnsf.Panel", new[] { "User_Id" });
-            DropIndex("vnsf.Panel", new[] { "Opportunity_Id" });
-            DropIndex("vnsf.LocalizedCulture", new[] { "CultureId" });
-            DropIndex("vnsf.GrantLocalized", new[] { "Grant_Id" });
-            DropIndex("vnsf.GrantLocalized", new[] { "CultureId" });
             DropIndex("vnsf.Grant", new[] { "User_Id" });
-            DropIndex("vnsf.Grant", new[] { "Logo_Id" });
-            DropIndex("vnsf.Grant", new[] { "ClassificationSystem_Id" });
-            DropIndex("vnsf.Grant", new[] { "AgencyId" });
             DropIndex("vnsf.ChangeRequest", new[] { "Contract_Id" });
             DropIndex("vnsf.ChangeRequest", new[] { "User_Id" });
             DropIndex("vnsf.ChangeRequest", new[] { "Category_Id" });
             DropIndex("vnsf.Contract", new[] { "Opportunity_Id" });
             DropIndex("vnsf.Contract", new[] { "User_Id" });
             DropIndex("vnsf.Contract", new[] { "Application_Id" });
-            DropIndex("vnsf.Classification", new[] { "User_Id" });
-            DropIndex("vnsf.DocShare", new[] { "Right_Id" });
-            DropIndex("vnsf.DocShare", new[] { "Document_Id" });
-            DropIndex("vnsf.DocShare", new[] { "Account_Id" });
             DropIndex("vnsf.DocProtection", new[] { "Permission_Id" });
             DropIndex("vnsf.DocProtection", new[] { "Doc_Id" });
+            DropIndex("vnsf.DocLink", new[] { "Id" });
             DropIndex("vnsf.Doc", new[] { "Parent_Id" });
-            DropIndex("vnsf.Publication", new[] { "Researcher_Id" });
+            DropIndex("vnsf.Doc", new[] { "Owner_Id" });
             DropIndex("vnsf.Publication", new[] { "ReportVersion_Id" });
             DropIndex("vnsf.Publication", new[] { "User_Id" });
             DropIndex("vnsf.Publication", new[] { "Organization_Id" });
@@ -893,7 +779,6 @@ namespace Vnsf.Data.EF.Migrations
             DropIndex("vnsf.OrganizationUnit", new[] { "ParentId" });
             DropIndex("vnsf.Organization", new[] { "OgranizationType_Id" });
             DropIndex("vnsf.Organization", new[] { "Contact_Id" });
-            DropIndex("vnsf.Education", new[] { "Researcher_Id" });
             DropIndex("vnsf.Education", new[] { "ReportVersion_Id" });
             DropIndex("vnsf.Education", new[] { "User_Id" });
             DropIndex("vnsf.Education", new[] { "Organization_Id" });
@@ -911,34 +796,32 @@ namespace Vnsf.Data.EF.Migrations
             DropIndex("vnsf.Announcement", new[] { "User_Id" });
             DropIndex("vnsf.Announcement", new[] { "OpportunityId" });
             DropIndex("vnsf.Opportunity", new[] { "User_Id" });
-            DropIndex("vnsf.Opportunity", new[] { "ClassificationId" });
-            DropIndex("vnsf.Opportunity", new[] { "GrantId" });
-            DropIndex("vnsf.Application", new[] { "Researcher_Id" });
-            DropIndex("vnsf.Application", new[] { "UserAccount_Id" });
-            DropIndex("vnsf.Application", new[] { "OpportunityId" });
+            DropIndex("vnsf.Opportunity", new[] { "Grant_Id" });
+            DropIndex("vnsf.ApplicationForm", new[] { "Opportunity_Id" });
+            DropIndex("vnsf.ApplicationDocument", new[] { "Application_Id" });
+            DropIndex("vnsf.ApplicationDocument", new[] { "Form_Id" });
+            DropIndex("vnsf.Application", new[] { "Applicant_Id" });
+            DropIndex("vnsf.Application", new[] { "User_Id" });
+            DropIndex("vnsf.Application", new[] { "Opportunity_Id" });
             DropIndex("vnsf.CategoryChild", new[] { "User_Id" });
             DropIndex("vnsf.CategoryChild", new[] { "CategoryId" });
             DropIndex("vnsf.Category", new[] { "Classification_Id" });
             DropTable("vnsf.Storage");
+            DropTable("vnsf.LocalizedCulture");
+            DropTable("vnsf.Culture");
+            DropTable("vnsf.Classification");
+            DropTable("vnsf.BankAccount");
+            DropTable("vnsf.UserProfile");
             DropTable("vnsf.LinkedAccountClaim");
             DropTable("vnsf.LinkedAccount");
             DropTable("vnsf.UserClaim");
             DropTable("vnsf.UserCertificate");
-            DropTable("vnsf.PanelMemberRole");
-            DropTable("vnsf.Job");
-            DropTable("vnsf.BankAccount");
-            DropTable("vnsf.Person");
-            DropTable("vnsf.Panel");
-            DropTable("vnsf.LocalizedCulture");
-            DropTable("vnsf.Culture");
-            DropTable("vnsf.GrantLocalized");
             DropTable("vnsf.Grant");
             DropTable("vnsf.ChangeRequest");
             DropTable("vnsf.Contract");
-            DropTable("vnsf.Classification");
-            DropTable("vnsf.DocShare");
             DropTable("vnsf.Permission");
             DropTable("vnsf.DocProtection");
+            DropTable("vnsf.DocLink");
             DropTable("vnsf.Doc");
             DropTable("vnsf.Publication");
             DropTable("vnsf.MeasurementUnit");
@@ -953,6 +836,8 @@ namespace Vnsf.Data.EF.Migrations
             DropTable("vnsf.AnnouncementVersion");
             DropTable("vnsf.Announcement");
             DropTable("vnsf.Opportunity");
+            DropTable("vnsf.ApplicationForm");
+            DropTable("vnsf.ApplicationDocument");
             DropTable("vnsf.Application");
             DropTable("vnsf.UserAccount");
             DropTable("vnsf.CategoryChild");

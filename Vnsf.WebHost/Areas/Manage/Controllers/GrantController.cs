@@ -23,8 +23,6 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
 
         }
 
-        //
-        // GET: /Manage/Grant/
         public ActionResult Index()
         {
             var vm = _uow.Grants.All.OrderByDescending(g => g.Created).Project().To<GrantViewModel>();
@@ -43,6 +41,9 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
         // GET: /Manage/Grant/Create
         public ActionResult Create()
         {
+            ViewData["Classifications"] = _uow.Classifications.All
+                .ToSelectListWithEmptyOption(c => c.Id.ToString(), c => c.Name.ToString());
+
             var vm = new GrantBindingModel();
             return View(vm);
         }
@@ -59,7 +60,9 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
                 {
                     //var issuer = _uow.Organizations.All.OfType<FundingAgency>().First(a => a.Id == form.IssuerId);
                     //var grant = AutoMapper.Mapper.Map<Grant>(form);
-                    _uow.Grants.Add(Grant.NewGrant(form.Code, form.Name, form.Description, form.Objective, form.Scope, form.IsActive, form.Total));
+                    var clas = _uow.Classifications.FindById(form.ClassificationId);
+
+                    _uow.Grants.Add(Grant.NewGrant(form.Code, form.Name, form.Description, form.Objective, form.Scope, form.IsActive, form.Total, clas));
 
                     await _uow.SaveAsync();
                 }
@@ -72,10 +75,23 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             }
         }
 
-        public async Task<ActionResult> Edit(Guid id)
+        public ActionResult Edit(Guid id)
         {
-            var item = await _uow.Grants.FindAsyncById(id);
+            var item = _uow.Grants.AllIncluding(c => c.Classification).FirstOrDefault(c => c.Id == id);
             var vm = AutoMapper.Mapper.Map<GrantBindingModel>(item);
+
+            if (item.Classification == null)
+            {
+                ViewData["Classifications"] = _uow.Classifications.All
+                .ToSelectListWithEmptyOption(c => c.Id.ToString(), c => c.Name.ToString());
+            }
+            else
+            {
+                ViewData["Classifications"] = _uow.Classifications.All
+                .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), item.Classification.Id.ToString());
+            }
+
+
 
             return View(vm);
         }
@@ -87,6 +103,7 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var clas = await _uow.Classifications.FindAsyncById(form.ClassificationId);
                     var grant = await _uow.Grants.FindAsyncById(id);
 
                     grant.Code = form.Code;
@@ -96,6 +113,7 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
                     grant.Scope = form.Scope;
                     grant.IsActive = form.IsActive;
                     grant.Total = form.Total;
+                    grant.Classification = clas;
 
                     await _uow.SaveAsync();
                 }

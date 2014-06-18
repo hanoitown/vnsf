@@ -1,0 +1,18 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+@{
+    var type = (Type)Model.GetType();
+    var field = type.GetField(Model.ToString());
+    if (field != null)
+    {
+        var display = ((DisplayAttribute[])field.GetCustomAttributes(typeof(DisplayAttribute), false)).FirstOrDefault();
+        if (display != null)
+        {
+            @display.GetName()
+        }
+        else
+        {
+            @Model
+        }
+    }
+}

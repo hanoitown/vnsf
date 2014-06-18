@@ -209,6 +209,49 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             return View();
         }
 
+        public ActionResult UpdateProfile()
+        {
+            var user = _uow.UserAccounts.AllIncluding(u => u.Profile).First(u => u.Id == _User.User.Id);
+            var profile = user.Profile == null ? new UserProfileBindingModel() :
+                                        AutoMapper.Mapper.Map<UserProfileBindingModel>(user.Profile);
+            return PartialView("_AccountProfilePartial", profile);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProfile(UserProfileBindingModel model)
+        {
+            var user = _uow.UserAccounts.AllIncluding(u => u.Profile).First(u => u.Id == _User.User.Id);
+
+            if (user.Profile != null)
+            {
+                user.Profile.Name = new FullName(model.NameFirst, model.NameLast);
+                user.Profile.Gender = model.Gender;
+                user.Profile.BirthDay = model.Birthday;
+            }
+            else
+            {
+                var profile = UserProfile.New(model.NameFirst, model.NameLast, model.Birthday, model.Gender, _User.User);
+                if (model.AvatarFile != null && model.AvatarFile.ContentLength > 0)
+                {
+                    var avatar = new Avatar()
+                    {
+                        Id = Guid.NewGuid(),
+                        FileName = model.AvatarFile.FileName,
+                        ContentType = MimeMapping.GetMimeMapping(model.AvatarFile.FileName),
+                        ContentLength = model.AvatarFile.ContentLength,
+                        Alias = model.AvatarAlias
+                        //add path here
+                    };
+                    profile.Avatar = avatar;
+                }
+                user.Profile = profile;
+                _uow.Save();
+            }
+
+
+            return null;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)

@@ -19,6 +19,7 @@ namespace Vnsf.Data.EF
         public IGrantRepository GrantRepo { get { return GetRepo<IGrantRepository>(); } }
         public IAnnouncementRepository AnnouncementRepo { get { return GetRepo<IAnnouncementRepository>(); } }
         public IClassificationRepository ClassificationRepo { get { return GetRepo<IClassificationRepository>(); } }
+        public IRepository<Classification> Classifications { get { return GetStandardRepo<Classification>(); } }
         public IRepository<Grant> Grants { get { return GetStandardRepo<Grant>(); } }
         public IRepository<Opportunity> Opps { get { return GetStandardRepo<Opportunity>(); } }
         public IRepository<Organization> Organizations { get { return GetStandardRepo<Organization>(); } }
@@ -29,6 +30,8 @@ namespace Vnsf.Data.EF
         public IRepository<ApplicationForm> AppForms { get { return GetStandardRepo<ApplicationForm>(); } }
         public IRepository<ApplicationDocument> AppDocuments { get { return GetStandardRepo<ApplicationDocument>(); } }
         public IDocRepository Documents { get { return GetRepo<IDocRepository>(); } }
+        public IRepository<UserProfile> Profiles { get { return GetStandardRepo<UserProfile>(); } }
+
         public UnitOfWork(IRepositoryProvider repositoryProvider)
         {
             CreateDbContext();

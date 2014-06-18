@@ -19,6 +19,7 @@ namespace Vnsf.WebHost.Areas.Manage.Models
         public long Total { set; get; }
         public DateTime? LastUpdated { set; get; }
         public List<OppViewModel> Opportunities { get; set; }
+        
         public GrantViewModel()
         {
 

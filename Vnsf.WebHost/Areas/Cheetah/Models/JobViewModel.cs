@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Vnsf.Data.Entities;
+using Vnsf.WebHost.Infrastructure.Mapping;
 
-namespace Vnsf.Data.Entities
+namespace Vnsf.WebHost.Areas.Cheetah.Models
 {
-    public class Job : BaseBusiness
+    public class JobViewModel : IMapFrom<Job>
     {
+        public Guid Id { get; set; }
         public virtual string Position { get; set; }
         public string QuitReseason { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime? ToDate { get; set; }
         public string Company { get; set; }
-        public virtual Organization Organization { get; set; }
+
     }
 }

@@ -13,9 +13,8 @@ namespace Vnsf.Data.EF.Configurations
         public CategoryConfiguration()
         {
 
-            //this.HasMany(o => o.Hierachy)
-            //    .WithRequired(o => o.Category)
-            //    .WillCascadeOnDelete(false);
+            this.HasOptional(o => o.Parent)
+                .WithMany(o => o.Children);
         }
     }
 }

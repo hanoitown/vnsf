@@ -99,6 +99,12 @@ namespace Vnsf.WebHost
             return enumerable.ToSelectList(value, text, false);
         }
 
+        public static IEnumerable<SelectListItem> ToSelectListWithEmptyOption<T>(this IEnumerable<T> enumerable, Func<T, string> value, Func<T, string> text)
+        {
+            return enumerable.ToSelectListWithEmptyOption(value, text, string.Empty);
+        }
+
+
         /// <summary>
         /// Returns an IEnumerable&lt;SelectListItem&gt; by using the specified checkboxes for data value field, the data text field, and a selected value.
         /// </summary>
@@ -176,6 +182,32 @@ namespace Vnsf.WebHost
         /// <param name="selectedValues">The selected values.</param>
         public static IEnumerable<SelectListItem> ToSelectList<T>(this IEnumerable<T> enumerable, Func<T, string> value, Func<T, string> text, IList<string> selectedValues)
         {
+            foreach (var f in enumerable)
+            {
+                yield return new SelectListItem()
+                {
+                    Value = value(f),
+                    Text = text(f),
+                    Selected = selectedValues.Contains(value(f))
+                };
+            }
+        }
+
+        /// <summary>
+        /// Returns an IEnumerable&lt;SelectListItem&gt; by using the specified checkboxes for data value field, the data text field, and the selected values.
+        /// </summary>
+        /// <param name="enumerable">The checkboxes.</param>
+        /// <param name="value">The data value field.</param>
+        /// <param name="text">The data text field.</param>
+        /// <param name="selectedValues">The selected values.</param>
+        public static IEnumerable<SelectListItem> ToSelectListWithEmptyOption<T>(this IEnumerable<T> enumerable, Func<T, string> value, Func<T, string> text, string selectedValues)
+        {
+            yield return new SelectListItem()
+            {
+                Value = string.Empty,
+                Text = "Select one .."
+            };
+
             foreach (var f in enumerable)
             {
                 yield return new SelectListItem()

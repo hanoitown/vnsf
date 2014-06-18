@@ -20,6 +20,7 @@ namespace Vnsf.Data.Repository
         IGrantRepository GrantRepo { get; }
         IAnnouncementRepository AnnouncementRepo { get; }
         IClassificationRepository ClassificationRepo { get; }
+        IRepository<Classification> Classifications { get; }
         IRepository<Grant> Grants { get; }
         IRepository<Opportunity> Opps { get; }
         IRepository<Organization> Organizations { get; }
@@ -29,6 +30,7 @@ namespace Vnsf.Data.Repository
         IRepository<ApplicationForm> AppForms { get; }
         IRepository<ApplicationDocument> AppDocuments { get; }
         IDocRepository Documents { get; }
+        IRepository<UserProfile> Profiles { get; }
 
     }
 }

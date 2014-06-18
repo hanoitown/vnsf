@@ -12,7 +12,6 @@ namespace Vnsf.Data.Entities
         public int ProcessTime { get; set; }
         public string ResultAnnouncement { get; set; }
         public decimal Fee { get; set; }
-        public ICollection<BusinessDocumentType> Documents { get; set; }
         public ICollection<Process> Processes { get; set; }
         public virtual ICollection<TaskItem> Tasks { get; set; }
     }
