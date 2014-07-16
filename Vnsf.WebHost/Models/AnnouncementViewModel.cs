@@ -23,7 +23,7 @@ namespace Vnsf.WebHost.Models
         {
             
         }
-        public AnnouncementViewModel(Announcement a)
+        public AnnouncementViewModel(Post a)
         {
             
             Id = a.Id;

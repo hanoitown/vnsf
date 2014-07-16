@@ -1,0 +1,33 @@
+﻿@using Vnsf.Data.Entities
+
+@{
+    var options = Enum.GetValues(typeof(Month)).Cast<Month>()
+        .Select(t => new SelectListItem
+        {
+            Text = t.ToString(),
+            Value = t.ToString(),
+            Selected = t == Model
+        }).ToArray();
+
+    var selectList = new List<SelectListItem>();
+    var enumType = Model.GetType();
+    foreach (var value in Enum.GetValues(enumType))
+    {
+        var field = enumType.GetField(value.ToString());
+        var option = new SelectListItem { Value = value.ToString() };
+        var display = ((System.ComponentModel.DataAnnotations.DisplayAttribute[])field.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.DisplayAttribute), false)).FirstOrDefault();
+        if (display != null)
+        {
+            option.Text = display.GetName();
+        }
+        else
+        {
+            option.Text = value.ToString();
+        }
+        option.Selected = value == Model;
+        selectList.Add(option);
+    }
+}
+
+@Html.DropDownList("", selectList, new { @class = "form-control" }).
+@*@Html.DropDownList("", options, new { @class="form-control" })*@

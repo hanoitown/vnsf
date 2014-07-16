@@ -22,12 +22,12 @@ namespace Vnsf.Service.Contract.Service_Contracts
         void PutOpportunityById(Guid id, Opportunity opportunity);
 
         #region Announcement
-        Announcement GetAnnouncementsById(Guid id);
-        void CreateAnnoucement(Announcement a);
-        void PutAnnoucement(Guid id, Announcement announcement);
-        List<Announcement> GetAnnouncementsByGrandId(Guid? grandId);
+        Post GetAnnouncementsById(Guid id);
+        void CreateAnnoucement(Post a);
+        void PutAnnoucement(Guid id, Post announcement);
+        List<Post> GetAnnouncementsByGrandId(Guid? grandId);
         List<Organization> GetAllOrganizations();
-        List<Announcement> GetAvailableAnnouncements();
+        List<Post> GetAvailableAnnouncements();
 
         #endregion
 

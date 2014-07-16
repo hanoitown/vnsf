@@ -30,7 +30,9 @@ namespace Vnsf.Data.EF
         public IRepository<ApplicationForm> AppForms { get { return GetStandardRepo<ApplicationForm>(); } }
         public IRepository<ApplicationDocument> AppDocuments { get { return GetStandardRepo<ApplicationDocument>(); } }
         public IDocRepository Documents { get { return GetRepo<IDocRepository>(); } }
+        public IRepository<Report> Reports { get { return GetStandardRepo<Report>(); } }
         public IRepository<UserProfile> Profiles { get { return GetStandardRepo<UserProfile>(); } }
+        public IRepository<Proposal> Proposals { get { return GetStandardRepo<Proposal>(); } }
 
         public UnitOfWork(IRepositoryProvider repositoryProvider)
         {

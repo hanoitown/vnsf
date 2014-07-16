@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnnouncementRepository.cs" />
+    <Compile Include="Configurations\AwardConfiguration.cs" />
     <Compile Include="Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Configurations\OpportunityConfiguration.cs" />
     <Compile Include="Configurations\UserProfileConfiguration.cs" />
@@ -72,10 +73,6 @@
     <Compile Include="Helpers\IRepositoryProvider.cs" />
     <Compile Include="Helpers\RepositoryFactories.cs" />
     <Compile Include="Helpers\RepositoryProvider.cs" />
-    <Compile Include="Migrations\201406141129166_initial.cs" />
-    <Compile Include="Migrations\201406141129166_initial.Designer.cs">
-      <DependentUpon>201406141129166_initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DataContexts\DatabaseInitializer.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -103,11 +100,6 @@
       <Project>{2e741f26-7666-4f93-9847-b9dd53bbd385}</Project>
       <Name>Vnsf.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201406141129166_initial.resx">
-      <DependentUpon>201406141129166_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

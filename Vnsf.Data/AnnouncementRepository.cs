@@ -9,23 +9,23 @@ using Vnsf.Data.Repository;
 
 namespace Vnsf.Data.EF
 {
-    public class AnnouncementRepository : Repository<Announcement>, IAnnouncementRepository
+    public class AnnouncementRepository : Repository<Post>, IAnnouncementRepository
     {
         public AnnouncementRepository(DbContext context) : base(context) { }
 
 
-        public IQueryable<Announcement> GetAnnoucmentByGrandId(Guid grantId)
+        public IQueryable<Post> GetAnnoucmentByGrandId(Guid grantId)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Announcement> GetAvailableAnnouncement()
+        public IQueryable<Post> GetAvailableAnnouncement()
         {
             return this.DbSet.Include(a => a.Opportunity);
         }
 
 
-        public Announcement GetAnnouncementsById(Guid id)
+        public Post GetAnnouncementsById(Guid id)
         {
             return this.DbSet.Include(a => a.Opportunity).FirstOrDefault(a => a.Id == id);
         }

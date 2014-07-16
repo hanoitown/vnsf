@@ -15,6 +15,7 @@ using Vnsf.WebHost.Infrastructure;
 using Vnsf.Data;
 using System.IO;
 using Vnsf.WebHost.Areas.Cheetah.Models;
+using System.Text;
 
 namespace Vnsf.WebHost.Areas.Cheetah.Controllers
 {
@@ -36,22 +37,80 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             return View(vm);
         }
 
-        public ActionResult Proposal(Guid id)
+        public ActionResult NewProposal(Guid applicationId)
         {
-            var vm = AutoMapper.Mapper.Map<AppBindingModel>(_uow.Apps.FindById(id));
-            return View("_Proposal", vm.Proposal);
-        }
-        [HttpPost, ChildActionOnly]
-        public ActionResult Proposal(Guid id, ProposalBindingModel form)
-        {
-            return View();
+            var app = _uow.Apps.AllIncluding(a => a.Proposal, a => a.Proposal.Field, a => a.Opportunity.Grant.Classification).FirstOrDefault(a => a.Id == applicationId);
+
+            var vm = new ProposalBindingModel()
+            {
+                StartDate = DateTime.Today,
+                FinishDate = DateTime.Today
+            };
+            if (app.Proposal != null)
+                vm = AutoMapper.Mapper.Map<ProposalBindingModel>(app.Proposal);
+
+            ViewData["Hostings"] = _uow.Organizations.All
+                                        .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), string.Empty);
+
+
+            var categories = _uow.Categories.AllIncluding(c => c.Parent).Where(c => c.Parent == null)
+            .Project().To<CategoryViewModel>().ToList();
+
+            categories.ForEach(n => BuildChildNode(n));
+            var list = new List<SelectListItem>();
+            foreach (var item in categories)
+            {
+                list.Add(new SelectListItem
+                {
+                    Value = item.Id.ToString(),
+                    Text = item.Name,
+                    Selected = app.Proposal == null ? false : item.Id == app.Proposal.Field.Id
+                });
+                ToSelectList(item, list, app.Proposal);
+            }
+
+            ViewData["Categories"] = list;
+
+
+            return View("_Proposal", vm);
         }
 
-        public ActionResult Participations(Guid id)
+        /// <summary>
+        /// Add or update proposal depend on available data
+        /// </summary>
+        /// <param name="applicationId"></param>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult NewProposal(Guid applicationId, ProposalBindingModel form)
         {
-            var vm = AutoMapper.Mapper.Map<AppBindingModel>(_uow.Apps.FindById(id));
-            return View("_Participations", vm.Participations);
+            var app = _uow.Apps.AllIncluding(a => a.Proposal).FirstOrDefault(a => a.Id == applicationId);
+
+            var cat = _uow.Categories.FindById(form.FieldId);
+            var org = _uow.Organizations.FindById(form.HostingId);
+            if (app.Proposal == null)
+                app.Proposal = Proposal.New(form.Title, form.Abstract, form.StartDate, form.FinishDate, form.Duration, form.TotalBudget, form.RequetBudget, form.Content);
+            else
+                UpdateProposal(app.Proposal, form);
+
+            app.Proposal.Kind = form.Kind;
+            app.Proposal.Field = cat;
+            app.Proposal.Hosting = org;
+
+            _uow.Save();
+
+            return RedirectToAction<ApplicationController>(c => c.Details(app.Id));
         }
+
+        public void UpdateProposal(Proposal toUpdate, ProposalBindingModel form)
+        {
+
+            toUpdate.Title = form.Title;
+            toUpdate.Abstract = form.Abstract;
+            toUpdate.Content = form.Content;
+
+        }
+
 
         [Authorize]
         public ActionResult Details(Guid id)
@@ -81,7 +140,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             var form = _uow.AppForms.All.Where(f => f.Opportunity.Id == item.Opportunity.Id).ToList();
 
             // in order to join, need 2 lists first, queryable not support
-            var vm = form.OrderBy(f=>f.Code).GroupJoin(doc, f => f.Id, d => d.Form.Id,
+            var vm = form.OrderBy(f => f.Code).GroupJoin(doc, f => f.Id, d => d.Form.Id,
                     (p, c) => c
                     .Select(a => new AppDocumentViewModel { Id = a.Id, FormId = p.Id, FileName = a.FileName, FormName = p.Name, FormCode = p.Code })
                     .DefaultIfEmpty(new AppDocumentViewModel { FormId = p.Id, FileName = string.Empty, FormName = p.Name, FormCode = p.Code }))
@@ -148,6 +207,54 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         {
             var file = _uow.AppDocuments.FindById(id);
             return File(file.Path, MimeMapping.GetMimeMapping(file.FileName), file.FileName);
+        }
+
+
+        private void ToSelectList(CategoryViewModel cat, List<SelectListItem> list, Proposal proposal)
+        {
+            if (cat.Children != null)
+            {
+                foreach (var item in cat.Children)
+                {
+                    list.Add(new SelectListItem()
+                    {
+                        Value = item.Id.ToString(),
+                        Text = Prefix(2 * item.Depth) + item.Name,
+                        Selected = proposal == null ? false : item.Id == proposal.Field.Id
+                    });
+                    ToSelectList(item, list, proposal);
+
+                }
+            }
+        }
+
+        private string Prefix(int count)
+        {
+            if (count == 0)
+                return "";
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < count; i++)
+            {
+                sb.Append("&nbsp;");
+            }
+            return Server.HtmlDecode(sb.ToString());
+        }
+
+        private void BuildChildNode(CategoryViewModel cat)
+        {
+            if (cat != null)
+            {
+                var children = _uow.Categories.AllIncluding(c => c.Children).Where(c => c.Parent.Id == cat.Id)
+                                        .Project().To<CategoryViewModel>().ToList();
+                if (children != null)
+                {
+                    foreach (var child in children)
+                    {
+                        BuildChildNode(child);
+                        cat.Children.Add(child);
+                    }
+                }
+            }
         }
 
 

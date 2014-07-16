@@ -31,6 +31,8 @@ namespace Vnsf.Data.Repository
         IRepository<ApplicationDocument> AppDocuments { get; }
         IDocRepository Documents { get; }
         IRepository<UserProfile> Profiles { get; }
+        IRepository<Report> Reports { get; }
+        IRepository<Proposal> Proposals { get; }
 
     }
 }

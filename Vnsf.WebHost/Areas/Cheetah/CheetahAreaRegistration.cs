@@ -23,6 +23,15 @@ namespace Vnsf.WebHost.Areas.Cheetah
             );
 
             context.MapRoute(
+                "Application",
+                "Cheetah/{controller}/{applicationId}/{action}",
+                new { Controller = "Application" },
+                new[] { "Vnsf.WebHost.Areas.Cheetah.Controllers" }
+            );
+
+
+
+            context.MapRoute(
                 "profile",
                 "Cheetah/UserProfile/Education/{action}",
                 new { controller = "UserProfile", action = "NewEducation", id = UrlParameter.Optional },

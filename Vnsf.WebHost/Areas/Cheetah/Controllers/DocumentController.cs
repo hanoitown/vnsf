@@ -16,8 +16,6 @@ using System.Web.Mvc;
 using Vnsf.Data.Entities;
 using Vnsf.Data.Entities.Account;
 using Vnsf.Data.Repository;
-using Vnsf.Service.Contract.Service_Contracts;
-using Vnsf.Service.Implementation;
 using Vnsf.WebHost.Areas.Cheetah.Models;
 using Vnsf.WebHost.Base;
 using AutoMapper.QueryableExtensions;

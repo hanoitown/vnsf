@@ -18,6 +18,8 @@ namespace Vnsf.WebHost.Areas.Manage.Models
         public Guid ClassificationId { get; set; }
         public string ClassificationName { get; set; }
         public string ParentName { set; get; }
+        public int Depth { get; set; }
+
         public List<CategoryViewModel> Children { get; set; }
         public CategoryViewModel()
         {

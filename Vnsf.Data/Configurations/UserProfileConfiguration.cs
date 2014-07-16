@@ -15,6 +15,8 @@ namespace Vnsf.Data.EF.Configurations
         {
             this.HasRequired(u=>u.Account).WithOptional(u=>u.Profile);
             this.HasMany(u => u.Publications).WithRequired(p=>p.Profile);
+            HasMany(u => u.Projects).WithRequired(p => p.Profile);
+            HasMany(u => u.WorkExperiences).WithRequired(p => p.Profile);
         }
     }
 }

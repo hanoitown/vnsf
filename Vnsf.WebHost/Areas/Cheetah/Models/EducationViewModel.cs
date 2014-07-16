@@ -15,8 +15,8 @@ namespace Vnsf.WebHost.Areas.Cheetah.Models
         public string ProgramDescription { get; set; }
         public string EducationPlace { get; set; }
         public int Duration { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public MonthYear StartDate { get; set; }
+        public MonthYear EndDate { get; set; }
 
     }
 }

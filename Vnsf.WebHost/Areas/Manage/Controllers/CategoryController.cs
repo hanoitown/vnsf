@@ -63,6 +63,30 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
                 ClassificationId = classId
             };
 
+
+            var categories = _uow.Categories.AllIncluding(c => c.Parent).Where(c => c.Parent == null)
+                        .Project().To<CategoryViewModel>().ToList();
+
+            categories.ForEach(n => BuildChildNode(n));
+
+            //foreach (var item in categories)
+            //    BuildChildNode(item);
+
+            var list = new List<SelectListItem>();
+            foreach (var item in categories)
+            {
+                list.Add(new SelectListItem
+                {
+                    Value = item.Id.ToString(),
+                    Text = item.Name,
+                    Selected = item.Id == parentId
+                });
+                ToSelectList(item, list);
+            }
+
+            ViewData["Categories"] = list;
+
+
             return View("Create", vm);
         }
 
@@ -126,8 +150,12 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             {
                 foreach (var item in cat.Children)
                 {
+                    list.Add(new SelectListItem() { 
+                        Value = item.Id.ToString(),
+                        Text = Prefix(2*item.Depth) + item.Name
+                    });
                     ToSelectList(item, list);
-                    list.Add(new SelectListItem() { Text = Prefix(2) + item.Name });
+
                 }
             }
         }

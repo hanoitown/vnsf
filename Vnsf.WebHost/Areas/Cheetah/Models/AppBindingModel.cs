@@ -16,7 +16,6 @@ namespace Vnsf.WebHost.Areas.Cheetah.Models
         public ApplicationStatus Status { set; get; }
         public OppViewModel Opportunity { set; get; }
         public ProposalBindingModel Proposal { set; get; }
-        public virtual ICollection<UserProfileViewModel> Participations { get; set; }
 
         public UserViewModel Applicant { get; set; }
     }

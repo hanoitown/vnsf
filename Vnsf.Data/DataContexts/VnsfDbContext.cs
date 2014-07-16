@@ -48,7 +48,7 @@ namespace Vnsf.Data
         {
             // Use singular table names
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.HasDefaultSchema("vnsf");
+            //modelBuilder.HasDefaultSchema("vnsf");
             //modelBuilder.Configurations.Add(new CountryConfiguration());
             //modelBuilder.Configurations.Add(new CountryLocalizedConfiguration());
             //modelBuilder.Configurations.Add(new LanguageConfiguration());
@@ -58,6 +58,7 @@ namespace Vnsf.Data
             //modelBuilder.Configurations.Add(new RegionConfiguration());
             //modelBuilder.Configurations.Add(new RegionLocalizedConfiguration());
 
+            modelBuilder.Configurations.Add(new AwardConfiguration());
             modelBuilder.Configurations.Add(new ApplicationConfiguration());
             modelBuilder.Configurations.Add(new UserAccountConfiguration());
             modelBuilder.Configurations.Add(new GrantConfiguration());

@@ -8,11 +8,11 @@ using Vnsf.Infrastructure.Repository;
 
 namespace Vnsf.Data.Repository
 {
-    public interface IAnnouncementRepository : IRepository<Announcement>
+    public interface IAnnouncementRepository : IRepository<Post>
     {
-        IQueryable<Announcement> GetAnnoucmentByGrandId(Guid grantId);
-        IQueryable<Announcement> GetAvailableAnnouncement();
+        IQueryable<Post> GetAnnoucmentByGrandId(Guid grantId);
+        IQueryable<Post> GetAvailableAnnouncement();
 
-        Announcement GetAnnouncementsById(Guid id);
+        Post GetAnnouncementsById(Guid id);
     }
 }

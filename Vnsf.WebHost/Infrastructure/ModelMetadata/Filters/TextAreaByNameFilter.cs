@@ -8,7 +8,7 @@ namespace Vnsf.WebHost.Infrastructure.ModelMetadata.Filters
     {
         static HashSet<string> TextAreaFieldNames = new HashSet<string>
                                     {
-                                          "description","body","comment"             
+                                          "description","body","comment", "content","note","abstract"
                                     };
         public void TransformMetadata(System.Web.Mvc.ModelMetadata metadata, System.Collections.Generic.IEnumerable<System.Attribute> attributes)
         {

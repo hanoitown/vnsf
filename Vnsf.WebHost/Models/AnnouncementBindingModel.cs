@@ -9,10 +9,10 @@ namespace Vnsf.WebHost.Models
 {
     public class AnnouncementBindingModel
     {
-        public Announcement Announcement { get; set; }
+        public Post Announcement { get; set; }
         public IEnumerable<SelectListItem> Opportunities { get; set; }
 
-        public AnnouncementBindingModel(Announcement announcement, IEnumerable<Opportunity> opportunities)
+        public AnnouncementBindingModel(Post announcement, IEnumerable<Opportunity> opportunities)
         {
             Announcement = announcement;
             Opportunities = opportunities.ToSelectList(o => o.Id.ToString(), o => o.Name, announcement.Id.ToString());

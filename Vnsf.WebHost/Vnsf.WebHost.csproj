@@ -266,6 +266,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ClassificationsController.cs" />
+    <Compile Include="Api\FileShareController.cs" />
+    <Compile Include="Api\UploadController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -274,9 +279,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Cheetah\CheetahAreaRegistration.cs" />
     <Compile Include="Areas\Cheetah\Controllers\ApplicationController.cs" />
+    <Compile Include="Areas\Cheetah\Controllers\AwardsController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\DocumentController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\HomeController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\OpportunityController.cs" />
+    <Compile Include="Areas\Cheetah\Controllers\ProposalController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Cheetah\Controllers\UserProfileController.cs" />
     <Compile Include="Areas\Cheetah\Models\AppBindingModel.cs" />
@@ -309,6 +316,7 @@
     <Compile Include="Areas\Manage\Controllers\CultureController.cs" />
     <Compile Include="Areas\Manage\Controllers\GrantController.cs" />
     <Compile Include="Areas\Manage\Controllers\OpportunityController.cs" />
+    <Compile Include="Areas\Manage\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Manage\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Manage\Controllers\UserProfileController.cs" />
     <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
@@ -321,6 +329,7 @@
     <Compile Include="Areas\Manage\Models\OppBindingModel.cs" />
     <Compile Include="Areas\Manage\Models\OppViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ProposalManageViewModel.cs" />
+    <Compile Include="Areas\Manage\Models\ReportManageViewModel.cs" />
     <Compile Include="Helpers\TreeView.cs" />
     <Compile Include="Infrastructure\Base\ApiBaseController.cs" />
     <Compile Include="Filters\SetCultureAttribute.cs" />
@@ -347,13 +356,14 @@
     <Compile Include="Infrastructure\Mapping\IHaveCustomMapping.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Infrastructure\ModelMetadata\ExtensibleModelMetadataProvider.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForCategory.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForClassification.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForOpportunity.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForGrants.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForIssuer.cs" />
-    <Compile Include="Infrastructure\ModelMetadata\Filters\CultureDropDownFilter.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\HostingDropDownFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\EmailInputByNameFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\PasswordInputByNameFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\LabelConventionFilter.cs" />
@@ -607,7 +617,6 @@
     <Content Include="Areas\Manage\Views\Application\_AppDocs.cshtml" />
     <Content Include="Areas\Cheetah\Views\Application\Create.cshtml" />
     <Content Include="Areas\Cheetah\Views\Application\_Proposal.cshtml" />
-    <Content Include="Areas\Cheetah\Views\Application\_Participations.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\Index.cshtml" />
     <Content Include="Areas\Manage\Views\UserProfile\Education.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\_Educations.cshtml" />
@@ -615,6 +624,8 @@
     <Content Include="Areas\Cheetah\Views\UserProfile\_Generalnfo.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\_Experiences.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Proposal\Update.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Proposal\EditorTemplates\SelectFields.cshtml" />
     <None Include="Areas\Cheetah\Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Areas\Manage\Views\Category\_Category.cshtml" />
     <Content Include="Areas\Manage\Views\Category\_Children.cshtml" />
@@ -626,6 +637,16 @@
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\PublicationStatus.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\NewProject.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\_Projects.cshtml" />
+    <Content Include="Areas\Manage\Views\Reports\Index.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\HostingId.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\ProposalType.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\ParentId.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\ParentId.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\Month.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\MonthYear.cshtml" />
+    <Content Include="Areas\Cheetah\Views\Shared\DisplayTemplates\MonthYear.cshtml" />
+    <Content Include="Areas\Cheetah\Views\UserProfile\NewGeneralInfo.cshtml" />
+    <Content Include="Areas\Cheetah\Views\UserProfile\_GeneralInfo.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -912,6 +933,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CateogryId.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -923,12 +946,18 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Cheetah\Scripts\" />
+    <Folder Include="Areas\Cheetah\Views\Awards\" />
     <Folder Include="uploads\" />
+    <Folder Include="Views\FileShare\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vnsf.Anticorruption\Vnsf.Anticorruption.csproj">
+      <Project>{b6a47b25-0541-4660-b946-da605e031ff6}</Project>
+      <Name>Vnsf.Anticorruption</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vnsf.Data.Entities\Vnsf.Data.Entities.csproj">
       <Project>{9fa473d8-7a91-484b-9f4f-b9e7d9205bb7}</Project>
       <Name>Vnsf.Data.Entities</Name>
@@ -948,14 +977,6 @@
     <ProjectReference Include="..\Vnsf.Resource\Vnsf.Resource.csproj">
       <Project>{4b6de09e-8641-439c-8db0-9049c9f252b7}</Project>
       <Name>Vnsf.Resource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vnsf.Service.Contract\Vnsf.Service.Contract.csproj">
-      <Project>{05238916-49b2-4a95-aa91-8ab9ca99e4ed}</Project>
-      <Name>Vnsf.Service.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vnsf.Service.Implementation\Vnsf.Service.Implementation.csproj">
-      <Project>{a7f2e318-30e1-4509-9733-49f13ca1b4a9}</Project>
-      <Name>Vnsf.Service.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
