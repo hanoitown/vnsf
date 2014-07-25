@@ -19,9 +19,12 @@
                 @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav pull-right">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Funding Opportunities", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("News and events", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Document Library", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("About", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
