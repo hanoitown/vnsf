@@ -65,36 +65,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml.vi.resx</DependentUpon>
     </Compile>
-    <Compile Include="WebHost\Views\Home\Index.cshtml.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml.resx</DependentUpon>
-    </Compile>
-    <Compile Include="WebHost\Views\Home\Index.cshtml.vi.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml.vi.resx</DependentUpon>
-    </Compile>
-    <Compile Include="WebHost\Views\Shared\_LanguageSelector.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_LanguageSelector.resx</DependentUpon>
-    </Compile>
     <Compile Include="WebHost\ViewModel\ClassificationBindingModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassificationBindingModel.resx</DependentUpon>
     </Compile>
-    <Compile Include="WebHost\Views\Shared\_Master.cshtml.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_Master.cshtml.resx</DependentUpon>
-    </Compile>
-    <Compile Include="WebHost\Views\Shared\_Master.cshtml.vi.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_Master.cshtml.vi.resx</DependentUpon>
-    </Compile>
+    <Compile Include="WebHost\Views\Home\Index.cshtml.Designer.cs" />
+    <Compile Include="WebHost\Views\Home\Index.cshtml.vi.Designer.cs" />
+    <Compile Include="WebHost\Views\Shared\_LanguageSelector.Designer.cs" />
+    <Compile Include="WebHost\Views\Shared\_Master.cshtml.Designer.cs" />
+    <Compile Include="WebHost\Views\Shared\_Master.cshtml.vi.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AccountService.Errors.resx">
@@ -117,31 +97,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.cshtml.vi.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WebHost\Views\Home\Index.cshtml.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.cshtml.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WebHost\Views\Home\Index.cshtml.vi.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.cshtml.vi.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WebHost\Views\Shared\_LanguageSelector.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>_LanguageSelector.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WebHost\Views\Shared\_LanguageSelector.vi.resx" />
     <EmbeddedResource Include="WebHost\ViewModel\ClassificationBindingModel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ClassificationBindingModel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WebHost\Views\Shared\_Master.cshtml.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>_Master.cshtml.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WebHost\Views\Shared\_Master.cshtml.vi.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>_Master.cshtml.vi.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="WebHost\Views\Home\Index.cshtml.resx" />
+    <EmbeddedResource Include="WebHost\Views\Home\Index.cshtml.vi.resx" />
+    <EmbeddedResource Include="WebHost\Views\Shared\_LanguageSelector.resx" />
+    <EmbeddedResource Include="WebHost\Views\Shared\_LanguageSelector.vi.resx" />
+    <EmbeddedResource Include="WebHost\Views\Shared\_Master.cshtml.resx" />
+    <EmbeddedResource Include="WebHost\Views\Shared\_Master.cshtml.vi.resx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebHost\Manage\Views\Shared\" />
