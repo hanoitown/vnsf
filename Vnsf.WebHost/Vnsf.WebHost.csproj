@@ -317,6 +317,7 @@
     <Compile Include="Areas\Manage\Controllers\CultureController.cs" />
     <Compile Include="Areas\Manage\Controllers\GrantController.cs" />
     <Compile Include="Areas\Manage\Controllers\OpportunityController.cs" />
+    <Compile Include="Areas\Manage\Controllers\PostController.cs" />
     <Compile Include="Areas\Manage\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Manage\Controllers\UserAccountController.cs" />
     <Compile Include="Areas\Manage\Controllers\UserProfileController.cs" />
@@ -327,6 +328,8 @@
     <Compile Include="Areas\Manage\Models\CategoryListViewModel.cs" />
     <Compile Include="Areas\Manage\Models\CategoryManageViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ClassificationManageViewModel.cs" />
+    <Compile Include="Areas\Manage\Models\CultureBindingModel.cs" />
+    <Compile Include="Areas\Manage\Models\CultureViewModel.cs" />
     <Compile Include="Areas\Manage\Models\OppBindingModel.cs" />
     <Compile Include="Areas\Manage\Models\OppViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ProposalManageViewModel.cs" />
@@ -400,8 +403,6 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Areas\Manage\Models\AgencyViewModel.cs" />
-    <Compile Include="Models\AnnouncementBindingModel.cs" />
-    <Compile Include="Models\AnnouncementViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ApplicationViewModel.cs" />
     <Compile Include="Models\BudgetBindingModel.cs" />
     <Compile Include="Models\BudgetViewModel.cs" />
@@ -418,7 +419,7 @@
     <Compile Include="Models\Document\DocumentViewModel.cs" />
     <Compile Include="Models\ISO\EgibilityGroup.cs" />
     <Compile Include="Models\ISO\PublishFee.cs" />
-    <Compile Include="Models\LocalizedCultureViewModel.cs" />
+    <Compile Include="Areas\Manage\Models\CultureLocalViewModel.cs" />
     <Compile Include="Areas\Manage\Models\GrantViewModel.cs" />
     <Compile Include="Areas\Manage\Models\GrantBindingModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -560,7 +561,7 @@
     <Content Include="Areas\Manage\Views\Classification\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Classification\Details.cshtml" />
     <Content Include="Areas\Manage\Views\Classification\Delete.cshtml" />
-    <Content Include="Areas\Manage\Views\Shared\_LangSelector.cshtml" />
+    <Content Include="Views\Shared\_LangSelector.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Index.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Create.cshtml" />
@@ -656,6 +657,7 @@
     <Content Include="Areas\Cheetah\Views\UserProfile\_GeneralInfo.cshtml" />
     <Content Include="images\.DS_Store" />
     <Content Include="images\blog\.DS_Store" />
+    <Content Include="images\blog\signingceremony.jpg" />
     <Content Include="images\icons\.DS_Store" />
     <Content Include="images\icons\iconset-gray\.DS_Store" />
     <Content Include="images\icons\iconset-white\.DS_Store" />
@@ -672,9 +674,12 @@
     <Content Include="images\work\002.jpg" />
     <Content Include="images\work\003.jpg" />
     <Content Include="js\.DS_Store" />
+    <Content Include="Areas\Manage\Views\Culture\Create.cshtml" />
+    <Content Include="Areas\Manage\Views\Culture\Details.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\public.pubxml" />
     <None Include="Properties\PublishProfiles\Testing.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="images\404.jpg" />
@@ -1397,6 +1402,9 @@
     <Content Include="Views\Library\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Opportunities\Index.cshtml" />
+    <Content Include="Views\News\Post.cshtml" />
+    <Content Include="Views\News\_Sidebar.cshtml" />
+    <Content Include="Views\Library\_LibSidebar.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1409,6 +1417,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Cheetah\Scripts\" />
     <Folder Include="Areas\Cheetah\Views\Awards\" />
+    <Folder Include="Areas\Manage\Views\Post\" />
     <Folder Include="uploads\" />
     <Folder Include="Views\FileShare\" />
   </ItemGroup>

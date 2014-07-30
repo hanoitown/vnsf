@@ -1,15 +1,16 @@
-﻿    <!-- Begin Large Hero Block -->
+﻿@using Vnsf.Resource.WebHost.Views.Home
+<!-- Begin Large Hero Block -->
 <section class="hero accent parallax" style="background-image: url(images/parallax_wm.jpg);">
 
     <!-- Heading -->
     <div class="hero-content container">
-        <p><em>Vietnam Inclusive Innovation Project</em></p>
-        <h1>Discover. Develop. Deliver.</h1>
+        <p><em>@Index_cshtml.Title</em></p>
+        <h1>@Index_cshtml.Slogan</h1>
     </div><!-- END -->
     <!-- Button -->
     <div class="sub-hero container">
         <span class="line"></span>
-        <a href="~/about/" class="button white">LEARN MORE</a>
+        <a href="~/opportunities/" class="button white">@Index_cshtml.LearnMore</a>
     </div><!-- END -->
 
 </section>
@@ -19,20 +20,20 @@
     <div class="row">
 
         <div class="col-sm-3">
-            <h2>National Development Challenges</h2>
-            <p>Key development problems which need to be addressed as national priorities to make contribution to the achievement of targets set forth in the Viet Nam socio-economic development strategy period 2011-2020.</p>
+            <h2>@Index_cshtml.C1</h2>
+            <p>@Index_cshtml.C1_detail</p>
         </div>
         <div class="col-sm-3">
-            <h2>Technology Adaptation and Upgrading</h2>
-            <p>To stimulate the adaptation and upgrading of  existing research and/or prototype technologies for development of (pilot) products up to the level ready for scaling-up and/or commercialization.</p>
+            <h2>@Index_cshtml.C2</h2>
+            <p>@Index_cshtml.C2_detail</p>
         </div>
         <div class="col-sm-3">
-            <h2>Grassroots</h2>
-            <p>To stimulate inclusive innovations from an informal sector (the grass root innovator). To support the scaling up,  creation and commercialization of high volume, low cost products that can reach a significant size  of BoP people</p>
+            <h2>@Index_cshtml.C3</h2>
+            <p>@Index_cshtml.C3_detail</p>
         </div>
         <div class="col-sm-3">
-            <h2>Scaling up and Commercialization</h2>
-            <p>To bring the technologies previously developed or transferred under the NDC, A&U and GRASSROOTSS categories into a larger  sustainable production scale.</p>
+            <h2>@Index_cshtml.C4</h2>
+            <p>@Index_cshtml.C4_detail</p>
         </div>
     </div>
 </section>
@@ -44,16 +45,16 @@
         <!-- Title -->
         <div class="row">
             <div class="title col-lg-12">
-                <h2>Are you ready?</h2>
-                <p>If so, why don’t you get in touch with us so we can talk about your projects.</p>
+                <h2>@Index_cshtml.Areyouready</h2>
+                <p>@Index_cshtml.ReadyAnswer</p>
             </div>
         </div><!-- END -->
         <!-- Actions -->
         <div class="row">
             <div class="actions padded col-lg-12">
-                <a class="button accent-alt" href="#">Apply now</a>
+                <a class="button accent-alt" href="#">@Index_cshtml.Apply</a>
                 <span class="choice">or</span>
-                <a class="button gray" href="~/about/">Contact us</a>
+                <a class="button gray" href="~/about/">@Index_cshtml.ContactUs</a>
             </div>
         </div><!-- END -->
     </div>
@@ -66,17 +67,17 @@
         <!-- Milestone -->
         <div class="milestone col-sm-4">
             <span class="value" data-from="10" data-to="55" data-speed="5" data-refresh-interval="100">55M USD</span>
-            <h6>Total funding</h6>
+            <h6>@Index_cshtml.Total</h6>
         </div><!-- END -->
         <!-- Milestone -->
         <div class="milestone col-sm-4">
             <span class=" value">300K USD</span>
-            <h6>Each project</h6>
+            <h6>@Index_cshtml.Each</h6>
         </div><!-- END -->
         <!-- Milestone -->
         <div class="milestone col-sm-4">
             <span class=" value">24 Months</span>
-            <h6>Duration</h6>
+            <h6>@Index_cshtml.Duration</h6>
         </div><!-- END -->
 
     </div>
@@ -90,38 +91,26 @@
         <!-- Title -->
         <div class="row">
             <div class="title col-sm-6 col-sm-push-6">
-                <h2>Priority fields</h2>
-                <p>Provide funds as inclusive innovation grants to research and development institutions, enterprises and grassroots innovators, through a selected number of sub-projects, to finance the preparation required to develop new technologies or bring forward existing research and/or prototype technologies for development of pilot products up to the level ready for commercialization. The applicants are encouraged to collaborate and can propose development of new technologies, utilization of domestic as well as foreign technologies, but are responsible for arranging the acquisition of licenses</p>
+                <h2>@Index_cshtml.PriorityField</h2>
+                <p>@Index_cshtml.PriorityField_detail</p>
             </div>
         </div><!-- END-->
         <!-- Features -->
         <div class="row">
             <div class="feature col-sm-6 col-sm-offset-6 col-md-3 clearfix">
-                <h3>ICT Application as a Tool for Delivery of Services to the BoP</h3>
-                <p class="small"></p>
-                <ul class="social-list animated fade" data-appear-bottom-offset="100">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
+                <h3>@Index_cshtml.F1</h3>
+                <p class="small">@Index_cshtml.F1_detail</p>
             </div>
             <div class="feature col-sm-6 col-sm-offset-6 col-md-3 col-md-offset-0 clearfix">
-                <h3>Agriculture/Aquaculture Technologies</h3>
-                <p class="small"></p>
-                <ul class="social-list animated fade" data-appear-bottom-offset="100">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
+                <h3>@Index_cshtml.F2</h3>
+                <p class="small"> @Index_cshtml.F2_detail</p>
             </div>
         </div><!-- END -->
         <!-- Features -->
         <div class="row">
             <div class="feature last col-sm-6 col-sm-offset-6 col-md-3 clearfix">
-                <h3>Traditional herbal medicine</h3>
-                <p class="small"></p>
-                <ul class="social-list animated fade" data-appear-bottom-offset="100">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                </ul>
+                <h3>@Index_cshtml.F3</h3>
+                <p class="small"> @Index_cshtml.F3_detail</p>
             </div>
         </div><!-- END -->
 
@@ -132,7 +121,7 @@
 <section class="clients container">
     <div class="row">
         <div class="logo animated fade col-sm-3" data-appear-bottom-offset="100">
-            <img src="images/logos/world_bank_logo.png" alt="client">
+            <img src="images/logos/logo_vietinbank.jpg" alt="client">
         </div>
         <div class="logo animated fade col-sm-3" data-appear-bottom-offset="100">
             <img src="images/logos/MOST.jpg" alt="client">
@@ -141,7 +130,7 @@
             <img src="images/logos/vcb.png" alt="client">
         </div>
         <div class="logo animated fade col-sm-3" data-appear-bottom-offset="100">
-            <img src="images/logos/logo_vietinbank.jpg" alt="client">
+            <img src="images/logos/world_bank_logo.png" alt="client">
         </div>
 
     </div>

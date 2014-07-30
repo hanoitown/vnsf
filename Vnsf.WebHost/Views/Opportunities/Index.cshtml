@@ -1,0 +1,103 @@
+﻿@using Vnsf.Resource.WebHost.Views.Home
+
+@{
+    ViewBag.Title = "Index";
+}
+<!-- Begin Small Hero Block -->
+<section class="hero small accent parallax" style="background-image: url(images/parallax.png);">
+
+</section>
+<!-- End Small Hero Block -->
+
+<!-- Begin Overview Block -->
+<section class="center-mobile content container">
+    <div class="row">
+
+        <div class="col-sm-3">
+            <h2>@Index_cshtml.C1</h2>
+            <p>@Index_cshtml.C1_detail</p>
+        </div>
+        <div class="col-sm-3">
+            <h2>@Index_cshtml.C2</h2>
+            <p>@Index_cshtml.C2_detail</p>
+        </div>
+        <div class="col-sm-3">
+            <h2>@Index_cshtml.C3</h2>
+            <p>@Index_cshtml.C3_detail</p>
+        </div>
+        <div class="col-sm-3">
+            <h2>@Index_cshtml.C4</h2>
+            <p>@Index_cshtml.C4_detail</p>
+        </div>
+    </div>
+</section>
+<!-- End Overview Block -->
+
+	<!-- Begin Portfolio Block -->
+<section class="portfolio-block">
+
+    <!-- Thumbnails -->
+    <ul class="portfolio-grid">
+
+        <!-- Thumbnail -->
+        <li class="thumbnail mix mix_all category_1">
+            <a href="single-project.html">
+                <img src="~/images/work/001.jpg" alt="thumbnail">
+                <div class="projectinfo">
+                    <div class="meta">
+                        <h4>@Index_cshtml.F3</h4>
+                    </div>
+                </div>
+            </a>
+        </li>
+
+        <!-- Thumbnail -->
+        <li class="thumbnail mix mix_all category_1">
+            <a href="single-project.html">
+                <img src="~/images/work/002.jpg" alt="thumbnail">
+                <div class="projectinfo">
+                    <div class="meta">
+                        <h4>@Index_cshtml.F1</h4>
+                    </div>
+                </div>
+            </a>
+        </li>
+
+        <!-- Thumbnail -->
+        <li class="thumbnail mix mix_all category_2">
+            <a href="single-project.html">
+                <img src="~/images/work/003.jpg" alt="thumbnail">
+                <div class="projectinfo">
+                    <div class="meta">
+                        <h4>@Index_cshtml.F2</h4>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul><!-- END -->
+
+</section>
+<!-- End Portfolio Block -->
+
+
+	<!-- Begin Call to Action Block -->
+<section class="call-to-action content light">
+    <div class="container">
+
+        <!-- Title -->
+        <div class="row">
+            <div class="title col-lg-12">
+                <h2>@Index_cshtml.Areyouready</h2>
+                <p>@Index_cshtml.ReadyAnswer</p>
+        </div><!-- END -->
+        <!-- Actions -->
+        <div class="row">
+            <div class="actions padded col-lg-12">
+                <a class="button accent-alt" href="#">@Index_cshtml.Apply</a>
+                <span class="choice">or</span>
+                <a class="button gray" href="~/about/">@Index_cshtml.ContactUs</a>
+            </div>
+        </div><!-- END -->
+    </div>
+</section>
+<!-- End Call to Action Block -->

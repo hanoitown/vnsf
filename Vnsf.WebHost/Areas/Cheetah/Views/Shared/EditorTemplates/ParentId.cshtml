@@ -1,0 +1,9 @@
+﻿@model Guid?
+
+@Html.DropDownList("parent", ViewData["Categories"] as IEnumerable<SelectListItem>, new { @class = "form-control", id = "firstLevel" })
+<br />
+<div id="secondLevel">
+    @Html.DropDownList("", new List<SelectListItem>(), new { @class = "form-control", id = "catId" })
+</div>
+
+<div id="result"></div>

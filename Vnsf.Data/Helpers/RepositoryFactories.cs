@@ -37,7 +37,6 @@ namespace Vnsf.Data.Helpers
                     {typeof(ICultureRepository),dbContext => new CultureRepository(dbContext)},
                     {typeof(IUserAccountRepository), dbContext => new UserAccountRepository(dbContext)},
                     {typeof(IGrantRepository), dbContext => new GrantRepository(dbContext)},
-                    {typeof(IAnnouncementRepository), dbContext => new AnnouncementRepository(dbContext)},
                     {typeof(IDocRepository), dbContext => new DocRepository(dbContext)},
                     {typeof(IClassificationRepository), dbContext => new ClassificationRepository(dbContext)}
                 };

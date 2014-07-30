@@ -1,0 +1,10 @@
+﻿@model Guid?
+
+@{
+    var _uow = DependencyResolver.Current.GetService<Vnsf.Data.Repository.IUnitOfWork>();
+
+    var topFields = _uow.Categories.All.Where(c => c.Depth == 0);
+    var options = topFields.ToSelectList(f => f.Id.ToString(), f => f.Name.ToString(), string.Empty);
+}
+
+@Html.DropDownList("", options, new { @class = "form-control" })

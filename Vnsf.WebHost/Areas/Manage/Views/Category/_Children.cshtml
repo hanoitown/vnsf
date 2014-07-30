@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Vnsf.WebHost.Areas.Manage.Models.CategoryViewModel>
+
+@foreach (var treeNode in Model)
+{
+    <ul>
+        @if (treeNode != null)
+        {
+            <li>
+                @treeNode.Name
+                <a href=@Url.Action("AddChild", new { id = treeNode.Id, classId = treeNode.ClassificationName })>+ Add child</a>
+                @if (treeNode.Children.Count > 0)
+                {
+                    @Html.Partial("_Children", treeNode.Children)
+                }
+            </li>
+        }
+    </ul>
+} 

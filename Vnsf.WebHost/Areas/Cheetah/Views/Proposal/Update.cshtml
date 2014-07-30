@@ -1,0 +1,150 @@
+﻿@model Vnsf.WebHost.Areas.Cheetah.Models.ProposalBindingModel
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="active">
+        @Html.ActionLink("Participation", "Proposal", new { applicationId = Model.Id })
+    </li>
+    <li>
+        @Html.ActionLink("ProposalColaboration", "Proposal", new { applicationId = Model.Id })
+    </li>
+    <li>
+        @Html.ActionLink("Reviewer", "Proposal", new { applicationId = Model.Id })
+    </li>
+    <li>
+        @Html.ActionLink("Product", "Proposal", new { applicationId = Model.Id })
+    </li>
+    <li>
+        @Html.ActionLink("Education", "Proposal", new { applicationId = Model.Id })
+
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="home">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.BootStrapLabelFor(m => m.Title)
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Title, new { @class="input-sm"})
+                        @Html.ValidationMessageFor(m => m.Title)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.BootStrapLabelFor(m => m.Abstract)
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Abstract)
+                        @Html.ValidationMessageFor(m => m.Abstract)
+                    </div>
+                </div>
+
+                @Html.EditorForModel()
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="tab-pane" id="profile">...</div>
+    <div class="tab-pane" id="messages">...</div>
+    <div class="tab-pane" id="settings">...</div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProposalBindingModel</h4>
+        <hr />
+        @Html.EditorFor(m => m.Title)
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.EditorForModel()
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+
+            $('#secondLevel').hide();
+
+            $('#firstLevel').change(function () {
+
+                var URL = '/Cheetah/Proposal/GetCategories';
+
+                $.getJSON(URL + '/?id=' + $('#firstLevel').val(), function (data) {
+
+                    $('#catId').html("<option value=''>Select field</option>"); //'<option>Select a filed</option>';
+                    $.each(data, function (i, state) {
+                        $('#catId').append($('<option>', {
+                            value: state.Value,
+                            text: state.Text
+                        }));
+                        //items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                        // state.Value cannot contain ' character. We are OK because state.Value = cnt++;
+                    });
+                    //$('#cat2').html(items);
+
+                    $('#secondLevel').show();
+
+                });
+            });
+
+            $('#catId').change(function () {
+                if ($('#catId option:selected').val() != '')
+                    $('#result').html($('#catId option:selected').text());
+                else
+                    $('#result').html('');
+            });
+
+            $.validator.addMethod('date',
+                function (value, element) {
+                    if (this.optional(element)) {
+                        return true;
+                    }
+                    var ok = true;
+                    try {
+                        $.datepicker.parseDate('dd/mm/yy', value);
+                    }
+                    catch (err) {
+                        ok = false;
+                    }
+                    return ok;
+                });
+            $(".datefield").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true });
+
+        });
+    </script>
+}

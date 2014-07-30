@@ -1,0 +1,14 @@
+﻿@model Vnsf.WebHost.Areas.Manage.Models.CategoryViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="treeDemo">
+    <ul id="tree">
+        <li>
+            <a href="#">@Model.Name</a>
+            @Html.Partial("_Children", Model.Children)
+        </li>
+    </ul>
+</div> 

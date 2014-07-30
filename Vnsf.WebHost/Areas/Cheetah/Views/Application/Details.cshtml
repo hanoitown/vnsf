@@ -1,0 +1,65 @@
+﻿@model Vnsf.WebHost.Areas.Cheetah.Models.AppBindingModel
+
+@{
+    ViewBag.Title = "Detail";
+}
+<h3>Application</h3>
+<p>
+    @Html.DisplayFor(m => m.Status)
+</p>
+
+
+<div class="row">
+    <div class="col-lg-9">
+        @Html.ValidationSummary()
+
+
+        @Html.Action("AppDocs", routeValues: new { oppId = Model.Opportunity.Id })
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.Id)
+            if (Model.Status == Vnsf.Data.Entities.ApplicationStatus.Creating)
+            {
+                <input type="submit" value="Submit application" class="btn btn-primary" />
+            }
+            else
+            {
+
+                <input type="submit" value="Review application" class="btn btn-primary" />
+            }
+            @*@Html.ActionLink("Add detail", "Create", new { id = Model.Id }, new { @class = "btn btn-primary" })*@
+
+        }
+
+
+
+
+
+    </div>
+    <div class="col-lg-3">
+        @Html.ActionLink("Proposal", "Update", "Proposal", new { applicationId = Model.Id}, null)
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Model.Opportunity.Name - @Model.Opportunity.GrantName
+            </div>
+            <div class="panel-body">
+                <h4>Description</h4>
+                <div>
+                    @Html.Raw(Model.Opportunity.Description)
+                </div>
+
+                <h4>StartDate</h4>
+                <div>
+                    @Html.Raw(Model.Opportunity.StartDate)
+                </div>
+
+                <h4>Deadline</h4>
+                <div>
+                    @Html.Raw(Model.Opportunity.Deadline)
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

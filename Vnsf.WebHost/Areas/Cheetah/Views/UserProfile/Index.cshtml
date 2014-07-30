@@ -1,0 +1,75 @@
+﻿@model Vnsf.WebHost.Areas.Cheetah.Models.UserProfileBindingModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Model == null)
+{
+    using (Html.BeginForm())
+    {
+        <button type="submit" class="btn btn-primary" value="Submit">Create resume</button>
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-9">
+            <div>
+                <h3>General</h3>
+                
+                @Html.ActionLink("General Info", "NewGeneralInfo", new { profileId = Model.Id })
+            </div>
+            <div>
+                <h3>Education</h3>
+                @Html.ActionLink("New education", "NewEducation", new { profileId = Model.Id })
+                @Html.Partial("_Educations", Model.Educations.OrderBy(e=>e.StartDate))
+            </div>
+            <div>
+                <h3>Publication</h3>
+                @Html.ActionLink("New publication", "NewPublication", new { profileId = Model.Id })
+                @Html.Partial("_Publications", Model.Publications)
+            </div>
+            <div>
+                <h3>Experience</h3>
+                @Html.ActionLink("New Job", "NewJob", new { profileId = Model.Id })
+                @Html.Partial("_Experiences", Model.WorkExperiences)
+            </div>
+            <div>
+                <h3>Project</h3>
+                @Html.ActionLink("New Project", "NewProject", new { profileId = Model.Id })
+                @Html.Partial("_Projects", Model.Projects)
+            </div>
+
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+
+    </div>
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $.validator.addMethod('date',
+            function (value, element) {
+                if (this.optional(element)) {
+                    return true;
+                }
+                var ok = true;
+                try {
+                    $.datepicker.parseDate('dd/mm/yy', value);
+                }
+                catch (err) {
+                    ok = false;
+                }
+                return ok;
+            });
+            $(".datefield").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true });
+        });
+    </script>
+
+}

@@ -1,0 +1,64 @@
+﻿@model Vnsf.WebHost.Areas.Cheetah.Models.AppBindingModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AppBindingModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="well">
+            <h3>Application information </h3>
+            @Html.DisplayForModel(Model.Opportunity)
+        </div>
+        <div class="form-group">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab">
+                <li><a href="#profile" data-toggle="tab">Letter of intent</a></li>
+                <li><a href="#messages" data-toggle="tab">Proposal</a></li>
+                <li><a href="#settings" data-toggle="tab">Participations</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane" id="profile">
+                    <p>
+                        Federal Agency and Organization Element to Which Report is Submitted:1001Federal Grant or Other Identifying Number Assigned by Agency:1000001Project Title:Analysis of Research DataPD/PI Name:
+                    </p>
+                </div>
+                <div class="tab-pane" id="messages">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.Action("Proposal", new { id = Model.Id })
+                    }
+                </div>
+                <div class="tab-pane" id="settings">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.Action("Participations", new { id = Model.Id })
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('#myTab a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+        });
+    </script>
+}

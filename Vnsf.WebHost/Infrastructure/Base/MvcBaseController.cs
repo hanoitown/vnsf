@@ -38,23 +38,25 @@ namespace Vnsf.WebHost
             return ControllerExtensions.RedirectToAction(this, action);
         }
 
+        protected string CurrentCulture
+        {
+            get
+            {
+                HttpCookie cookie = Request.Cookies["_culture"];
+                if (cookie != null)
+                    return cookie.Value;
+                else
+                    return CultureHelper.GetDefaultCulture();
+            }
+        }
+
         public ActionResult SetCulture(string culture)
         {
             // Validate input
             culture = CultureHelper.GetImplementedCulture(culture);
             // Save culture in a cookie
-            HttpCookie cookie = Request.Cookies["_culture"];
-            if (cookie != null)
-                cookie.Value = culture;   // update cookie value
-            else
-            {
-                cookie = new HttpCookie("_culture");
-                cookie.Value = culture;
-                cookie.Expires = DateTime.Now.AddYears(1);
-            }
-            Response.Cookies.Add(cookie);
             return Redirect(Request.UrlReferrer.ToString());
-        }     
+        }
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
@@ -74,8 +76,8 @@ namespace Vnsf.WebHost
 
             // Modify current thread's cultures            
             Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
-            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture; 
-            
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
             return base.BeginExecuteCore(callback, state);
         }
     }

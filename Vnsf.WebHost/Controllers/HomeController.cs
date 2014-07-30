@@ -18,7 +18,7 @@ namespace Vnsf.WebHost.Controllers
         public ActionResult Index()
         {
 
-            return View(_uow.Grants.All);
+            return View();
         }
     }
 }

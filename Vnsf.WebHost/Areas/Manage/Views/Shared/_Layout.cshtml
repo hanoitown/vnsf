@@ -24,16 +24,44 @@
 
 
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Grants", "Index", "Grant", null, null)</li>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">CMS <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Posts", "Index", "Post", null, null)</li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Category</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Globalization <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Continent</a></li>
+                            <li><a href="#">Country</a></li>
+                            <li><a href="#">Region</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Language</a></li>
+                            <li><a href="#">Currency</a></li>
+                            <li>@Html.ActionLink("Cultures", "Index", "Culture", null, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opportunity <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Program</a></li>
+                            <li>@Html.ActionLink("Grants", "Index", "Grant", null, null)</li>
+                            <li>@Html.ActionLink("Opportunities", "Index", "Opportunity", null, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Applications", "Index", "Application", null, null)</li>
+                            <li>@Html.ActionLink("Awards", "Index", "UserProfile", null, null)</li>
+                            <li>@Html.ActionLink("Reports", "Index", "Reports", null, null)</li>
+                        </ul>
+                    </li>
+
+                    <li></li>
                     <li>@Html.ActionLink("Classification", "Index", "Classification", null, null)</li>
-                    <li>@Html.ActionLink("Opportunities", "Index", "Opportunity", null, null)</li>
                     <li>@Html.ActionLink("AppForm", "Index", "ApplicationForm", null, null)</li>
-                    <li>@Html.ActionLink("Applications", "Index", "Application", null, null)</li>
                     <li>@Html.ActionLink("Profile", "Index", "UserProfile", null, null)</li>
-                    <li>@Html.ActionLink("Awards", "Index", "UserProfile", null, null)</li>
-                    <li>@Html.ActionLink("Reports", "Index", "Reports", null, null)</li>
-                    <li>@Html.ActionLink("Request", "Index", "UserProfile", null, null)</li>
                     <li>@Html.ActionLink("Discussioin", "Index", "UserProfile", null, null)</li>
                 </ul>
                 @*@Html.Partial("_LanguageSelector")*@

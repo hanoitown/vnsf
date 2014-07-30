@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apply" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="Areyouready" xml:space="preserve">
+    <value>Bạn đã sẵn sàng chấp nhận thử thách?</value>
+  </data>
+  <data name="C1" xml:space="preserve">
+    <value>Thách thức phát triển quốc gia</value>
+  </data>
+  <data name="C1_detail" xml:space="preserve">
+    <value>Nhóm tiểu dự án Phát triển, tạo ra các đổi mới sáng tạo dựa trên yêu cầu giải quyết các thách thức phát triển quốc gia</value>
+  </data>
+  <data name="C2" xml:space="preserve">
+    <value>Tiếp nhận và Nâng cấp công nghệ</value>
+  </data>
+  <data name="C2_detail" xml:space="preserve">
+    <value>Khuyến khích việc tiếp nhận và nâng cấp các kết quả nghiên cứu và/hoặc công nghệ ở qui mô thử nghiệm hiện có sẵn để phát triển ra các sản phẩm mẫu sẵn sàng mở rộng sang qui mô sản xuất và/hoặc thương mại hóa công nghệ.</value>
+  </data>
+  <data name="C3" xml:space="preserve">
+    <value>Sáng tạo cá nhân</value>
+  </data>
+  <data name="C3_detail" xml:space="preserve">
+    <value>Khuyến khích các đổi mới sáng tạo từ khu vực phi chính thức (nhóm hoặc nhà sáng chế cấp cơ sở).</value>
+  </data>
+  <data name="C4" xml:space="preserve">
+    <value>Mở rộng và Thương mại</value>
+  </data>
+  <data name="C4_detail" xml:space="preserve">
+    <value>Đưa các công nghệ đã phát triển hoặc được chuyển giao vào sản xuất qui mô lớn có tính bền vững. Hỗ trợ mở rộng qui mô sản xuất và thương mại hóa với khối lượng lớn các sản phẩm có chi phí thấp, phục vụ đông đảo người thu nhập thấp</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Liên hệ</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Thời gian</value>
+  </data>
+  <data name="Each" xml:space="preserve">
+    <value>Mỗi dự án</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>Công nghệ thông tin</value>
+  </data>
+  <data name="F1_detail" xml:space="preserve">
+    <value>Tăng cường tính sẵn sàng, tính phù hợp và dễ tiếp cận tới thông tin và nội dung nhằm phục vụ người thu nhập thấp. Phát triển/thiết kế các thiết bị hoặc ứng dụng ICT lâu bền, dễ sử dụng, giá cả phù hợp vì lợi ích của người thu nhập thấp.</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>Nông nghiệp/ thủy hải sản</value>
+  </data>
+  <data name="F2_detail" xml:space="preserve">
+    <value>Phát triển các giải pháp công nghệ giúp làm giảm tổn thất sau thu hoạch trong sản xuất nông nghiệp/thủy sản. Nâng cao chất lượng và sự an toàn của các sản phẩm nông nghiệp/thủy sản. Phát triển các giải pháp về hiệu quả năng lượng, năng lượng sạch phục vụ dân nông thôn, nông dân để cải thiện chất lượng sống và năng suất.</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>Y dược học cổ truyền</value>
+  </data>
+  <data name="F3_detail" xml:space="preserve">
+    <value>Nâng cao chất lượng trong toàn bộ chuỗi giá trị của phát triển thảo dược, từ khâu trồng trọt, sản xuất, chế biến, phân phối, tiếp thị thảo dược. Nâng cấp công nghệ trong toàn bộ chuỗi giá trị của phát triển thảo dược, từ khâu trồng trọt, sản xuất, chế biến, phân phối, tiếp thị theo tiêu chuẩn GMP.</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>TÌM HIỂU THÊM</value>
+  </data>
+  <data name="PriorityField" xml:space="preserve">
+    <value>Lĩnh vực ưu tiên tài trợ</value>
+  </data>
+  <data name="PriorityField_detail" xml:space="preserve">
+    <value>Các lĩnh vực nghiên cứu ứng dụng và phát triển công nghệ có các nội dung liên quan đến những công nghệ đổi mới  có khả năng áp dụng cao và có tầm quan trọng đối với phát triển của Việt Nam thuộc ba  lĩnh vực ưu tiên sau đây.</value>
+  </data>
+  <data name="ReadyAnswer" xml:space="preserve">
+    <value>Nếu đã sẵn sàng, sao không liên hệ ngay với chúng tôi để bàn bạc?</value>
+  </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>Khám phá. Phát triển. Chuyển giao</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Đổi mới sáng tạo hướng tới người thu nhập thấp</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Tổng giá trị</value>
+  </data>
+</root>

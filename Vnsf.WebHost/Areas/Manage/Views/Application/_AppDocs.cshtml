@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Vnsf.WebHost.Areas.Cheetah.Models.AppDocumentViewModel>
+<h3>Application package</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FormCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @(!string.IsNullOrEmpty(item.FileName) ?
+                            Html.ActionLink(item.FileName, "Download", new { id = item.Id }) :
+                            null)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Upload", "Upload", new { formId = item.FormId })
+            </td>
+        </tr>
+    }
+</table>

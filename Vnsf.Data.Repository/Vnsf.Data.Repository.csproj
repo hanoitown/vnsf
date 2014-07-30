@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassificationRepository.cs" />
-    <Compile Include="IAnnouncementRepository.cs" />
     <Compile Include="IClassificationRepository.cs" />
     <Compile Include="ICultureRepository.cs" />
     <Compile Include="IDocRepository.cs" />

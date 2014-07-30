@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities;
+using Vnsf.Data.Entities.Globalization;
 using Vnsf.Data.Entities.Registration;
 using Vnsf.Infrastructure.Repository;
 
@@ -16,9 +17,9 @@ namespace Vnsf.Data.Repository
         Task<int> SaveAsync();
 
         ICultureRepository Cultures { get; }
+        IRepository<LocalizedCulture> LocalCultures { get; }
         IUserAccountRepository UserAccounts { get; }
         IGrantRepository GrantRepo { get; }
-        IAnnouncementRepository AnnouncementRepo { get; }
         IClassificationRepository ClassificationRepo { get; }
         IRepository<Classification> Classifications { get; }
         IRepository<Grant> Grants { get; }

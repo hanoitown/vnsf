@@ -6,35 +6,19 @@ using System.Threading.Tasks;
 
 namespace Vnsf.Data.Entities
 {
-    public class Post : BaseBusiness
+    public class Post 
     {
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string TitleShort { get; set; }
         public string Content { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime Deadline { get; set; }
-        public int MaxDuration { get; set; }
-        public decimal EstimateTotal { get; set; }
-        public decimal AwardCeiling { get; set; }
-        public decimal AwardFloor { get; set; }
-        public DateTime PostDate { get; set; }
-        public Guid OpportunityId { get; set; }
-        public virtual Opportunity Opportunity { get; set; }
+        public Category Category { get; set; }
+        public DateTime PublishDate { get; set; }  
         public virtual ICollection<PostVersion> Versions { get; set; }
 
         public Post()
-            : base()
         {
 
-        }
-        public Post(string content, DateTime startDate, DateTime deadline, int maxduration, decimal estimateTotal, decimal awardCeiling, decimal awardFloor)
-        {
-            Content = content;
-            StartDate = startDate;
-            Deadline = deadline;
-            MaxDuration = maxduration;
-            EstimateTotal = estimateTotal;
-            AwardCeiling = awardCeiling;
-            AwardFloor = awardFloor;
-            PostDate = DateTime.UtcNow;
         }
 
         /// <summary>
@@ -42,7 +26,7 @@ namespace Vnsf.Data.Entities
         /// </summary>
         /// <param name="version">null for lastest version</param>
         /// <returns></returns>
-        public PostVersion GetAnnouncementVersion(int? version)
+        public PostVersion GetVersion(int? version)
         {
             if (version != null)
                 return Versions.FirstOrDefault(v => v.Version == version);
@@ -50,9 +34,9 @@ namespace Vnsf.Data.Entities
             return Versions.OrderByDescending(v => v.Version).FirstOrDefault();
         }
 
-        public void AddAnnoucementVersion(PostVersion version)
+        public void AddAVersion(PostVersion version)
         {
-            var lastest = GetAnnouncementVersion(null);
+            var lastest = GetVersion(null);
             var max = (lastest != null) ? lastest.Version++ : 1;
             version.Version = max;
             Versions.Add(version);

@@ -34,7 +34,6 @@ namespace Vnsf.Data.Entities
         public DateTime Deadline { get; set; }
         public virtual Grant Grant { get; set; }
 
-        public virtual ICollection<Post> Announcements { get; set; }
         public virtual ICollection<Application> Applications { get; set; }
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual ICollection<ApplicationForm> ApplicationPackage { get; set; }
@@ -42,7 +41,6 @@ namespace Vnsf.Data.Entities
         public Opportunity()
         {
             ApplicationPackage = new List<ApplicationForm>();
-            Announcements = new List<Post>();
             Applications = new List<Application>();
             Contracts = new List<Contract>();
         }

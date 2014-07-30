@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities;
+using Vnsf.Data.Entities.Globalization;
 using Vnsf.Data.Entities.Registration;
 using Vnsf.Data.Helpers;
 using Vnsf.Data.Repository;
@@ -15,9 +16,9 @@ namespace Vnsf.Data.EF
         public VnsfDbContext DbContext { get; set; }
 
         public ICultureRepository Cultures { get { return GetRepo<ICultureRepository>(); } }
+        public IRepository<LocalizedCulture> LocalCultures { get { return GetStandardRepo<LocalizedCulture>(); } }
         public IUserAccountRepository UserAccounts { get { return GetRepo<IUserAccountRepository>(); } }
         public IGrantRepository GrantRepo { get { return GetRepo<IGrantRepository>(); } }
-        public IAnnouncementRepository AnnouncementRepo { get { return GetRepo<IAnnouncementRepository>(); } }
         public IClassificationRepository ClassificationRepo { get { return GetRepo<IClassificationRepository>(); } }
         public IRepository<Classification> Classifications { get { return GetStandardRepo<Classification>(); } }
         public IRepository<Grant> Grants { get { return GetStandardRepo<Grant>(); } }

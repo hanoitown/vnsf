@@ -48,7 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cms\PostLocalized.cs" />
     <Compile Include="Evaluations\Reviewer.cs" />
+    <Compile Include="Globalization\Country.cs" />
+    <Compile Include="Globalization\Language.cs" />
+    <Compile Include="Globalization\Region.cs" />
     <Compile Include="Profiles\UserTitle.cs" />
     <Compile Include="Proposals\Participation.cs" />
     <Compile Include="Proposals\ProposalColaboration.cs" />

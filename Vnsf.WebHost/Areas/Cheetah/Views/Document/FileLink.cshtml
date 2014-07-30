@@ -1,0 +1,153 @@
+﻿@model Vnsf.WebHost.Models.Document.DocumentLinkModel
+@using Humanizer
+
+@{
+    Layout = "~/Areas/Cheetah/Views/Shared/_LayoutForAnonymous.cshtml";
+}
+
+<div class=" text-center">
+    <br /><br />
+    <img src="../../../../Content/img/page_white.png" alt="" />
+    <h4>@Model.Name</h4>
+    <p>@Model.Description</p>
+
+    <div>
+        Size: @((Model.ContentLength * 8).Bits().ToString("##.##"))
+        - Created: @(Model.Created.Humanize(true, DateTime.Now))
+        - Expire: @(Model.Expire.Humanize(true, DateTime.Now))
+    </div>
+    <br />
+    @Html.ActionLink("Download", "Download", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    <input type="button" id="btnShare" value="Share" class="btn btn-default">
+    <br /><br />
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">@Model.Name</h4>
+                <p>@Model.Description</p>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "sharelink" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="form-horizontal">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                @*@Html.DropDownList("email", new List<SelectListItem>(), new { @class = "col-md-12 form-control", style = "max-width:100%", id="email" })*@
+                                @*@Html.TextBox("email", null, new { @class = "col-md-12 form-control", style = "max-width:100%", id = "email", placeholder = "Enter email address separate by semicolon .." })
+                                    @Html.ValidationMessageFor(model => model.Name)*@
+                                <select id="mail" class="form-control" placeholder="Find a movie..."></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextArea("message", null, new { @class = "col-md-12 form-control", style = "max-width:100%", rows = "7" })
+                                @Html.ValidationMessageFor(model => model.Description)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <span class="pull-left">
+                        Having problems? Try the
+                        <a>basic message deliver</a>.
+                    </span>
+                    <div class="pull-right">
+                        <input style="position: relative; z-index: 1;" type="submit" id="sendLink" value="Send" class="btn btn-primary">
+                        <input type="button" data-dismiss="modal" value="Cancel" class="btn btn-default">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#btnShare').click(function () {
+                $('#myModal').modal();
+
+            })
+            $('.modal').on('hidden.bs.modal', function () {
+                $(this).find('form')[0].reset();
+            });
+            $('#sharelink').submit(function (event) {
+                event.preventDefault();
+                var result = $.ajax({
+                    url: '',
+                    dataType: 'json',
+                    data: $('sharelink').serialize()
+
+                });
+
+                result.done(alert('done')).fail(alert('fail')).always(alert('completed'));
+            });
+
+
+            $('#sendLink').click(function (event) {
+                event.preventDefault();
+                $.ajax("/api/sendLink", {
+                    data: $('#form').serialize(),
+
+                });
+            })
+
+            var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@@' +
+                  '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
+
+            $('#mail').selectize({
+                persist: false,
+                maxItems: null,
+                valueField: 'email',
+                labelField: 'name',
+                searchField: ['name', 'email'],
+                options: [
+                    { email: 'brian@thirdroute.com', name: 'Brian Reavis' },
+                    { email: 'nikola@tesla.com', name: 'Nikola Tesla' },
+                    { email: 'someone@gmail.com' }
+                ],
+                render: {
+                    item: function (item, escape) {
+                        return '<div>' +
+                            (item.name ? '<span class="name">' + escape(item.name) + '</span>' : '') +
+                            (item.email ? '<span class="email">' + escape(item.email) + '</span>' : '') +
+                        '</div>';
+                    },
+                    option: function (item, escape) {
+                        var label = item.name || item.email;
+                        var caption = item.name ? item.email : null;
+                        return '<div>' +
+                            '<span class="label">' + escape(label) + '</span>' +
+                            (caption ? '<span class="caption">' + escape(caption) + '</span>' : '') +
+                        '</div>';
+                    }
+                },
+                create: function (input) {
+                    if ((new RegExp('^' + REGEX_EMAIL + '$', 'i')).test(input)) {
+                        return { email: input };
+                    }
+                    var match = input.match(new RegExp('^([^<]*)\<' + REGEX_EMAIL + '\>$', 'i'));
+                    if (match) {
+                        return {
+                            email: match[2],
+                            name: $.trim(match[1])
+                        };
+                    }
+                    alert('Invalid email address.');
+                    return false;
+                }
+            });
+        });
+
+    </script>
+}

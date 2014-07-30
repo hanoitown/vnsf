@@ -1,0 +1,12 @@
+﻿@model Guid?
+
+@{
+    var _uow = DependencyResolver.Current.GetService<Vnsf.Data.Repository.IUnitOfWork>();
+
+    ViewData["Hostings"] = _uow.Organizations.All
+                            .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), string.Empty);
+
+}
+
+@Html.DropDownList("", ViewData["Hostings"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+

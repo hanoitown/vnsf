@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnnouncementRepository.cs" />
     <Compile Include="Configurations\AwardConfiguration.cs" />
     <Compile Include="Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Configurations\OpportunityConfiguration.cs" />
