@@ -675,6 +675,7 @@
     <Content Include="Areas\Manage\Views\Culture\Create.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Details.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Culture\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
