@@ -87,19 +87,27 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
 
         //
         // GET: /Manage/Culture/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            var item = _uow.Cultures.FindById(id);
+            var vm = AutoMapper.Mapper.Map<CultureBindingModel>(item);
+
+            return View(vm);
         }
 
         //
         // POST: /Manage/Culture/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, CultureViewModel form)
         {
             try
             {
-                // TODO: Add update logic here
+                var item = _uow.Cultures.FindById(id);
+                item.Name = form.Name;
+                item.Code = form.Code;
+                item.ISO2 = form.ISO2;
+                item.ISO3 = form.ISO3;
+                _uow.Save();
 
                 return RedirectToAction("Index");
             }

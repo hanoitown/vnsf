@@ -329,6 +329,7 @@
     <Compile Include="Areas\Manage\Models\CategoryManageViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ClassificationManageViewModel.cs" />
     <Compile Include="Areas\Manage\Models\CultureBindingModel.cs" />
+    <Compile Include="Areas\Manage\Models\CultureLocalViewModel.cs" />
     <Compile Include="Areas\Manage\Models\CultureViewModel.cs" />
     <Compile Include="Areas\Manage\Models\OppBindingModel.cs" />
     <Compile Include="Areas\Manage\Models\OppViewModel.cs" />
@@ -419,7 +420,6 @@
     <Compile Include="Models\Document\DocumentViewModel.cs" />
     <Compile Include="Models\ISO\EgibilityGroup.cs" />
     <Compile Include="Models\ISO\PublishFee.cs" />
-    <Compile Include="Areas\Manage\Models\CultureLocalViewModel.cs" />
     <Compile Include="Areas\Manage\Models\GrantViewModel.cs" />
     <Compile Include="Areas\Manage\Models\GrantBindingModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -561,7 +561,7 @@
     <Content Include="Areas\Manage\Views\Classification\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Classification\Details.cshtml" />
     <Content Include="Areas\Manage\Views\Classification\Delete.cshtml" />
-    <Content Include="Views\Shared\_LangSelector.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\_LangSelector.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Index.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Create.cshtml" />
@@ -579,7 +579,6 @@
     <Content Include="Areas\Manage\Views\Shared\EditorTemplates\Object.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\CultureId.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserAccount\Setting.cshtml" />
-    <Content Include="Areas\Manage\Views\Culture\Index.cshtml" />
     <Content Include="Areas\Cheetah\Views\Document\Upload.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <Content Include="Areas\Cheetah\Views\Shared\EditorTemplates\FolderId.cshtml" />
@@ -657,7 +656,6 @@
     <Content Include="Areas\Cheetah\Views\UserProfile\_GeneralInfo.cshtml" />
     <Content Include="images\.DS_Store" />
     <Content Include="images\blog\.DS_Store" />
-    <Content Include="images\blog\signingceremony.jpg" />
     <Content Include="images\icons\.DS_Store" />
     <Content Include="images\icons\iconset-gray\.DS_Store" />
     <Content Include="images\icons\iconset-white\.DS_Store" />
@@ -676,10 +674,11 @@
     <Content Include="js\.DS_Store" />
     <Content Include="Areas\Manage\Views\Culture\Create.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Details.cshtml" />
+    <Content Include="Areas\Manage\Views\Culture\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Culture\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\public.pubxml" />
     <None Include="Properties\PublishProfiles\Testing.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="images\404.jpg" />
@@ -1402,9 +1401,6 @@
     <Content Include="Views\Library\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Opportunities\Index.cshtml" />
-    <Content Include="Views\News\Post.cshtml" />
-    <Content Include="Views\News\_Sidebar.cshtml" />
-    <Content Include="Views\Library\_LibSidebar.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
