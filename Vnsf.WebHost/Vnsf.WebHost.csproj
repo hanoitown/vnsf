@@ -31,6 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -561,7 +562,6 @@
     <Content Include="Areas\Manage\Views\Classification\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Classification\Details.cshtml" />
     <Content Include="Areas\Manage\Views\Classification\Delete.cshtml" />
-    <Content Include="Areas\Manage\Views\Shared\_LangSelector.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Index.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manage\Views\Category\Create.cshtml" />
@@ -654,24 +654,15 @@
     <Content Include="Areas\Cheetah\Views\Shared\DisplayTemplates\MonthYear.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\NewGeneralInfo.cshtml" />
     <Content Include="Areas\Cheetah\Views\UserProfile\_GeneralInfo.cshtml" />
-    <Content Include="images\.DS_Store" />
-    <Content Include="images\blog\.DS_Store" />
-    <Content Include="images\icons\.DS_Store" />
-    <Content Include="images\icons\iconset-gray\.DS_Store" />
-    <Content Include="images\icons\iconset-white\.DS_Store" />
     <Content Include="images\idea.jpg" />
-    <Content Include="images\logos\.DS_Store" />
     <Content Include="images\logos\logo_vietinbank.jpg" />
     <Content Include="images\logos\MOST.jpg" />
     <Content Include="images\logos\NAFOSTED.gif" />
     <Content Include="images\logos\vcb.png" />
     <Content Include="images\logos\world_bank_logo.png" />
-    <Content Include="images\Thumbs.db" />
-    <Content Include="images\work\.DS_Store" />
     <Content Include="images\work\001.jpg" />
     <Content Include="images\work\002.jpg" />
     <Content Include="images\work\003.jpg" />
-    <Content Include="js\.DS_Store" />
     <Content Include="Areas\Manage\Views\Culture\Create.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Details.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Index.cshtml" />
@@ -1401,6 +1392,7 @@
     <Content Include="Views\Library\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Opportunities\Index.cshtml" />
+    <Content Include="Views\Shared\_LangSelector.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
