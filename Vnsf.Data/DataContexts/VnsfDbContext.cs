@@ -53,8 +53,8 @@ namespace Vnsf.Data
             //modelBuilder.Configurations.Add(new CountryLocalizedConfiguration());
             //modelBuilder.Configurations.Add(new LanguageConfiguration());
             //modelBuilder.Configurations.Add(new LanguageLocalizedConfiguration());
-            //modelBuilder.Configurations.Add(new CultureConfiguration());
-            //modelBuilder.Configurations.Add(new CultureLocalizedConfiguration());
+            modelBuilder.Configurations.Add(new CultureConfiguration());
+            modelBuilder.Configurations.Add(new PostConfiguration());
             //modelBuilder.Configurations.Add(new RegionConfiguration());
             //modelBuilder.Configurations.Add(new RegionLocalizedConfiguration());
 

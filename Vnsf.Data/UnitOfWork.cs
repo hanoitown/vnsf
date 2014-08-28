@@ -34,6 +34,8 @@ namespace Vnsf.Data.EF
         public IRepository<Report> Reports { get { return GetStandardRepo<Report>(); } }
         public IRepository<UserProfile> Profiles { get { return GetStandardRepo<UserProfile>(); } }
         public IRepository<Proposal> Proposals { get { return GetStandardRepo<Proposal>(); } }
+        public IRepository<Post> Posts { get { return GetStandardRepo<Post>(); } }
+        public IRepository<PostLocalized> LocalPosts { get { return GetStandardRepo<PostLocalized>(); } }
 
         public UnitOfWork(IRepositoryProvider repositoryProvider)
         {

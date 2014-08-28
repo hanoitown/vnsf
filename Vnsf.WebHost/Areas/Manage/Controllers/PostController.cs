@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vnsf.Data.Repository;
+using Vnsf.WebHost.Areas.Manage.Models;
 
 namespace Vnsf.WebHost.Areas.Manage.Controllers
 {
@@ -14,10 +15,21 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
         {
 
         }
-        // GET: Manage/Post
+
         public ActionResult Index()
         {
-            return View();
+            var data = _uow.Posts.AllIncluding(p => p.Category);
+            var locales = _uow.LocalPosts.AllIncluding(c => c.DestCulture).Where(c => c.DestCulture.Code == this.CurrentCulture);
+
+            var vm = data.GroupJoin(locales,
+                p => p.Id,
+                c => c.Id,
+                (p, g) => g.Select(c => new PostViewModel { Id = p.Id, Title = c.Title })
+                           .DefaultIfEmpty(new PostViewModel { Id = p.Id, Title = p.Title }))
+                .SelectMany(g => g);
+
+
+            return View(vm);
         }
 
         // GET: Manage/Post/Details/5

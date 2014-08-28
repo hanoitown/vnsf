@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Configurations\AwardConfiguration.cs" />
     <Compile Include="Configurations\ApplicationConfiguration.cs" />
+    <Compile Include="Configurations\PostConfiguration.cs" />
     <Compile Include="Configurations\OpportunityConfiguration.cs" />
     <Compile Include="Configurations\UserProfileConfiguration.cs" />
     <Compile Include="Configurations\UserAccountConfiguration.cs" />

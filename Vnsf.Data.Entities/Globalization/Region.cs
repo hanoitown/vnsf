@@ -8,29 +8,22 @@ namespace Vnsf.Data.Entities.Globalization
 {
     public class Region
     {
-        public virtual int Id { get; set; }
-        public virtual string PhoneCode { get; set; }
-
-        public virtual int CountryId { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string PhoneCode { get; set; }             
         public virtual Country Country { get; set; }
-
-        private ICollection<RegionLocalized> _localizations;
-        public virtual ICollection<RegionLocalized> Localizations
+        public virtual ICollection<RegionLocalized> Localizeds { get; set; }
+        public Region()
         {
-            get { return this._localizations ?? (this._localizations = new List<RegionLocalized>()); }
-            set
-            {
-                this._localizations = value;
-            }
+            Localizeds = new List<RegionLocalized>();
         }
     }
 
     public class RegionLocalized
     {
-        public virtual Int32 RegionId { get; set; }
-        public virtual Int32 CultureId { get; set; }
-        public virtual String Name { get; set; }
-        public virtual Culture Culture { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public virtual Culture DestCulture { get; set; }
         public virtual Region Region { get; set; }
     }
 

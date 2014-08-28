@@ -35,7 +35,6 @@ namespace Vnsf.Data.Entities
 
         public virtual ICollection<ReportColaboration> Colaborations { set; get; }
         public virtual ICollection<Publication> Publications { get; set; }
-        public virtual ICollection<Education> Educations { set; get; }
         public virtual ICollection<Organization> Participations { get; set; }
 
         public virtual Contract Contract { get; set; }
@@ -43,7 +42,6 @@ namespace Vnsf.Data.Entities
         public Report()
         {
             Publications = new List<Publication>();
-            Educations = new List<Education>();
             Participations = new List<Organization>();
             Colaborations = new List<ReportColaboration>();
         }

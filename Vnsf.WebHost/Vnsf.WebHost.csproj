@@ -329,11 +329,14 @@
     <Compile Include="Areas\Manage\Models\CategoryListViewModel.cs" />
     <Compile Include="Areas\Manage\Models\CategoryManageViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ClassificationManageViewModel.cs" />
-    <Compile Include="Areas\Manage\Models\CultureBindingModel.cs" />
+    <Compile Include="Areas\Manage\Models\CultureBindModel.cs" />
+    <Compile Include="Areas\Manage\Models\CultureLocalBindModel.cs" />
     <Compile Include="Areas\Manage\Models\CultureLocalViewModel.cs" />
     <Compile Include="Areas\Manage\Models\CultureViewModel.cs" />
     <Compile Include="Areas\Manage\Models\OppBindingModel.cs" />
     <Compile Include="Areas\Manage\Models\OppViewModel.cs" />
+    <Compile Include="Areas\Manage\Models\PostBindModel.cs" />
+    <Compile Include="Areas\Manage\Models\PostViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ProposalManageViewModel.cs" />
     <Compile Include="Areas\Manage\Models\ReportManageViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -366,6 +369,7 @@
     <Compile Include="Infrastructure\Mapping\IHaveCustomMapping.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Infrastructure\ModelMetadata\ExtensibleModelMetadataProvider.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForCulture.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForCategory.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForClassification.cs">
       <SubType>Code</SubType>
@@ -664,13 +668,18 @@
     <Content Include="images\work\002.jpg" />
     <Content Include="images\work\003.jpg" />
     <Content Include="Areas\Manage\Views\Culture\Create.cshtml" />
-    <Content Include="Areas\Manage\Views\Culture\Details.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Index.cshtml" />
     <Content Include="Areas\Manage\Views\Culture\Edit.cshtml" />
+    <Content Include="Areas\Manage\Views\Culture\_CultureLocal.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\DestCultureId.cshtml" />
+    <Content Include="Areas\Manage\Views\Culture\_CultureLocalAdd.cshtml" />
+    <Content Include="Areas\Manage\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Post\Create.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\Testing.pubxml" />
+    <None Include="Properties\PublishProfiles\w2012w.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="images\404.jpg" />
     <Content Include="images\ajax-loader.gif" />
@@ -1385,7 +1394,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CateogryId.cshtml" />
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
@@ -1393,6 +1402,7 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Opportunities\Index.cshtml" />
     <Content Include="Views\Shared\_LangSelector.cshtml" />
+    <Content Include="Views\Library\_LibSidebar.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1405,7 +1415,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Cheetah\Scripts\" />
     <Folder Include="Areas\Cheetah\Views\Awards\" />
-    <Folder Include="Areas\Manage\Views\Post\" />
     <Folder Include="uploads\" />
     <Folder Include="Views\FileShare\" />
   </ItemGroup>
@@ -1441,6 +1450,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

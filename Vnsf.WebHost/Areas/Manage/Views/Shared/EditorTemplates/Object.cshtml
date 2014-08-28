@@ -2,18 +2,22 @@
 
 @foreach (var prop in this.ViewData.ModelMetadata.Properties.Where(p => p.ShowForEdit))
 {
-    if (prop.TemplateHint == "HiddenInput")
+    if (prop.TemplateHint != "Ignore")
     {
-        @Html.Hidden(prop.PropertyName)
-    }
-    else
-    {
-        <div class="form-group">
-            @Html.BootStrapLabelFor(prop.PropertyName)
-            <div class="col-md-10">
-                @Html.Editor(prop.PropertyName)
-                @Html.ValidationMessage(prop.PropertyName)
+        if (prop.TemplateHint == "HiddenInput")
+        {
+            @Html.Hidden(prop.PropertyName)
+        }
+
+        else
+        {
+            <div class="form-group">
+                @Html.BootStrapLabelFor(prop.PropertyName)
+                <div class="col-md-10">
+                    @Html.Editor(prop.PropertyName)
+                    @Html.ValidationMessage(prop.PropertyName)
+                </div>
             </div>
-        </div>
+        }
     }
 }

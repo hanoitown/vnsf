@@ -7,10 +7,10 @@ using Vnsf.WebHost.Infrastructure.Mapping;
 
 namespace Vnsf.WebHost.Areas.Manage.Models
 {
-    public class CultureLocalViewModel
+    public class CultureLocalViewModel : IMapFrom<LocalizedCulture>
     {
         public Guid Id { get; set; }
         public string Name { get; set; } // Vietnamese
-        public string CultureName { get; set; } // Tieng Viet        
+        public string DestCultureName { get; set; } // Tieng Viet        
     }
 }

@@ -59,7 +59,6 @@
     <Compile Include="Reports\ReportColaboration.cs" />
     <Compile Include="Shared\Address.cs" />
     <Compile Include="Cms\Post.cs" />
-    <Compile Include="Cms\PostVersion.cs" />
     <Compile Include="Profiles\Avatar.cs" />
     <Compile Include="Shared\BankAccount.cs" />
     <Compile Include="Shared\BankInfo.cs" />
