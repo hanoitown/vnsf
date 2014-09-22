@@ -19,22 +19,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("Phân hệ quản lý", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
 
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">CMS <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thông báo<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Posts", "Index", "Post", null, null)</li>
+                            <li>@Html.ActionLink("Mẫu tin", "Index", "Post", null, null)</li>
                             <li><a href="#">Tags</a></li>
-                            <li><a href="#">Category</a></li>
+                            <li>@Html.ActionLink("Nhóm tin", "PostCategory", "Category", null, null)</li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Globalization <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Địa phương hóa <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Continent</a></li>
                             <li><a href="#">Country</a></li>
@@ -46,23 +46,22 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opportunity <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Chương trình <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Program</a></li>
-                            <li>@Html.ActionLink("Grants", "Index", "Grant", null, null)</li>
-                            <li>@Html.ActionLink("Opportunities", "Index", "Opportunity", null, null)</li>
+                            <li><a href="#">Nhóm chương trình</a></li>
+                            <li>@Html.ActionLink("Chương trình tại trợ", "Index", "Grant", null, null)</li>
+                            <li>@Html.ActionLink("Đợt tài trợ", "Index", "Opportunity", null, null)</li>
+                            <li>@Html.ActionLink("Mẫu hồ sơ", "Index", "ApplicationForm", null, null)</li>
+
                             <li class="divider"></li>
-                            <li>@Html.ActionLink("Applications", "Index", "Application", null, null)</li>
-                            <li>@Html.ActionLink("Awards", "Index", "UserProfile", null, null)</li>
-                            <li>@Html.ActionLink("Reports", "Index", "Reports", null, null)</li>
+                            <li>@Html.ActionLink("Hồ sơ đề xuất", "Index", "Application", null, null)</li>
+                            <li>@Html.ActionLink("Danh sách tài trợ", "Index", "UserProfile", null, null)</li>
+                            <li>@Html.ActionLink("Báo cáo", "Index", "Reports", null, null)</li>
                         </ul>
                     </li>
 
                     <li></li>
-                    <li>@Html.ActionLink("Classification", "Index", "Classification", null, null)</li>
-                    <li>@Html.ActionLink("AppForm", "Index", "ApplicationForm", null, null)</li>
-                    <li>@Html.ActionLink("Profile", "Index", "UserProfile", null, null)</li>
-                    <li>@Html.ActionLink("Discussioin", "Index", "UserProfile", null, null)</li>
+                    <li>@Html.ActionLink("Phân loại", "Index", "Classification", null, null)</li>
                 </ul>
                 @*@Html.Partial("_LanguageSelector")*@
 
@@ -87,5 +86,6 @@
 
     @RenderSection("scripts", required: false)
     @Html.Partial("_Alerts")
+    @*@Html.Partial("_LangSelector")*@
 </body>
 </html>

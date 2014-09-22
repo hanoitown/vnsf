@@ -14,7 +14,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Models
         public Guid Id { get; set; }
         public string NameFirst { get; set; }
         public string NameLast { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public bool Gender { get; set; }
         public string AvatarAlias { get; set; }
         public HttpPostedFileBase AvatarFile { get; set; }

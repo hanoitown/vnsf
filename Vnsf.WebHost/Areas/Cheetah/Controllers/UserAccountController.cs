@@ -78,16 +78,19 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
             if (ModelState.IsValid)
             {
                 var account = _uow.UserAccounts.All.FirstOrDefault(u => u.Email == model.EmailOrMobile || u.MobilePhoneNumber == model.EmailOrMobile);
-                var result = account.VerifyPassword(model.Password);
-                if (result)
+                if (account != null)
                 {
-                    //verify password
-                    await LoginAsync(account, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    var result = account.VerifyPassword(model.Password);
+                    if (result)
+                    {
+                        //verify password
+                        await LoginAsync(account, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid username or password.");
+                    }
                 }
             }
 

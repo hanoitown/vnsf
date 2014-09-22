@@ -29,8 +29,8 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             // get culture list
             var data = _uow.Cultures.All;
 
-            // get local for current culture
-            var locale = _uow.LocalCultures.AllIncluding(c => c.Culture).Where(c => c.Culture.Code == this.CurrentCulture);
+            // get localized data in current culture
+            var locale = _uow.LocalCultures.AllIncluding(c => c.DestCulture).Where(c => c.DestCulture.Code == this.CurrentCulture);
 
             var vm = data.GroupJoin(locale,
                             p => p.Id,
@@ -43,31 +43,57 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult LocalCulture(string cultureCode)
+        public ActionResult CultureLocal(Guid id)
         {
-            var lc = _uow.LocalCultures.AllIncluding(l => l.Culture).Where(c => c.Culture.Code == cultureCode);
+            var vm = _uow.LocalCultures.AllIncluding(l => l.DestCulture).Where(c => c.Culture.Id == id)
+                            .Project().To<CultureLocalViewModel>();
 
-            return View(lc);
+            return PartialView("_CultureLocal", vm);
         }
 
-        
-        public ActionResult Details(Guid id)
+        public ActionResult CultureLocalAdd(Guid id)
         {
-            var item = _uow.Cultures.AllIncluding(c => c.Localizeds).FirstOrDefault(c => c.Id == id);
-            var vm = AutoMapper.Mapper.Map<CultureViewModel>(item);
+            var vm = new CultureLocalBindModel();
+            ViewData["Cultures"] = _uow.Cultures.All.ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), id.ToString());
 
-            return View(vm);
+            return View("_CultureLocalAdd", vm);
         }
 
-        //
-        // GET: /Manage/Culture/Create
+        public ActionResult CultureLocalRemove(Guid id)
+        {
+            var item = _uow.LocalCultures.FindById(id);
+            _uow.LocalCultures.Remove(item);
+            _uow.Save();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult CultureLocalAdd(Guid id, CultureLocalBindModel form)
+        {
+            try
+            {
+                var item = _uow.Cultures.AllIncluding(c => c.Localizeds).FirstOrDefault(c => c.Id == id);
+                var culture = _uow.Cultures.FindById(form.DestCultureId);
+
+                item.AddLocale(form.Name, culture);
+                _uow.Save();
+
+                return RedirectToAction<CultureController>(c => c.Edit(id)).WithSuccess("Done");
+
+            }
+            catch (Exception ex)
+            {
+
+                return RedirectToAction<CultureController>(c => c.Edit(id)).WithError(ex.Message);
+            }
+        }
+
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/Culture/Create
         [HttpPost]
         public ActionResult Create(CultureViewModel form)
         {
@@ -85,18 +111,15 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             }
         }
 
-        //
-        // GET: /Manage/Culture/Edit/5
         public ActionResult Edit(Guid id)
         {
-            var item = _uow.Cultures.FindById(id);
-            var vm = AutoMapper.Mapper.Map<CultureBindingModel>(item);
+            var item = _uow.Cultures.AllIncluding(c => c.Localizeds).FirstOrDefault(c => c.Id == id);
+
+            var vm = AutoMapper.Mapper.Map<CultureBindModel>(item);
 
             return View(vm);
         }
 
-        //
-        // POST: /Manage/Culture/Edit/5
         [HttpPost]
         public ActionResult Edit(Guid id, CultureViewModel form)
         {

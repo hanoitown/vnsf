@@ -43,7 +43,7 @@ namespace Vnsf.WebHost
                         "~/Scripts/underscore.js",
                         "~/Scripts/moment.js",
 
-                        "~/Scripts/bootstrap-datetimepicker.js",
+                        "~/Scripts/bootstrap-datepicker.js",
                         "~/Scripts/tinymce/tinymce.js",
                 //"~/Scripts/jquery.fileupload.js",
                 //"~/Scripts/jquery.iframe-transport.js",
@@ -64,7 +64,7 @@ namespace Vnsf.WebHost
                       "~/Content/font-awesome.css",
                 //"~/Content/jquery.fileupload-ui-noscript.css",
                 //"~/Content/jquery.fileupload-ui.css",
-                      "~/Content/bootstrap-datepicker.css",
+                      "~/Content/datepicker3.css",
                       "~/Content/selectize.bootstrap3.css",
                       "~/Content/site.css"));
 

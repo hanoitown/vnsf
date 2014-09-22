@@ -4,11 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Đợt tài trợ</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    Danh sách các đợt tài trợ, mỗi chương trình tài trợ có nhiều đợt tài trợ khác nhau cho phép mở một hay nhiều đợt tài trợ đồng thời | 
+    @Html.ActionLink("Tạo đợt tài trợ mới", "Create")
 </p>
+<br/>
 <table class="table">
     <tr>
         <th>
@@ -41,8 +43,8 @@
             @Html.DisplayFor(modelItem => item.GrantName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

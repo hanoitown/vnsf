@@ -43,8 +43,13 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             return View(list);
         }
 
-        //
-        // GET: /Manage/Category/Details/5
+        public ActionResult PostCategory()
+        {
+            var vm = _uow.Categories.AllIncluding(c => c.Parent, c => c.Classification).Where(c => c.Parent == null && c.Classification.Name.Contains("Posts"))
+                            .Project().To<CategoryViewModel>();
+            return View(vm);
+        }
+
         public ActionResult Details(Guid id)
         {
             var vm = _uow.Categories.AllIncluding(o => o.Classification)
@@ -150,9 +155,10 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             {
                 foreach (var item in cat.Children)
                 {
-                    list.Add(new SelectListItem() { 
+                    list.Add(new SelectListItem()
+                    {
                         Value = item.Id.ToString(),
-                        Text = Prefix(2*item.Depth) + item.Name
+                        Text = Prefix(2 * item.Depth) + item.Name
                     });
                     ToSelectList(item, list);
 

@@ -53,13 +53,14 @@
     <Compile Include="Globalization\Country.cs" />
     <Compile Include="Globalization\Language.cs" />
     <Compile Include="Globalization\Region.cs" />
+    <Compile Include="KPIs\Evaluation.cs" />
+    <Compile Include="KPIs\KPI.cs" />
     <Compile Include="Profiles\UserTitle.cs" />
     <Compile Include="Proposals\Participation.cs" />
     <Compile Include="Proposals\ProposalColaboration.cs" />
     <Compile Include="Reports\ReportColaboration.cs" />
     <Compile Include="Shared\Address.cs" />
     <Compile Include="Cms\Post.cs" />
-    <Compile Include="Cms\PostVersion.cs" />
     <Compile Include="Profiles\Avatar.cs" />
     <Compile Include="Shared\BankAccount.cs" />
     <Compile Include="Shared\BankInfo.cs" />

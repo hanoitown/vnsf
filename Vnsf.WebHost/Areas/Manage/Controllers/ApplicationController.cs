@@ -45,7 +45,7 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
 
         public ActionResult View(Guid id)
         {
-            var vm = AutoMapper.Mapper.Map<ApplicationManageViewModel>(_uow.Apps.FindById(id));
+            var vm = AutoMapper.Mapper.Map<ApplicationManageViewModel>(_uow.Apps.AllIncluding(a=>a.Opportunity, a=>a.Applicant).FirstOrDefault(a=>a.Id==id));
 
             return View(vm);
         }

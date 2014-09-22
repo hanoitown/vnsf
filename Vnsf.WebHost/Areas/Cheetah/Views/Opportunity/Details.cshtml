@@ -16,7 +16,11 @@
                 </dt>
 
                 <dd>
+                    <br />
                     @Html.DisplayFor(model => model.Description)
+                    <br />
+                    <br />
+
                 </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.NumberOfAward)
@@ -91,7 +95,7 @@
         @using (Html.BeginForm("Apply", "Opportunity", FormMethod.Post, null))
         {
             @Html.HiddenFor(m => m.Id)
-            <input type="submit" class="btn btn-primary" value="Apply for Opportunity" />
+            <input type="submit" class="btn btn-primary" value="ĐĂNG KÝ" />
         }
     </div>
 </div>

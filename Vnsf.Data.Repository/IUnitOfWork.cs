@@ -34,6 +34,8 @@ namespace Vnsf.Data.Repository
         IRepository<UserProfile> Profiles { get; }
         IRepository<Report> Reports { get; }
         IRepository<Proposal> Proposals { get; }
+        IRepository<Post> Posts { get; }
+        IRepository<PostLocalized> LocalPosts { get; }
 
     }
 }

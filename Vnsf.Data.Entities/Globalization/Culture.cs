@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace Vnsf.Data.Entities.Globalization
@@ -30,16 +31,25 @@ namespace Vnsf.Data.Entities.Globalization
             };
         }
 
+        public void AddLocale(string name, Culture dest)
+        {
+            this.Localizeds.Add(new LocalizedCulture
+            {
+                Id = Guid.NewGuid(),
+                Name = name,
+                DestCulture = dest
+            });
+        }
+
     }
 
 
     public class LocalizedCulture
     {
-        // Id of the localized
-        public virtual Guid Id { get; set; }
-        // Id culture to be translated
-        public virtual Guid CultureId { get; set; }
-        public virtual string Name { get; set; }
-        public virtual Culture Culture { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public virtual Culture DestCulture { set; get; }
+        public virtual Culture Culture { set; get; }
+
     }
 }

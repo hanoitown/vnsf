@@ -10,18 +10,16 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav ">
-            <li>@Html.ActionLink("Opportunities", "Index", "Opportunity", null, null)</li>
-            <li>@Html.ActionLink("Profile/Resume", "Index", "UserProfile", null, null)</li>
-            <li>@Html.ActionLink("Applications", "Index", "UserProfile", null, null)</li>
-            <li>@Html.ActionLink("Awards", "Index", "UserProfile", null, null)</li>
-            <li>@Html.ActionLink("Reports", "Index", "UserProfile", null, null)</li>
-            <li>@Html.ActionLink("Documents", "Index", "Document", null, null)</li>
+            <li>@Html.ActionLink("Đợt tài trợ", "Index", "Opportunity", null, null)</li>
+            <li>@Html.ActionLink("Lý lịch", "Index", "UserProfile", null, null)</li>
+            <li>@Html.ActionLink("Hồ sơ", "Index", "UserProfile", null, null)</li>
+            <li>@Html.ActionLink("Tài liệu", "Index", "Document", null, null)</li>
 
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">@User.Identity.GetUserName()! <b class="caret"></b> </a>
                 <ul class="dropdown-menu">
-                    <li>@(Html.ActionLink<UserAccountController>(c => c.Manage(null), "Account Management", new { title = "Account Management" }))</li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    <li>@(Html.ActionLink<UserAccountController>(c => c.Manage(null), "Tài khoản", new { title = "Account Management" }))</li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Thoát</a></li>
                 </ul>
             </li>
         </ul>
@@ -30,7 +28,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@(Html.ActionLink<UserAccountController>(c => c.Register(), "Register", new { id = "registerLink" }))</li>
-        <li>@(Html.ActionLink<UserAccountController>(c => c.Login(null), "Login", new { id = "loginLink" }))</li>
+        <li>@(Html.ActionLink<UserAccountController>(c => c.Register(), "Đăng ký", new { id = "registerLink" }))</li>
+        <li>@(Html.ActionLink<UserAccountController>(c => c.Login(null), "Đăng nhập", new { id = "loginLink" }))</li>
     </ul>
 }

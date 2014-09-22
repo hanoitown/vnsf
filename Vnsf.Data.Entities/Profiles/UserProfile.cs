@@ -29,12 +29,6 @@ namespace Vnsf.Data.Entities
         public DateTime? BirthDay { get; set; }
         public bool Gender { get; set; }
 
-        public string ResearchDirection { get; set; }
-        public string IdNo { get; set; }
-        public string IdIssuer { get; set; }
-        public IdKind IdKind { get; set; }
-        public DateTime IssueDate { get; set; }
-
         public virtual Category Fields { set; get; }
         public virtual Job Working { set; get; }
         public virtual BankAccount BankAccount { get; set; }
@@ -91,12 +85,6 @@ namespace Vnsf.Data.Entities
             First = firstname;
             Last = lastname;
         }
-    }
-
-    public enum IdKind
-    {
-        NationalID,
-        Passport
     }
 
 }

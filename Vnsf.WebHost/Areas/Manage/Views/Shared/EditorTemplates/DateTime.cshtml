@@ -1,13 +1,17 @@
 ﻿@model DateTime?
-    <div class="date datePicker">
-        @Html.TextBox("", Model.HasValue ? Model.Value.ToString("dd/MM/yyyy") : String.Empty, new { @class = "form-control" })
+    <div class="date ">
+        @Html.TextBox("", Model.HasValue ? Model.Value.ToString("MM/dd/yyyy") : String.Empty, new { @class = "form-control datepicker"})
     </div>
     <script type="text/javascript">
         $(function () {
+            //$('.datepicker').datepicker({
+            //    format: 'dd/mm/yyyy',
+            //    startDate: '-3d'
+            //})
             // target only the input in this editor template
-            $('#@Html.IdForModel()').datetimepicker({
+            @*$('#@Html.IdForModel()').datetimepicker({
                 format: 'DD/MM/YYYY',
                 pickTime: false
-            });
+            });*@
         });
     </script>

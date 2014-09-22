@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vnsf.Data.Entities.Account;
+using Vnsf.Data.Entities.Globalization;
 using Vnsf.Data.Entities.Security;
 using Vnsf.Data.Entities.Shared;
 
@@ -42,7 +43,6 @@ namespace Vnsf.Data.Entities
             Path = fi.FullName;
         }
 
-
         public static Doc CreateFile(string name, string description, bool isFolder, string path, Doc container, UserAccount owner)
         {
             if (isFolder)
@@ -59,7 +59,6 @@ namespace Vnsf.Data.Entities
                     Owner = owner
                 };
         }
-
         public static Doc CreateFolder(string name, string description, string path, Doc container, UserAccount owner)
         {
             return new Doc
@@ -83,7 +82,6 @@ namespace Vnsf.Data.Entities
         //        Path = BaseUrl + 
         //    };
         //}
-
         public IEnumerable<Doc> GetHierachy()
         {
             var list = new List<Doc>();
@@ -98,7 +96,6 @@ namespace Vnsf.Data.Entities
 
             return list;
         }
-
         public void CreateLink(string securityCode = "nafostef")
         {
             Link = new DocLink
@@ -109,7 +106,17 @@ namespace Vnsf.Data.Entities
                 SecurityCode = securityCode
             };
         }
+    }
 
-
+    public class DocLocalized
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Culture DestCulture { get; set; }
+        public string ContentType { get; set; }
+        public int ContentLength { get; set; }
+        public string Path { get; set; }
+        public Doc Doc { get; set; }
     }
 }

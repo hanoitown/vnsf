@@ -9,8 +9,6 @@ namespace Vnsf.Data.Configurations
     {
         public CultureConfiguration()
         {
-            this.ToTable("Culture", "vnsf");
-
             this.HasKey(o => o.Id);
 
             this.Property(o => o.Code)
@@ -37,7 +35,6 @@ namespace Vnsf.Data.Configurations
     {
         public CultureLocalizedConfiguration()
         {
-            this.ToTable("CultureLocalized", "vnsf");
 
             this.Property(o => o.Name)
                 .HasMaxLength(200)

@@ -17,14 +17,14 @@
   <Class Name="Vnsf.Data.Entities.Globalization.Language" Collapsed="true">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAGAAAAAAAAAAEAAAAAAAAAIEAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAGAAAAAAAAAABAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Globalization\Language.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Vnsf.Data.Entities.Globalization.LanguageLocalized" Collapsed="true">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAQAAwAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Globalization\Language.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,21 +38,14 @@
   <Class Name="Vnsf.Data.Entities.Globalization.Culture" Collapsed="true">
     <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAACAAAAAAAAAAkAAAAAgIQAAEAAAAAAAAAAAA=</HashCode>
-      <FileName>Globalization\Culture.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Vnsf.Data.Entities.Globalization.CultureLocalized" Collapsed="true">
-    <Position X="0.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIACAAAAAAAAAAAAAAAAAAQAAQAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAACAAADAhAAQAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Globalization\Culture.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Vnsf.Data.Entities.Globalization.Country">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAQAAGAAAAAAAAAAEAAAAAAAAAIEAIAAAAAAQAAA=</HashCode>
+      <HashCode>AAACAQAAGAAAAAAAAAABAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Globalization\Country.cs</FileName>
     </TypeIdentifier>
   </Class>
