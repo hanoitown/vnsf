@@ -1,0 +1,59 @@
+﻿@model Vnsf.WebHost.Areas.Manage.Models.ApplicationManageViewModel
+
+@{
+    ViewBag.Title = "View";
+}
+
+<div>
+    <p>Thông tin chi tiết về hồ sơ đăng ký</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ứng viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantUsername)
+        </dd>
+
+        <dt>
+            Đợt tài trợ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpportunityName)
+        </dd>
+
+        <dt>
+            Trạng thái hồ sơ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+           Ngày tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            Ngày cập nhật
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdated)
+        </dd>
+    </dl>
+
+    <br />
+    @Html.Action("AppDocs", routeValues: new { oppId = Model.OpportunityId })
+
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
