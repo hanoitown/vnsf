@@ -4,11 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Danh sách mẫu hồ sơ</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    Mỗi chương trình tài trợ cũng như mỗi đợt tài trợ yêu cầu hồ sơ khác nhau. Khi khởi tạo mới đợt tài trợ cần định nghĩa danh sách các tài liệu theo yêu cầu. @Html.ActionLink("Thêm mẫu tài liệu", "Create")
 </p>
+<br/>
 <table class="table">
     <tr>
         <th>
@@ -41,9 +42,8 @@
             @Html.DisplayFor(modelItem => item.OpportunityName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

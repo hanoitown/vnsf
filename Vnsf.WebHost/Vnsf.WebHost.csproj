@@ -369,8 +369,9 @@
     <Compile Include="Infrastructure\Mapping\IHaveCustomMapping.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Infrastructure\ModelMetadata\ExtensibleModelMetadataProvider.cs" />
-    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForCulture.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForCategory.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForCulture.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForParent.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\DropDownFilterForClassification.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -434,6 +435,7 @@
     <Compile Include="Models\OrganizationBindingModel.cs" />
     <Compile Include="Models\OrganizationViewModel.cs" />
     <Compile Include="Areas\Cheetah\Models\ProposalBindingModel.cs" />
+    <Compile Include="Models\PostDisplayModel.cs" />
     <Compile Include="Models\UserAccount\UserAccountBindingModel.cs" />
     <Compile Include="Models\UserAccount\UserAccountRegisterModel.cs" />
     <Compile Include="Models\UserAccount\UserAccountViewModel.cs" />
@@ -458,6 +460,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
+    <Content Include="Content\datepicker3.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\page_white.png" />
@@ -675,6 +678,10 @@
     <Content Include="Areas\Manage\Views\Culture\_CultureLocalAdd.cshtml" />
     <Content Include="Areas\Manage\Views\Post\Index.cshtml" />
     <Content Include="Areas\Manage\Views\Post\Create.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\EditorTemplates\CategoryId.cshtml" />
+    <Content Include="Areas\Manage\Views\Post\Edit.cshtml" />
+    <Content Include="Areas\Manage\Views\Application\View.cshtml" />
+    <Content Include="Areas\Manage\Views\Category\PostCategory.cshtml" />
     <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -1403,6 +1410,8 @@
     <Content Include="Views\Opportunities\Index.cshtml" />
     <Content Include="Views\Shared\_LangSelector.cshtml" />
     <Content Include="Views\Library\_LibSidebar.cshtml" />
+    <Content Include="Views\News\Post.cshtml" />
+    <Content Include="Views\News\_Sidebar.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

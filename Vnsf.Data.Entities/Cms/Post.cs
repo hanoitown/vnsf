@@ -10,6 +10,20 @@ namespace Vnsf.Data.Entities
 {
     public class Post
     {
+        public static Post New(string title, string abs, string content, DateTime publishdate, Category category)
+        {
+            return new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = title,
+                Abstract = abs,
+                Content = content,
+                PublishDate = publishdate,
+                Status = PostStatus.Published,
+                Category = category
+            };
+        }
+
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Abstract { get; set; }

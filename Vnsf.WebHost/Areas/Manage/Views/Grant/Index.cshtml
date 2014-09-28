@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<Vnsf.WebHost.Areas.Manage.Models.GrantViewModel>
 
 @{
-    ViewBag.Title = "Grants";
+    ViewBag.Title = "Chương trình tài trợ";
 }
 
-<h2>Grants</h2>
+<h2>Chương trình tài trợ</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p> Danh sách các chương trình tài trợ | 
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
+<br/>
 <table class="table">
     <tr>
         <th>
@@ -47,8 +48,8 @@
             @Html.DisplayFor(modelItem => item.LastUpdated)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

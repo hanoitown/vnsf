@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using Vnsf.Data.Repository;
+using Vnsf.WebHost.Base;
+using Vnsf.WebHost.Models;
+using Microsoft.Web.Mvc;
+using Vnsf.WebHost.Infrastructure.Alerts;
+using Vnsf.Data.Entities;
+using System.Threading.Tasks;
 using Vnsf.WebHost.Areas.Manage.Models;
+using System.Text;
 
 namespace Vnsf.WebHost.Areas.Manage.Controllers
 {
@@ -24,33 +32,80 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             var vm = data.GroupJoin(locales,
                 p => p.Id,
                 c => c.Id,
-                (p, g) => g.Select(c => new PostViewModel { Id = p.Id, Title = c.Title })
-                           .DefaultIfEmpty(new PostViewModel { Id = p.Id, Title = p.Title }))
+                (p, g) => g.Select(c => new PostViewModel { Id = p.Id, Title = c.Title, PublishDate = p.PublishDate, CategoryName = p.Category.Name })
+                           .DefaultIfEmpty(new PostViewModel { Id = p.Id, Title = p.Title, PublishDate = p.PublishDate, CategoryName = p.Category.Name }))
                 .SelectMany(g => g);
 
 
             return View(vm);
         }
 
-        // GET: Manage/Post/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: Manage/Post/Create
         public ActionResult Create()
         {
-            return View();
+            var vm = new PostBindModel
+            {
+                PublishDate = DateTime.Today
+            };
+            ViewData["Categories"] = _uow.Categories.AllIncluding(c => c.Classification).Where(c => c.Classification.Name.Contains("Posts"))
+                                            .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), string.Empty);
+
+            return View(vm);
         }
 
-        // POST: Manage/Post/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PostBindModel form)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    var category = _uow.Categories.FindById(form.CategoryId);
+                    _uow.Posts.Add(Post.New(form.Title, form.Abstract, form.Content, form.PublishDate, category));
+                    _uow.Save();
+
+                    return RedirectToAction<PostController>(p => p.Index()).WithSuccess("Created");
+                }
+
+                return RedirectToAction<PostController>(p => p.Index()).WithError("Invalid data");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Edit(Guid id)
+        {
+            var item = _uow.Posts.AllIncluding(p => p.Category).FirstOrDefault(p => p.Id == id);
+            var vm = AutoMapper.Mapper.Map<PostBindModel>(item);
+
+            ViewData["Categories"] = _uow.Categories.AllIncluding(c => c.Classification).Where(c => c.Classification.Name.Contains("Posts"))
+                                            .ToSelectList(c => c.Id.ToString(), c => c.Name.ToString(), item.Category.Id.ToString());
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Guid id, PostBindModel form)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var cat = _uow.Categories.FindById(form.CategoryId);
+                    var post = _uow.Posts.FindById(form.Id);
+
+                    post.Title = form.Title;
+                    post.Abstract = form.Abstract;
+                    post.Content = form.Content;
+                    post.PublishDate = form.PublishDate;
+                    post.Category = cat;
+
+                    _uow.Save();
+
+                    return RedirectToAction<PostController>(p => p.Index()).WithSuccess("Updated");
+                }
 
                 return RedirectToAction("Index");
             }
@@ -60,48 +115,14 @@ namespace Vnsf.WebHost.Areas.Manage.Controllers
             }
         }
 
-        // GET: Manage/Post/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Delete(Guid id)
         {
+            var item = _uow.Posts.FindById(id);
+            _uow.Posts.Remove(item);
+            _uow.Save();
+
             return View();
         }
 
-        // POST: Manage/Post/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Manage/Post/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Manage/Post/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

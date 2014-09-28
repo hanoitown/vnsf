@@ -116,7 +116,7 @@ namespace Vnsf.WebHost.Areas.Cheetah.Controllers
         public ActionResult Details(Guid id)
         {
 
-            var application = _uow.Apps.AllIncluding(a => a.Documents, a => a.Opportunity).First(a => a.Id == id);
+            var application = _uow.Apps.AllIncluding(a => a.Documents, a => a.Opportunity, a=>a.Opportunity.Grant).First(a => a.Id == id);
             //ModelState.AddModelError("Documents", "Document is not fullfil requirements");
 
             if (application != null)

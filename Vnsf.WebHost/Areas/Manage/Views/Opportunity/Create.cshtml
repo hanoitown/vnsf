@@ -4,14 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Thêm đợt tài trợ</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>OppBindingModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.EditorForModel()
@@ -29,22 +28,33 @@
 </div>
 @section scripts{
     <script>
+        //$(function () {
+        //    $.validator.addMethod('date',
+        //    function (value, element) {
+        //        if (this.optional(element)) {
+        //            return true;
+        //        }
+        //        var ok = true;
+        //        try {
+        //            $.datepicker.parseDate('dd/mm/yy', value);
+        //        }
+        //        catch (err) {
+        //            ok = false;
+        //        }
+        //        return ok;
+        //    });
+        //    $(".datefield").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true });
+        //});
         $(function () {
-            $.validator.addMethod('date',
-            function (value, element) {
-                if (this.optional(element)) {
-                    return true;
-                }
-                var ok = true;
-                try {
-                    $.datepicker.parseDate('dd/mm/yy', value);
-                }
-                catch (err) {
-                    ok = false;
-                }
-                return ok;
+            $('.datepicker').datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: '-3d'
+            })
+            // target only the input in this editor template
+            @*$('#@Html.IdForModel()').datetimepicker({
+                format: 'DD/MM/YYYY',
+                pickTime: false
+            });*@
             });
-            $(".datefield").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true });
-        });
     </script>
 }

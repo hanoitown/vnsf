@@ -53,6 +53,8 @@
     <Compile Include="Globalization\Country.cs" />
     <Compile Include="Globalization\Language.cs" />
     <Compile Include="Globalization\Region.cs" />
+    <Compile Include="KPIs\Evaluation.cs" />
+    <Compile Include="KPIs\KPI.cs" />
     <Compile Include="Profiles\UserTitle.cs" />
     <Compile Include="Proposals\Participation.cs" />
     <Compile Include="Proposals\ProposalColaboration.cs" />

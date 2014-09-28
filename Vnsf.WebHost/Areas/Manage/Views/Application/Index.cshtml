@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Danh sách nộp hồ sơ</h2>
+<br />
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -41,9 +40,7 @@
             @Html.DisplayFor(modelItem => item.LastUpdated)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("View", "View", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Xem", "View", new { id=item.Id }) 
         </td>
     </tr>
 }
